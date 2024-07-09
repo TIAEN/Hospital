@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.mapper.DepartmentMapper">
+
+    <resultMap id="departmentMap" type="com.oracle.pojo.Department">
+        <id column="department_id" property="departmentId"/>
+        <result column="department_name" property="departmentName"/>
+        <result column="department_description" property="departmentDescription"/>
+        <result column="department_pid" property="departmentPid"/>
+
+    </resultMap>
+    <insert id="insertDepartment" parameterType="com.oracle.pojo.Department">
+        insert into departments values (null,#{departmentName},#{departmentPid},#{departmentLevel},#{departmentDescription})
+    </insert>
+    <delete id="deleteDepartmentFirst">
+        delete from departments where department_id=#{id};
+
+    </delete>
+    <select id="selectDepartment" resultMap="departmentMap">
+        select * from departments where department_pid is null;
+    </select>
+    <select id="selectDepartmentAll" resultMap="departmentMap">
+        select * from departments;
+    </select>
+
+
+</mapper>

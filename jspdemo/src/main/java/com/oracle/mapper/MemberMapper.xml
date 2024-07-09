@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.mapper.MemberMapper">
+
+    <select id="selectMemberCountByUserName" resultType="int">
+        select count(id) from members where username = #{userName}
+    </select>
+    
+    <insert id="insertMember" parameterType="com.oracle.pojo.Member">
+        insert into members (id, username, password, createdate, modifydate) values (null, #{username}, #{password}, #{createDate}, #{modifyDate})
+
+    </insert>
+
+    <select id="selectMemberByUserName" resultType="com.oracle.pojo.Member">
+        SELECT * FROM Members where USERNAME=#{userName}
+    </select>
+
+
+</mapper>

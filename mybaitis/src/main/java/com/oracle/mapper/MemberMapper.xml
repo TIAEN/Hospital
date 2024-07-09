@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.mapper.MemberMapper">
+
+
+
+
+
+
+
+
+
+
+    <insert id="insertMember">
+        INSERT INTO Members values (null,#{userName},#{pwd},#{age},#{phone},{createDate},#{modifyDate})
+    </insert>
+    <select id="SelectMemberById" parameterType="int" resultType="com.oracle.pojo.Member">
+        SELECT * FROM Members where id=#{abcd}
+    </select>
+    
+    <select id="SelectMemberAll" resultType="com.oracle.pojo.Member">
+        SELECT * FROM Members
+    </select>
+    <select id="SelectMemberParam" resultType="com.oracle.pojo.Member">
+        SELECT * FROM Members WHERE USERNAME=#{userName} and AGE=#{age}
+    </select>
+    <select id="SelectMemberParamObj" resultType="com.oracle.pojo.Member" parameterType="com.oracle.pojo.ParamObj">
+    SELECT * FROM Members WHERE USERNAME=#{userName} and PWD=#{pwd} AND AGE=#{age}
+    </select>
+    <select id="SelectMemberByAge" resultType="com.oracle.pojo.Member">
+    SELECT * FROM Members WHERE AGE &gt;=#{minage} and AGE &lt;=#{maxage}
+    </select>
+    <select id="SelectMemberLike" resultType="com.oracle.pojo.Member">
+        SELECT * FROM Members WHERE USERNAME LIKE CONCAT(#{username},'%')
+    </select>
+
+
+</mapper>
