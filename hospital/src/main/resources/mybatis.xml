@@ -56,5 +56,6 @@
 
 	<mappers>
 		<mapper resource="com/oracle/mapper/DepartmentMapper.xml" />
+		<mapper resource="com/oracle/mapper/AnnouncementMapper.xml" />
 	</mappers>
 </configuration>

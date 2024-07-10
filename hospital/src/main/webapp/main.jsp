@@ -32,12 +32,12 @@
         <li><a href="<%=request.getContextPath()%>/backend/rootDepartmentServlet" target="right"><span class="icon-caret-right"></span>新增科室</a></li>
         <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>科室列表</a></li>
         <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>医生管理</a></li>
+
     </ul>
     <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
-    <ul>
+    <ul style="display:block">
+        <li><a href="<%=request.getContextPath()%>/backend/rootAnnouncementServlet" target="right"><span class="icon-caret-right"></span>发布公告</a></li>
         <li><a href="list.html" target="right"><span class="icon-caret-right"></span>内容管理</a></li>
-        <li><a href="add.html" target="right"><span class="icon-caret-right"></span>添加内容</a></li>
-        <li><a href="cate.html" target="right"><span class="icon-caret-right"></span>分类管理</a></li>
     </ul>
 </div>
 <script type="text/javascript">

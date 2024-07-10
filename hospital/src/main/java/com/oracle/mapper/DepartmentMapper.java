@@ -9,4 +9,6 @@ public interface DepartmentMapper {
     void insertDepartment(Department department);
     List<Department> selectDepartmentAll();
     void deleteDepartmentFirst(int id);
+
+
 }

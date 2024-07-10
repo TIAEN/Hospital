@@ -11,19 +11,20 @@
         <result column="department_pid" property="departmentPid"/>
 
     </resultMap>
+
+
     <insert id="insertDepartment" parameterType="com.oracle.pojo.Department">
         insert into departments values (null,#{departmentName},#{departmentPid},#{departmentLevel},#{departmentDescription})
     </insert>
-    <delete id="deleteDepartmentFirst">
-        delete from departments where department_id=#{id};
 
+    <delete id="deleteDepartmentFirst">
+        delete from departments where department_id=#{id}
     </delete>
     <select id="selectDepartment" resultMap="departmentMap">
-        select * from departments where department_pid is null;
+        select * from departments where department_pid is null
     </select>
     <select id="selectDepartmentAll" resultMap="departmentMap">
-        select * from departments;
+        select * from departments
     </select>
-
 
 </mapper>
