@@ -48,4 +48,13 @@ public class DepartmentServiceimpl implements DepartmentService {
         sqlSession.close();
         return new PageInfo<Department>(departmentList);
     }
+
+    @Override
+    public Department findDepartmentById(Integer id) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+        Department department=departmentMapper.selectDepartmentById(id);
+        sqlSession.close();
+        return department;
+    }
 }

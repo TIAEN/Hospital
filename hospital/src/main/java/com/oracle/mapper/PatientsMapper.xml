@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+| Field          | Type          | Null | Key | Default | Extra          |
+| patient_id     | int(11)       | NO   | PRI | NULL    | auto_increment |
+| id_card_number | varchar(255)  | YES  |     | NULL    |                |
+| password       | varchar(255)  | YES  |     | NULL    |                |
+| name           | varchar(255)  | YES  |     | NULL    |                |
+| avatar         | varchar(255)  | YES  |     | NULL    |                |
+| phone          | varchar(255)  | YES  |     | NULL    |                |
+| email          | varchar(255)  | YES  |     | NULL    |                |
+| balance        | decimal(10,2) | YES  |     | NULL    |                |
+-->
+<mapper namespace="com.oracle.mapper.PatientsMapper">
+
+    <resultMap id="PatientMap" type="com.oracle.pojo.Patients">
+        <id column="patient_id" property="patientId"/>
+        <result column="id_card_number" property="patientIdCardNumber"/>
+        <result column="name" property="patientName"/>
+        <result column="avatar" property="patientAvatar"/>
+        <result column="phone" property="patientPhone"/>
+        <result column="email" property="patientEmail"/>
+        <result column="balance" property="patientBalance"/>
+    </resultMap>
+    <select id="selectPatientsByName" resultType="com.oracle.pojo.Patients">
+        select * from patients where name=#{patientName}
+    </select>
+
+
+</mapper>

@@ -26,5 +26,8 @@
     <select id="selectDepartmentAll" resultMap="departmentMap">
         select * from departments
     </select>
+    <select id="selectDepartmentById" resultMap="departmentMap">
+        select * from departments where department_id=#{id}
+    </select>
 
 </mapper>

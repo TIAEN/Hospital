@@ -37,6 +37,7 @@
     <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
     <ul style="display:block">
         <li><a href="<%=request.getContextPath()%>/backend/rootAnnouncementServlet" target="right"><span class="icon-caret-right"></span>发布公告</a></li>
+        <li><a href="<%=request.getContextPath()%>/backend/patient/rootAppointmentServlet" target="right"><span class="icon-caret-right"></span>患者预约</a></li>
         <li><a href="list.html" target="right"><span class="icon-caret-right"></span>内容管理</a></li>
     </ul>
 </div>

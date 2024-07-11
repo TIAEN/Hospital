@@ -11,4 +11,5 @@ public interface DepartmentService {
     void addDepartment(Department department);
     void deleteDepartmentFirst(Integer id);
     PageInfo<Department> list(Integer pageNum, Integer pageSize);
+    Department findDepartmentById(Integer id);
 }
