@@ -5,11 +5,11 @@
 <mapper namespace="com.oracle.mapper.DepartmentMapper">
 
     <resultMap id="departmentMap" type="com.oracle.pojo.Department">
-        <id column="department_id" property="departmentId"/>
-        <result column="department_id" property="departmentId"/>
-        <result column="department_name" property="departmentName"/>
-        <result column="department_description" property="departmentDescription"/>
-        <result column="department_pid" property="departmentPid"/>
+        <id property="departmentId" column="department_id" />
+        <result property="departmentId" column="department_id" />
+        <result property="departmentName" column="department_name" />
+        <result property="departmentDescription" column="department_description" />
+        <result property="departmentPid" column="department_pid" />
 
     </resultMap>
 
@@ -29,7 +29,7 @@
     </delete>
     <select id="selectRootDepartmentById" resultType="com.oracle.pojo.Department">
     select * from departments where department_id=#{departmentId}
-</select>
+    </select>
 
 
     <delete id="deleteByDepartmentId">

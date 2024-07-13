@@ -42,9 +42,14 @@
         select max(job_number) from doctors
     </select>
 
+
     <insert id="insertIntoDoctor">
         insert into doctors(doctor_id,job_number,password,name,avatar,phone,email,introduction,registration_fee,entry_date,department_id,professional_title_id)
         values(null,#{jobNumber},#{password},#{name},#{avatar},#{phone},#{email},#{introduction},#{registrationFee},#{entryDate},#{departmentId},#{professionalTitleId})
     </insert>
+
+    <select id="selectDoctorAll" resultType="com.oracle.pojo.Doctor">
+        select * from doctors
+    </select>
 
 </mapper>
