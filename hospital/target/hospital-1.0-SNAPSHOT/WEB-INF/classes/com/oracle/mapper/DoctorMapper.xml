@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.oracle.mapper.DoctorMapper">
+
+
+
+    <resultMap id="doctorMap" type="com.oracle.pojo.Doctor">
+        <id column="doctor_id" property="doctorId"/>
+        <result column="doctor_id" property="doctorId"/>
+        <result column="job_number" property="jobNumber"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="avatar" property="avatar"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="introduction" property="introduction"/>
+        <result column="registration_fee" property="registrationFee"/>
+        <result column="entry_date" property="entryDate"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="professional_title_id" property="professionalTitleId"/>
+    </resultMap>
+
+    <select id="selectDoctorByJobNumber" resultMap="doctorMap">
+        select * from doctors where job_number=#{jobNumber}
+    </select>
+
+    <select id="selectCountByJobNumber" resultType="java.lang.Integer">
+        select count(doctor_id) from doctors where job_number=#{jobNumber}
+    </select>
+
+    <update id="updateDoctorPassword">
+        update doctors set password=#{password} where doctor_id=#{id}
+    </update>
+
+    <select id="selectDoctorById" resultMap="doctorMap">
+        select * from doctors where doctor_id=#{id}
+    </select>
+
+    <select id="selectMaxJobNumber" resultType="java.lang.String">
+        select max(job_number) from doctors
+    </select>
+
+    <insert id="insertIntoDoctor">
+        insert into doctors(doctor_id,job_number,password,name,avatar,phone,email,introduction,registration_fee,entry_date,department_id,professional_title_id)
+        values(null,#{jobNumber},#{password},#{name},#{avatar},#{phone},#{email},#{introduction},#{registrationFee},#{entryDate},#{departmentId},#{professionalTitleId})
+    </insert>
+
+</mapper>
