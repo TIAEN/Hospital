@@ -27,6 +27,9 @@
 </div>
 <div class="leftnav">
     <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
+
+    <c:if test="${not empty AdminInfo}">
+
     <h2><span class="icon-user"></span>科室管理</h2>
     <ul style="display:block">
         <li><a href="<%=request.getContextPath()%>/backend/rootDepartmentServlet" target="right"><span class="icon-caret-right"></span>新增科室</a></li>
@@ -38,6 +41,16 @@
     <ul style="display:block">
         <li><a href="<%=request.getContextPath()%>/backend/rootAnnouncementServlet" target="right"><span class="icon-caret-right"></span>发布公告</a></li>
         <li><a href="<%=request.getContextPath()%>/backend/patient/rootAppointmentServlet" target="right"><span class="icon-caret-right"></span>患者预约</a></li>
+        <li><a href="<%=request.getContextPath()%>/backend/addDoctorViewServlet" target="right"><span class="icon-caret-right"></span>新增医生</a></li>
+        <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>医生列表</a></li>
+    </ul>
+
+    </c:if>
+
+    <
+
+    <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
+    <ul>
         <li><a href="list.html" target="right"><span class="icon-caret-right"></span>内容管理</a></li>
     </ul>
 </div>
@@ -58,6 +71,7 @@
 <div class="admin">
     <iframe scrolling="auto" rameborder="0" src="info.html" name="right" width="100%" height="100%"></iframe>
 </div>
+<!--iframe是内联框架，不能删-->
 
 </body>
 </html>

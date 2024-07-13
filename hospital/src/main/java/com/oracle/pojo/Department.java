@@ -20,7 +20,13 @@ public class Department implements Serializable {
     public Department() {
     }
 
-
+    public Department(Integer departmentId, String departmentName, Integer departmentPid, Integer departmentLevel, String departmentDescription) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.departmentPid = departmentPid;
+        this.departmentLevel = departmentLevel;
+        this.departmentDescription = departmentDescription;
+    }
     public Integer getDepartmentPid() {
         return departmentPid;
     }

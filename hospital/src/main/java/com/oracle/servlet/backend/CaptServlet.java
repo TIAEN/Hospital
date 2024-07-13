@@ -41,6 +41,7 @@ public class CaptServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("valcode", valcode);
+		//用session对验证码做了保存
 
 
 		int width = 80;
@@ -96,5 +97,6 @@ public class CaptServlet extends HttpServlet {
 
 		ImageIO.write(img, "jpeg", response.getOutputStream());
 	}
+	//把页面变为图片流
 
 }

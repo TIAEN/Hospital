@@ -23,14 +23,14 @@
 <body>
 <form method="post" action="" id="listform">
     <div class="panel admin-panel">
-        <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
+        <div class="panel-head"><strong class="icon-reorder"> 科室列表</strong></div>
         <div class="padding border-bottom">
 
         </div>
         <table class="table table-hover text-center">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>
-                <th>名称</th>
+                <th>科室名称</th>
                 <th>科室描述</th>
                 <th>是否一级科室</th>
             </tr>
@@ -39,14 +39,23 @@
                 <tr>
                     <td style="text-align:left; padding-left:20px;">
                         ${v.count}</td>
+
                     <td>${b.departmentName}</td>
                     <td>${b.departmentDescription}</td>
-                    <td>${b.departmentPid==null?'是':'否'}</td>
+                    <td>${b.departmentLevel == 1 ? '是':'否'}</td>
                 </tr>
             </c:forEach>
+
                 <tr>
-                    <td colspan="8">
+                    <!--表示列数-->
+                    <td colspan="4">
                         <div class="pagelist">
+
+                            <a href="<%=request.getContextPath()%>/backend/departmentListServlet?pageNum=1">首页</a>
+
+                            <c:if test="${pageInfo.pageNum > 1}">
+                                <a href="<%=request.getContextPath()%>/backend/departmentListServlet?pageNum=${pageInfo.pageNum - 1}">上一页</a>
+                            </c:if>
 
 
                             <c:choose>
@@ -73,9 +82,17 @@
                             <c:forEach begin="${begin}" end="${end}" var="currentPage">
                                 <a href="<%=request.getContextPath()%>/backend/departmentListServlet?pageNum=${currentPage}" class="<c:if test="${pageInfo.pageNum eq currentPage}">current</c:if>">${currentPage}</a>
                             </c:forEach>
-                        </div>
-                    </td>
+
+                            <c:if test="${pageInfo.pageNum < pageInfo.pages - 1}">
+                                <a href="<%=request.getContextPath()%>/backend/departmentListServlet?pageNum=${pageInfo.pageNum + 1}">下一页</a>
+                            </c:if>
+
+                            <a href="<%=request.getContextPath()%>/backend/departmentListServlet?pageNum=${pageInfo.pages}">尾页</a>
+
+
+                        </div></td>
                 </tr>
+
         </table>
     </div>
 </form>
