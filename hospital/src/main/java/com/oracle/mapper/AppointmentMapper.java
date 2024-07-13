@@ -8,5 +8,5 @@ import java.util.List;
 public interface AppointmentMapper {
 
 
-    List<Appointment> selectAppointmentByPatientId(Integer id);
+    List<Appointment> selectAppointmentByPatientId(Integer id);//ceshi
 }
