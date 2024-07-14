@@ -47,9 +47,10 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://localhost:3306/doctor?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false" />
 				<property name="username" value="root" />
-				<property name="password" value="wwk426096" />
+				<property name="password" value="jiangpeichen7218" />
+				<!-- 记得改自己的数据库和密码啥的 -->
 			</dataSource>
 		</environment>
 	</environments>
@@ -61,6 +62,7 @@
 		<mapper resource="com/oracle/mapper/AdminMapper.xml" />
 		<mapper resource="com/oracle/mapper/DoctorMapper.xml" />
 		<mapper resource="com/oracle/mapper/ProfessionalTitleMapper.xml" />
+		<mapper resource="com/oracle/mapper/ConsultationMapper.xml" />
 		<!--如果这里不是在xml文件中写的，而是在注解中写的，拿DoctorMapper打比方，那么需要写<mapper class="com.oracle.mapper.DoctorMapper"/>-->
 
 
