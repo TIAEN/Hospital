@@ -38,5 +38,6 @@ public class AddConsultationServlet extends HttpServlet {
         consultation.setMedicalAdviceCase(medical_advice_case);
 
         resp.sendRedirect(req.getContextPath()+"/public/patient/consultationlist.jsp");
+        //test git
     }
 }
