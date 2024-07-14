@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="field">
-                                    <select name="roleid" class="input input-big" >
+                                    <select name="roleId" class="input input-big" >
 
                                     <option value="0">管理员</option>
                                     <option value="1">医生</option>

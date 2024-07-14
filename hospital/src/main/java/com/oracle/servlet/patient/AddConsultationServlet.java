@@ -1,4 +1,4 @@
-package com.oracle.servlet.backend;
+package com.oracle.servlet.patient;
 
 import com.oracle.pojo.Consultation;
 import com.oracle.utils.DateUtils;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 
-@WebServlet("/backend/addConsultationServlet")
+@WebServlet("/patient/addConsultationServlet")
 public class AddConsultationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class AddConsultationServlet extends HttpServlet {
         consultation.setIsHospitalized(is_hospitalized);
         consultation.setMedicalAdviceCase(medical_advice_case);
 
-        resp.sendRedirect(req.getContextPath()+"/public/patient/consultationlist.jsp");
+        resp.sendRedirect(req.getContextPath()+"/public/patient/addConsultationList.jsp");
         //test
     }
 }

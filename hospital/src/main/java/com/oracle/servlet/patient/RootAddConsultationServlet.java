@@ -1,4 +1,4 @@
-package com.oracle.servlet.backend;
+package com.oracle.servlet.patient;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/backend/addConsultationServletView")
-public class AddConsultationServletView extends HttpServlet {
+@WebServlet("/patient/rootAddConsultationServlet")
+
+public class RootAddConsultationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.getRequestDispatcher("/public/patient/root_consultation.jsp").forward(req, resp);
     }
 }
