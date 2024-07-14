@@ -15,4 +15,8 @@ public interface ConsultationMapper {
         void insertConsultation(Consultation consultation);
         //删除新的就诊记录
         void deleteConsultation(Integer consultationId);
+
+        List<Consultation> selectConsultationAll();
+
+        String selectMaxJobNumber();
 }

@@ -1,5 +1,7 @@
 package com.oracle.servlet.patient;
 
+import com.oracle.service.ConsultationService;
+import com.oracle.service.ConsultationServiceImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,8 @@ import java.io.IOException;
 public class RootAddConsultationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ConsultationService consultationService=new ConsultationServiceImpl();
+        req.setAttribute("rootConsultationList",consultationService.findAllConsultation());
         req.getRequestDispatcher("/public/patient/root_consultation.jsp").forward(req, resp);
     }
 }

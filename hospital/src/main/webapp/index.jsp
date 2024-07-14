@@ -20,7 +20,7 @@
 <body style="background-color:#f2f9fd;">
 <div class="header bg-main">
     <div class="logo margin-big-left fadein-top">
-        <h1><img src="images/amiya.png" class="radius-circle rotate-hover" height="50" alt="" />北京市精神病院</h1>
+        <h1><img src="images/meilinna.jpg" class="radius-circle rotate-hover" height="50" alt="" />交界地精神病院</h1>
     </div>
     <div class="head-l"><a class="button button-little bg-green" href="<%=request.getContextPath()%>/public/patient/patient_login.jsp" target="_blank"><span class="icon-home"></span> 患者登录</a> &nbsp;&nbsp;<a href="<%=request.getContextPath()%>/login.jsp" class="button button-little bg-blue"><span class="icon-wrench"></span> 后台登录</a> &nbsp;&nbsp </div>
 </div>
@@ -60,10 +60,6 @@
     <li><a href="##" id="a_leader_txt">网站信息</a></li>
     <li><b>当前语言：</b><span style="color:red;">中文</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换语言：<a href="##">中文</a> &nbsp;&nbsp;<a href="##">英文</a> </li>
-</ul>
-
-<ul class="bread">
-    <li><a href="" target="right" class="icon-home"> 首页</a></li>
 </ul>
 
 <div class="bread">

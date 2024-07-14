@@ -32,7 +32,15 @@
 
         <!-- 删除新的就诊记录 -->
         <delete id="deleteConsultation">
-        DELETE FROM consultation WHERE consultation_id = #{consultationId}
+            DELETE FROM consultation WHERE consultation_id = #{consultationId}
         </delete>
+
+        <select id="selectConsultationAll" resultType="com.oracle.pojo.Consultation">
+            select * from consultation
+        </select>
+
+        <select id="selectMaxJobNumber" resultType="java.lang.String">
+            select max(consultation_id) from consultation
+        </select>
 
 </mapper>

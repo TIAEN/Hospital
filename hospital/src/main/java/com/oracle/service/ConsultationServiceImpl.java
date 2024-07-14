@@ -2,8 +2,10 @@ package com.oracle.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.oracle.mapper.AnnouncementMapper;
 import com.oracle.mapper.ConsultationMapper;
 import com.oracle.mapper.DoctorMapper;
+import com.oracle.pojo.Announcement;
 import com.oracle.pojo.Consultation;
 import com.oracle.pojo.Doctor;
 import com.oracle.utils.DBUtils;
@@ -60,5 +62,25 @@ public class ConsultationServiceImpl implements ConsultationService{
             sqlSession.close();
             return new PageInfo<Doctor>(doctorList);
         }
+
+        @Override
+        public List<Consultation> findAllConsultation() {
+            SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+            ConsultationMapper consultationMapper= sqlSession.getMapper(ConsultationMapper.class);
+            List<Consultation> consultationList=consultationMapper.selectConsultationAll();
+            sqlSession.close();
+            return consultationList;
+        }
+
+        @Override
+        public Integer getCurrentMaxJobNumber() {
+            SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+            ConsultationMapper consultationMapper=sqlSession.getMapper(ConsultationMapper.class);
+            String strMaxJobNumber=consultationMapper.selectMaxJobNumber();
+            Integer iMaxJobNumber=Integer.parseInt(strMaxJobNumber);
+            sqlSession.close();
+            return iMaxJobNumber;
+        }
+
 
 }

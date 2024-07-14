@@ -1,8 +1,6 @@
 package com.oracle.servlet.patient;
 
-import com.oracle.pojo.Patients;
-import com.oracle.service.PatientService;
-import com.oracle.service.PatientServiceimpl;
+import com.oracle.pojo.Consultation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +29,15 @@ public class loginServlet extends HttpServlet {
             req.setAttribute("capError","");
         }
 
-        Patients patients = new Patients();
-        patients.setPatientName(loginName);
-        patients.setPatientPassword(pwd);
+        Consultation consultation = new Consultation();
+        consultation.setConsultationId(1);
+        consultation.setPatientId(1);
+        consultation.setDoctorId(1);
+        consultation.setConsultationTime(null);
+        consultation.setIsHospitalized(1);
+        consultation.setIsHospitalRegistered(1);
+        consultation.setMedicalAdviceCase("123456");
+
 
         resp.sendRedirect(req.getContextPath()+"/patient_main.jsp");
     }

@@ -1,6 +1,7 @@
 package com.oracle.service;
 
 import com.github.pagehelper.PageInfo;
+import com.oracle.pojo.Announcement;
 import com.oracle.pojo.Appointment;
 import com.oracle.pojo.Consultation;
 import com.oracle.pojo.Doctor;
@@ -27,4 +28,7 @@ public interface ConsultationService {
         //封装一个分页对象返回，尽量不要把后台的mybatis对象进行返回
         PageInfo<Doctor> list(Integer pageNum, Integer pageSize);
 
+        List<Consultation> findAllConsultation();
+
+        Integer getCurrentMaxJobNumber();
 }

@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: 姜沛辰
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <title></title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/pintuer.css">
@@ -14,50 +16,93 @@
 <script src="<%=request.getContextPath()%>/js/pintuer.js"></script>
 </head>
 <body>
-<form method="post" action="" id="listform">
-    <div class="panel admin-panel">
-        <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
-        <div class="padding border-bottom" >
-            <ul class="search" style="padding-left:10px;">
+<div class="panel admin-panel">
+    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>就诊菜单</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-x" action="${root}/patient/addConsultationServlet">
 
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addConsultationViewServlet"> 就诊</a> </li>
-                <li> <form method="get" action="<%=request.getContextPath()%>/patient/appointmentListServlet">
-                    <input class="text border-main icon-plus-square-o" type="text" id="userInput" name="userInput" value="patientName" placeholder="请输入姓名"><label for="userInput"> </label>
-                </form>
+            <div class="form-group">
+                <div class="label">
+                    <label>就诊编号</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" value="${consultationId}" readonly name="consultationId"/>
+                </div>
+            </div>
 
-                </li>
+            <div class="form-group">
+                <div class="label">
+                    <label>患者编号</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" value="${patientId}" readonly name="patientId"/>
+                </div>
+            </div>
 
-            </ul>
-        </div>
-        <table class="table table-hover text-center">
-            <tr>
-                <th width="100" style="text-align:left; padding-left:20px;">序号</th>
-                <th>患者名称</th>
-                <th>医生名称</th>
-                <th>预约日期</th>
-                <th>状态</th>
-                <th width="310">操作</th>
-            </tr>
-            <c:forEach items="${appointmentList}" var="d" varStatus="v">
-                <tr id="${d.appointmentId}">
-                    <td style="text-align:left; padding-left:20px;">${v.count}</td>
+            <div class="form-group">
+                <div class="label">
+                    <label>医生编号</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" value="${doctorId}" name="doctorId"/>
+                </div>
+            </div>
 
-                    <td>${d.departmentName}</td>
-                    <td>${d.departmentDescription}</td>
-                    <td>
-                        <div class="button-group">
-                            <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.departmentId})">
-                            <span class="icon-trash-o">
+            <div class="form-group">
+                <div class="label">
+                    <label>就诊时间</label>
+                </div>
+                <div class="field">
+                    <input type="date" name="consultationTime" placeholder="就诊时间">
+                </div>
+            </div>
 
-                            </span> 删除
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+            <div class="form-group">
+                <div class="label">
+                    <label>是否住院登记</label>
+                </div>
+                <div class="field">
+                    <select name="isHospitalRegistered" class="input">
+                        <option value="1">住院登记</option>
+                        <option value="0">取消住院登记</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>是否住院</label>
+                </div>
+                <div class="field">
+                    <select name="isHospitalized" class="input">
+                        <option value="1">确定住院</option>
+                        <option value="0">取消住院</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>医嘱病例</label>
+                </div>
+                <div class="field">
+                    <textarea name="medicalAdviceCase" class="input" placeholder="请输入医嘱病例"></textarea>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="label">
+                    <label></label>
+                </div>
+                <div class="field">
+                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
 </body>
 </html>

@@ -22,37 +22,40 @@
 <body>
 <form method="post" action="" id="listform">
     <div class="panel admin-panel">
-        <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
+        <div class="panel-head"><strong class="icon-reorder"> 就诊列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
         <div class="padding border-bottom" >
             <ul class="search" style="padding-left:10px;">
 
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addConsultationViewServlet"> 就诊</a> </li>
-                    <li> <form method="get" action="<%=request.getContextPath()%>/patient/appointmentListServlet">
-                        <input class="text border-main icon-plus-square-o" type="text" id="userInput" name="userInput" value="patientName" placeholder="请输入姓名"><label for="userInput"> </label>
-</form>
-
-                </li>
-
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addConsultationViewServlet">就诊</a> </li>
+                    <li> <form method="get" action="<%=request.getContextPath()%>/patient/consultationListServlet"></form></li>
             </ul>
         </div>
+
         <table class="table table-hover text-center">
             <tr>
-                <th width="100" style="text-align:left; padding-left:20px;">序号</th>
-                <th>患者名称</th>
-                <th>医生名称</th>
-                <th>预约日期</th>
-                <th>状态</th>
-                <th width="310">操作</th>
+                <th width="100" style="text-align:left; padding-left:20px;">就诊编号</th>
+                <th>病人编号</th>
+                <th>医生编号</th>
+                <th>就诊时间</th>
+                <th>是否住院</th>
+                <th>是否住院登记</th>
+                <th width="310">医嘱病例</th>
             </tr>
-            <c:forEach items="${appointmentList}" var="d" varStatus="v">
-                <tr id="${d.appointmentId}">
+
+            <c:forEach items="${consultationList}" var="d" varStatus="v">
+                <tr id="${d.consultationId}">
                     <td style="text-align:left; padding-left:20px;">${v.count}</td>
 
-                    <td>${d.departmentName}</td>
-                    <td>${d.departmentDescription}</td>
+                    <td>${d.patientId}</td>
+                    <td>${d.doctorId}</td>
+                    <td>${d.consultationTime}</td>
+                    <td>${d.isHospitalRegistered}</td>
+                    <td>${d.isHospitalized}</td>
+                    <td>${d.medicalAdviceCase}</td>
+
                     <td>
                         <div class="button-group">
-                            <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.departmentId})">
+                            <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.consultationId})">
                             <span class="icon-trash-o">
 
                             </span> 删除
