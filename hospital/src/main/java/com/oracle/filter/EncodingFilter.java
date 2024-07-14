@@ -28,7 +28,7 @@ public class EncodingFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         servletRequest.setCharacterEncoding("utf-8");
         //在过滤器中执行完处理后需要进行页面导航
-        //执行正确的导航
+        //执行正确的导航7777777777777
         filterChain.doFilter(servletRequest,servletResponse);   //放行
     }
 
