@@ -82,5 +82,15 @@ public class ConsultationServiceImpl implements ConsultationService{
             return iMaxJobNumber;
         }
 
+        @Override
+        public Integer getCurrentMaxConsultationId() {
+            SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+            ConsultationMapper consultationMapper=sqlSession.getMapper(ConsultationMapper.class);
+            String strMaxConsultationId=consultationMapper.selectMaxJobNumber();
+            Integer iMaxConsultationId=Integer.parseInt(strMaxConsultationId);
+            sqlSession.close();
+            return iMaxConsultationId;
+        }
+
 
 }

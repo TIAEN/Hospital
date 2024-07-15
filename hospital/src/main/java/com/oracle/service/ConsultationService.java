@@ -31,4 +31,6 @@ public interface ConsultationService {
         List<Consultation> findAllConsultation();
 
         Integer getCurrentMaxJobNumber();
+
+        Integer getCurrentMaxConsultationId();
 }

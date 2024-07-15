@@ -1,9 +1,6 @@
 package com.oracle.servlet.patient;
 
-import com.oracle.service.ConsultationService;
-import com.oracle.service.ConsultationServiceImpl;
-import com.oracle.service.DoctorService;
-import com.oracle.service.DoctorServiceImpl;
+import com.oracle.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +15,10 @@ public class AddConsultationViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ConsultationService consultationService=new ConsultationServiceImpl();
-        Integer currentMaxConsultationId=consultationService.getCurrentMaxJobNumber();
+        Integer currentMaxConsultationId=consultationService.getCurrentMaxConsultationId();
         currentMaxConsultationId+=1;
-        req.setAttribute("jobNumber",currentMaxConsultationId);
-        req.getRequestDispatcher("/public/patient/addConsultationList.jsp").forward(req,resp);
+        req.setAttribute("consultationId",currentMaxConsultationId);
+        req.getRequestDispatcher("/public/patient/addConsultation.jsp").forward(req,resp);
 
     }
 }

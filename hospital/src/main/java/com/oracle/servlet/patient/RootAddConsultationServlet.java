@@ -17,5 +17,6 @@ public class RootAddConsultationServlet extends HttpServlet {
         ConsultationService consultationService=new ConsultationServiceImpl();
         req.setAttribute("rootConsultationList",consultationService.findAllConsultation());
         req.getRequestDispatcher("/public/patient/root_consultation.jsp").forward(req, resp);
+        System.out.println("到rootAddConsultationServlet这里了");
     }
 }

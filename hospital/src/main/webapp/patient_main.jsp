@@ -39,8 +39,8 @@
     <ul style="display:block">
       <li><a href="<%=request.getContextPath()%>/patient/rootAddConsultationServlet" target="right"><span class="icon-caret-right"></span>患者就诊</a></li>
       <li><a href="<%=request.getContextPath()%>/backend/patient/rootAppointmentServlet" target="right"><span class="icon-caret-right"></span>患者预约</a></li>
-
     </ul>
+
 
     <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
     <ul style="display:block">

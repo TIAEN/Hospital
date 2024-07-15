@@ -32,19 +32,26 @@
 
             <div class="form-group">
                 <div class="label">
-                    <label>患者编号</label>
+                    <label>科室分类：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input w50" value="${patientId}" readonly name="patientId"/>
+                    <select id="rootDepartment" class="input w50">
+                        <option value="0">请选择科室分类</option>
+                        <c:forEach items="${rootDepartmentList}" var="d">
+                            <option value="${d.departmentId}">${d.departmentName}</option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="label">
-                    <label>医生编号</label>
+                    <label>科室名称：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input w50" value="${doctorId}" name="doctorId"/>
+                    <select name="departmentId" id="department" class="input w50">
+                        <option value="">请选择科室名称</option>
+                    </select>
                 </div>
             </div>
 
@@ -103,6 +110,35 @@
         </form>
     </div>
 </div>
-
 </body>
+
+<script>
+    $(function (){
+        $("#rootDepartment").change(function(){
+            var rootId=$(this).val();
+            if(rootId!=0){
+                //获取到耳机科室的下拉列表元素对象
+                //这里是按照ID取的
+                var departmentObj=$("#department");
+                //为其做清空，防止内容不停地追加
+                departmentObj.html("");
+                //执行一个异步的加载二级科室请求
+                var url="${root}/backend/loadTwoDepartmentServlet?rootId="+rootId
+                //由于参数是通过问号追加的方式写的，所以这里不需要基于JASON格式去写
+                $.get(url,function (r){
+                    //创建一个string的变量 对响应的数据进行遍历
+                    var optionHtml="<option>请选择科室名称</option>";
+                    for(var i=0;i<r.length;i++){
+                        optionHtml+="<option value='"+r[i].departmentId+"'>"+r[i].departmentName+"</option>"
+                    }
+                    //因为里面是带着标签的，所以要用html方法，将optionHtml加进去
+                    departmentObj.append(optionHtml)
+                },'json')
+            }else{
+                return
+            }
+        })
+    })
+</script>
+
 </html>

@@ -42,7 +42,7 @@
                 <th width="310">医嘱病例</th>
             </tr>
 
-            <c:forEach items="${consultationList}" var="d" varStatus="v">
+            <c:forEach items="${rootConsultationList}" var="d" varStatus="v">
                 <tr id="${d.consultationId}">
                     <td style="text-align:left; padding-left:20px;">${v.count}</td>
 
@@ -53,33 +53,11 @@
                     <td>${d.isHospitalized}</td>
                     <td>${d.medicalAdviceCase}</td>
 
-                    <td>
-                        <div class="button-group">
-                            <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.consultationId})">
-                            <span class="icon-trash-o">
-
-                            </span> 删除
-                            </a>
-                        </div>
-                    </td>
                 </tr>
             </c:forEach>
         </table>
     </div>
 </form>
-<script type="text/javascript">
-    function del(id){
-        if(confirm("你确定删除吗")){
 
-            $.get("<%=request.getContextPath()%>/backend/deleteDepartmentServlet",{id:id},function (state){
-                if(state)
-                    $("#"+id).remove();
-            });
-
-        }else{
-
-        }
-    }
-</script>
 </body>
 </html>

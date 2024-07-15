@@ -1,5 +1,6 @@
 package com.oracle.service;
 
+import com.oracle.mapper.ConsultationMapper;
 import com.oracle.mapper.PatientsMapper;
 import com.oracle.pojo.Patients;
 import com.oracle.utils.DBUtils;
@@ -23,4 +24,6 @@ public class PatientServiceimpl implements PatientService {
         sqlSession.close();
         return true;
     }
+
+
 }
