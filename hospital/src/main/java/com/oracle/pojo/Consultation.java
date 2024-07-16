@@ -11,10 +11,13 @@ public class Consultation {
     private Integer isHospitalized;
     private String medicalAdviceCase;
 
+    private String doctorName;
+    private Integer departmentId;
+
     public Consultation() {
     }
 
-    public Consultation(Integer consultationId, Integer patientId, Integer doctorId, Date consultationTime, Integer isHospitalRegistered, Integer isHospitalized, String medicalAdviceCase) {
+    public Consultation(Integer consultationId, Integer patientId, Integer doctorId, Date consultationTime, Integer isHospitalRegistered, Integer isHospitalized, String medicalAdviceCase, String doctorName, Integer departmentId) {
         this.consultationId = consultationId;
         this.patientId = patientId;
         this.doctorId = doctorId;
@@ -22,6 +25,8 @@ public class Consultation {
         this.isHospitalRegistered = isHospitalRegistered;
         this.isHospitalized = isHospitalized;
         this.medicalAdviceCase = medicalAdviceCase;
+        this.doctorName = doctorName;
+        this.departmentId = departmentId;
     }
 
     public Integer getConsultationId() {
@@ -80,6 +85,22 @@ public class Consultation {
         this.medicalAdviceCase = medicalAdviceCase;
     }
 
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
+
     @Override
     public String toString() {
         return "Consultation{" +
@@ -90,6 +111,8 @@ public class Consultation {
                 ", isHospitalRegistered=" + isHospitalRegistered +
                 ", isHospitalized=" + isHospitalized +
                 ", medicalAdviceCase='" + medicalAdviceCase + '\'' +
+                ", doctorName='" + doctorName + '\'' +
+                ", departmentId=" + departmentId +
                 '}';
     }
 }

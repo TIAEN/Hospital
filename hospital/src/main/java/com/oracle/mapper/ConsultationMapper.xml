@@ -27,8 +27,8 @@
 
         <!-- 插入新的就诊记录 -->
         <insert id="insertConsultation">
-            INSERT INTO consultation (consultation_id, doctor_id, consultation_time, is_hospital_registered, is_hospitalized, medical_advice_case)
-            VALUES (#{consultationId}, #{doctorId}, #{consultationTime}, #{isHospitalRegistered}, #{isHospitalized}, #{medicalAdviceCase})
+            INSERT INTO consultation (consultation_id,patient_id, doctor_id, consultation_time, is_hospital_registered, is_hospitalized, medical_advice_case)
+            VALUES (#{consultationId},#{patientId}, #{doctorId}, #{consultationTime}, #{isHospitalRegistered}, #{isHospitalized}, #{medicalAdviceCase})
         </insert>
 
         <!-- 删除新的就诊记录 -->
@@ -37,7 +37,8 @@
         </delete>
 
         <select id="selectConsultationAll" resultMap="consultationResultMap">
-            select * from consultation
+            SELECT * FROM consultation
+            ORDER BY consultation_id ASC;
         </select>
 
 

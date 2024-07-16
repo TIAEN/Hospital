@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: FLY
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,11 +49,9 @@
 
     </c:if>
 
-    <
-
-    <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
+    <h2><span class="icon-pencil-square-o"></span>病人管理</h2>
     <ul>
-        <li><a href="list.html" target="right"><span class="icon-caret-right"></span>内容管理</a></li>
+        <li><a href="<%=request.getContextPath()%>/backend/rootAddConsultationServlet" target="right"><span class="icon-caret-right"></span>就诊管理</a></li>
     </ul>
 </div>
 <script type="text/javascript">

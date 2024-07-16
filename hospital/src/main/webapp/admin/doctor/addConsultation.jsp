@@ -19,7 +19,7 @@
 <div class="panel admin-panel">
     <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>就诊菜单</strong></div>
     <div class="body-content">
-        <form method="post" class="form-x" action="${root}/patient/addConsultationServlet">
+        <form method="post" class="form-x" action="${root}/backend/addConsultationServlet">
 
             <div class="form-group">
                 <div class="label">
@@ -32,7 +32,7 @@
 
             <div class="form-group">
                 <div class="label">
-                    <label>医生姓名</label>
+                    <label>患者编号</label>
                 </div>
                 <div class="field">
                     <input type="text" class="input w50" name="patientId"/>
@@ -41,26 +41,10 @@
 
             <div class="form-group">
                 <div class="label">
-                    <label>科室分类：</label>
+                    <label>医生编号</label>
                 </div>
                 <div class="field">
-                    <select id="rootDepartment" class="input w50">
-                        <option value="0">请选择科室分类</option>
-                        <c:forEach items="${rootDepartmentList}" var="d">
-                            <option value="${d.departmentId}">${d.departmentName}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label>科室名称：</label>
-                </div>
-                <div class="field">
-                    <select name="departmentId" id="department" class="input w50">
-                        <option value="">请选择科室名称</option>
-                    </select>
+                    <input type="text" class="input w50" name="doctorId"/>
                 </div>
             </div>
 
@@ -96,6 +80,17 @@
                     </select>
                 </div>
             </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>医嘱病例</label>
+                </div>
+                <div class="field">
+                    <textarea name="medicalAdviceCase" class="input" placeholder="请输入医嘱病例"></textarea>
+                </div>
+            </div>
+
+
 
             <div class="form-group">
                 <div class="label">

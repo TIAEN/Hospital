@@ -26,16 +26,16 @@
         <div class="padding border-bottom" >
             <ul class="search" style="padding-left:10px;">
 
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addConsultationViewServlet">就诊</a> </li>
-                    <li> <form method="get" action="<%=request.getContextPath()%>/patient/consultationListServlet"></form></li>
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/backend/addConsultationViewServlet">就诊</a> </li>
+                    <li> <form method="get" action="<%=request.getContextPath()%>/backend/consultationListServlet"></form></li>
             </ul>
         </div>
 
         <table class="table table-hover text-center">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">就诊编号</th>
-                <th>医生姓名</th>
-                <th>就诊科室</th>
+                <th>病人编号</th>
+                <th>医生编号</th>
                 <th>就诊时间</th>
                 <th>是否住院</th>
                 <th>是否住院登记</th>
@@ -47,8 +47,8 @@
                 <tr>
 
                     <td>${d.consultationId}</td>
-                    <td>${d.doctorName}</td>
-                    <td>${d.departmentName}</td>
+                    <td>${d.patientId}</td>
+                    <td>${d.doctorId}</td>
                     <td>${d.consultationTime}</td>
                     <td>${d.isHospitalRegistered == 1 ? "是" : "否"}</td>
                     <td>${d.isHospitalized == 1 ? "是" : "否"}</td>
@@ -62,10 +62,10 @@
                 <td colspan="4">
                     <div class="pagelist">
 
-                        <a href="<%=request.getContextPath()%>/patient/consultationListServlet?pageNum=1">首页</a>
+                        <a href="<%=request.getContextPath()%>/backend/consultationListServlet?pageNum=1">首页</a>
 
                         <c:if test="${pageInfo.pageNum > 1}">
-                            <a href="<%=request.getContextPath()%>/patient/consultationListServlet?pageNum=${pageInfo.pageNum - 1}">上一页</a>
+                            <a href="<%=request.getContextPath()%>/backend/consultationListServlet?pageNum=${pageInfo.pageNum - 1}">上一页</a>
                         </c:if>
 
 
@@ -91,14 +91,14 @@
                             </c:otherwise>
                         </c:choose>
                         <c:forEach begin="${begin}" end="${end}" var="currentPage">
-                            <a href="<%=request.getContextPath()%>/patient/consultationListServlet?pageNum=${currentPage}" class="<c:if test="${pageInfo.pageNum eq currentPage}">current</c:if>">${currentPage}</a>
+                            <a href="<%=request.getContextPath()%>/backend/consultationListServlet?pageNum=${currentPage}" class="<c:if test="${pageInfo.pageNum eq currentPage}">current</c:if>">${currentPage}</a>
                         </c:forEach>
 
                         <c:if test="${pageInfo.pageNum < pageInfo.pages - 1}">
-                            <a href="<%=request.getContextPath()%>/patient/consultationListServlet?pageNum=${pageInfo.pageNum + 1}">下一页</a>
+                            <a href="<%=request.getContextPath()%>/backend/consultationListServlet?pageNum=${pageInfo.pageNum + 1}">下一页</a>
                         </c:if>
 
-                        <a href="<%=request.getContextPath()%>/patient/consultationListServlet?pageNum=${pageInfo.pages}">尾页</a>
+                        <a href="<%=request.getContextPath()%>/backend/consultationListServlet?pageNum=${pageInfo.pages}">尾页</a>
 
 
                     </div></td>
