@@ -23,7 +23,8 @@
 <div class="container">
     <div class="line bouncein">
         <div class="xs6 xm4 xs3-move xm4-move">
-            <div style="height:150px;"></div>
+            <!--这里的height表示框和上边缘的距离-->
+            <div style="height:100px;"></div>
             <div class="media media-y margin-big-bottom">
             </div>
             <form action="<%=request.getContextPath()%>/backend/loginServlet" method="post">
@@ -32,10 +33,13 @@
                     <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="text" class="input input-big" name="username" placeholder="登录账号" data-validate="required:请填写账号" />
+                                <input type="text" class="input input-big" name="username" placeholder="用户名/工号" data-validate="required:请填写账号" />
                                 <span class="icon icon-user margin-small"></span>
                             </div>
                         </div>
+
+
+
                         <div class="form-group">
                             <div class="field field-icon-right">
                                 <input type="password" class="input input-big" name="password" placeholder="登录密码" data-validate="required:请填写密码" />
@@ -43,12 +47,16 @@
                             </div>
                         </div>
 
+                        <br>
+
                         <div class="form-group">
-                            <div class="field field-icon-right">
-                                <select name="roleId">
+                            <div class="field">
+                                    <select name="roleid" class="input input-big" >
+
                                     <option value="0">管理员</option>
                                     <option value="1">医生</option>
                                 </select>
+                                <div class="tips" style="color: #202020"><h4>请下拉列表以选择身份</h4></div>
                             </div>
                         </div>
 
@@ -56,17 +64,22 @@
                             <div class="field">
                                 <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
                                 <img src="<%=request.getContextPath()%>/backend/captServlet" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
-
+                                <!--每次在地址后面加上?，保证每次的地址不一样，防止浏览器没有检测到地址变化，不真正地发送请求-->
                             </div>
                         </div>
+
+
+                        <h4 style="color: red">${capError}</h4><h4 style="color: red">${loginError}</h4>
+
+
                     </div>
                     <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
                 </div>
-                ${capError}
+
             </form>
         </div>
     </div>
 </div>
 
 </body>
-
+</html>

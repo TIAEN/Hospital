@@ -18,16 +18,22 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css">
     <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
     <script src="<%=request.getContextPath()%>/js/pintuer.js"></script>
+
 </head>
 <body>
 <form method="post" action="" id="listform">
     <div class="panel admin-panel">
-        <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
+        <div class="panel-head"><strong class="icon-reorder"> 科室列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
         <div class="padding border-bottom">
             <ul class="search" style="padding-left:10px;">
                 <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/backend/addDepartmentViewServlet"> 添加一级科室</a> </li>
             </ul>
         </div>
+
+
+
+
+
         <table class="table table-hover text-center">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>
@@ -36,13 +42,25 @@
                 <th width="310">操作</th>
             </tr>
                 <c:forEach items="${rootDepartmentList}" var="d" varStatus="v">
-                <tr id="${d.departmentId}">
+                    <tr id="${d.departmentId}">
                     <td style="text-align:left; padding-left:20px;">${v.count}</td>
 
                     <td>${d.departmentName}</td>
                     <td>${d.departmentDescription}</td>
-                    <td><div class="button-group"> <a class="button border-main" href="<%=request.getContextPath()%>/backend/addDepartmentViewServlet?pid=${d.departmentId}"><span class="icon-edit"></span>添加二级科室</a>
-                        <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.departmentId})"><span class="icon-trash-o"></span> 删除</a> </div></td>
+                    <td>
+                        <div class="button-group">
+                            <a class="button border-main" href="<%=request.getContextPath()%>/backend/addDepartmentViewServlet?pid=${d.departmentId}">
+                                <span class="icon-edit">
+
+                                </span>添加二级科室
+                            </a>
+                        <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.departmentId})">
+                            <span class="icon-trash-o">
+
+                            </span> 删除
+                        </a>
+                        </div>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

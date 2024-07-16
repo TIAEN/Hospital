@@ -48,4 +48,63 @@ public class DepartmentServiceimpl implements DepartmentService {
         sqlSession.close();
         return new PageInfo<Department>(departmentList);
     }
+
+    @Override
+    public Department findDepartmentById(Integer id) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+        Department department=departmentMapper.selectDepartmentById(id);
+        sqlSession.close();
+        return department;
+    }
+    @Override
+    public List<Department> findRootDepartmentList() {
+        //在编写正式项目时 注意连接使用完成后要关闭
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> departmentList=departmentMapper.selectRootDepartment();
+        sqlSession.commit(true);
+        sqlSession.close();
+        return departmentList;
+    }
+
+
+
+    @Override
+    public Integer countSidById(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        Integer count=departmentMapper.selectCountSidById(id);
+        sqlSession.commit(true);
+        sqlSession.close();
+        return count;
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        departmentMapper.deleteByDepartmentId(id);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public Department findRootDepartment(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        Department department=departmentMapper.selectRootDepartmentById(id);
+        sqlSession.commit(true);
+        sqlSession.close();
+        return department;
+    }
+
+    @Override
+    public List<Department> findDepartmentByPid(Integer pid) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> departmentList=departmentMapper.selectDepartmentByPid(pid);
+        sqlSession.close();
+        return departmentList;
+    }
 }

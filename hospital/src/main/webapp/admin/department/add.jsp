@@ -23,6 +23,8 @@
     <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 单页信息</strong></div>
     <div class="body-content">
         <form method="post" class="form-x" action="<%=request.getContextPath()%>/backend/addDepartmentServlet">
+            <!--这里放隐藏域-->
+            <input type="hidden" name="plevel" value="${plevel}"/>
             <input type="hidden" name="pid" value="${pid}"/>
             <div class="form-group">
                 <div class="label">
@@ -33,6 +35,8 @@
                     <div class="tips"></div>
                 </div>
             </div>
+
+
             <div class="form-group">
                 <div class="label">
                     <label>科室信息：</label>
