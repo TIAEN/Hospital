@@ -17,30 +17,34 @@
         select * from departments where department_level = 1
     </select>
 
-
     <insert id="insertDepartment" parameterType="com.oracle.pojo.Department">
         insert into departments values (null,#{departmentName},#{departmentPid},#{departmentLevel},#{departmentDescription})
     </insert>
+
     <select id="selectCountSidById" resultType="java.lang.Integer">
         select count(department_id) from departments where department_pid=#{id}
     </select>
+
     <delete id="deleteDepartmentFirst">
         delete from departments where department_id=#{id}
     </delete>
+
     <select id="selectRootDepartmentById" resultType="com.oracle.pojo.Department">
     select * from departments where department_id=#{departmentId}
 </select>
 
-
     <delete id="deleteByDepartmentId">
         delete from departments where department_id=#{departmentId}
     </delete>
+
     <select id="selectDepartment" resultMap="departmentMap">
         select * from departments where department_pid is null
     </select>
+
     <select id="selectDepartmentAll" resultMap="departmentMap">
         select * from departments
     </select>
+
     <select id="selectDepartmentById" resultMap="departmentMap">
         select * from departments where department_id=#{id}
     </select>
@@ -48,6 +52,7 @@
     <select id="selectDepartmentByPid" resultMap="departmentMap">
         select * from departments where department_pid=#{pid}
     </select>
+
     <!--这里也可以用起别名的方式
     select department_id as departmentId,department_name as dapartmentName from ....
     -->

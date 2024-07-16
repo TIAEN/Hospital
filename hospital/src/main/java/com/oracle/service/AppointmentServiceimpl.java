@@ -11,7 +11,7 @@ import java.util.List;
 public class AppointmentServiceimpl implements AppointmentService {
 
     @Override
-    public List<Appointment> appointmentList(Integer id) {
+    public List<Appointment> appointmentListByPatientId(Integer id) {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
         List<Appointment> appointmentList=appointmentMapper.selectAppointmentByPatientId(id);

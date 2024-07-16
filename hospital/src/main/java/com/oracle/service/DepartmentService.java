@@ -13,6 +13,10 @@ public interface DepartmentService {
     //声明方法
     List<Department> findRootDepartmentList();      //返回所有一级科室
 
+    PageInfo<Department> findDepartmentListFirst(int pageNum, int pageSize);//分页找到所有的一级科室
+
+    PageInfo<Department> findDepartmentListSecond(int pageNum, int pageSize,int pId);
+
     void deleteDepartmentFirst(Integer id);
 
     Department findDepartmentById(Integer id);

@@ -1,8 +1,5 @@
 package com.oracle.servlet.backend;
 
-
-//小组的git仓库初始化上传人员
-//公共的配置文件不要上传
 import com.github.pagehelper.PageInfo;
 import com.oracle.pojo.Department;
 import com.oracle.service.DepartmentService;
@@ -15,10 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-//处理科室管理-科室列表
-@WebServlet("/backend/departmentListServlet")
-public class DepartmentListServlet extends HttpServlet {
+@WebServlet("/backend/departmentListFirstServlet")//返回所有的一级科室并分页
+public class DepartmentListFirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //调用业务代码
@@ -37,9 +32,9 @@ public class DepartmentListServlet extends HttpServlet {
 
 
         DepartmentService departmentService=new DepartmentServiceimpl();
-        PageInfo<Department> pageInfo=departmentService.list(pageNum,pageSize);
+        PageInfo<Department> pageInfo=departmentService.findDepartmentListFirst(pageNum,pageSize);
         req.setAttribute("departmentList",pageInfo.getList());
         req.setAttribute("pageInfo",pageInfo);
-        req.getRequestDispatcher("/admin/department/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req,resp);
     }
 }

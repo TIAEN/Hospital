@@ -1,8 +1,9 @@
 package com.oracle.mapper;
 
-import com.oracle.pojo.Admin;
 import com.oracle.pojo.Doctor;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DoctorMapper {
 
@@ -18,5 +19,7 @@ public interface DoctorMapper {
 
     void insertIntoDoctor(Doctor doctor);
 
-
+    List<Doctor> selectDoctorByDepartmentId(Integer departmentId);//找到一个科室下的医生
+    //添加处 用于查询所有的医生
+    List<Doctor> selectDoctorAll();
 }

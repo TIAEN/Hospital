@@ -1,12 +1,14 @@
 package com.oracle.service;
 
-import com.oracle.mapper.AdminMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.oracle.mapper.DoctorMapper;
-import com.oracle.pojo.Admin;
 import com.oracle.pojo.Doctor;
 import com.oracle.utils.DBUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
 
 public class DoctorServiceImpl implements DoctorService{
 
@@ -70,5 +72,15 @@ public class DoctorServiceImpl implements DoctorService{
         doctorMapper.insertIntoDoctor(doctor);
         sqlSession.commit();
         sqlSession.close();
+    }
+
+    @Override
+    public PageInfo<Doctor> findDoctorListByDepartmentId(Integer pageNum, Integer pageSize, Integer pId) {
+        PageHelper.startPage(pageNum, pageSize);
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        List<Doctor> doctorList=doctorMapper.selectDoctorByDepartmentId(pId);
+        sqlSession.close();
+        return new PageInfo<Doctor>(doctorList);
     }
 }

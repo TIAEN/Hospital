@@ -47,4 +47,11 @@
         values(null,#{jobNumber},#{password},#{name},#{avatar},#{phone},#{email},#{introduction},#{registrationFee},#{entryDate},#{departmentId},#{professionalTitleId})
     </insert>
 
+    <select id="selectDoctorAll" resultType="com.oracle.pojo.Doctor">
+        select * from doctors
+    </select>
+    <select id="selectDoctorByDepartmentId" resultType="com.oracle.pojo.Doctor">
+        select * from doctors where department_id=#{departmentId}
+    </select>
+
 </mapper>

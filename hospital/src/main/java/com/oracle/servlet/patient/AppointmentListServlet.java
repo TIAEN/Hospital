@@ -23,7 +23,8 @@ public class AppointmentListServlet extends HttpServlet {
 
         Patients patients=patientService.selectPatientByName(patientName);
         Integer patientId=patients.getPatientId();
-        req.setAttribute("appointmentList",appointmentService.appointmentList(patientId));
+
+        req.setAttribute("appointmentList",appointmentService.appointmentListByPatientId(patientId));
 
         req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
     }

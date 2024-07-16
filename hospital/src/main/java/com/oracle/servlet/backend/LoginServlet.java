@@ -20,7 +20,7 @@ import java.io.IOException;
 @WebServlet("/backend/loginServlet")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String loginName = req.getParameter("username");
         String pwd = req.getParameter("password");
         String roleId= req.getParameter("roleId");

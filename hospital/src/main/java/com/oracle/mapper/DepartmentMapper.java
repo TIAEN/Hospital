@@ -7,8 +7,11 @@ import java.util.List;
 public interface DepartmentMapper {
     List<Department> selectDepartment();
     void insertDepartment(Department department);
+
     List<Department> selectDepartmentAll();
+
     void deleteDepartmentFirst(int id);
+
     Department selectDepartmentById(int id);
 
     List<Department> selectRootDepartment();        //查询所有一级科室

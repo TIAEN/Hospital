@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AppointmentService {
 
-    List<Appointment> appointmentList(Integer id);
+    List<Appointment> appointmentListByPatientId(Integer id);
+
 
 }
