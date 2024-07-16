@@ -8,6 +8,7 @@
 
     <resultMap id="doctorMap" type="com.oracle.pojo.Doctor">
         <id column="doctor_id" property="doctorId"/>
+
         <result column="doctor_id" property="doctorId"/>
         <result column="job_number" property="jobNumber"/>
         <result column="password" property="password"/>
@@ -50,7 +51,7 @@
     <select id="selectDoctorAll" resultType="com.oracle.pojo.Doctor">
         select * from doctors
     </select>
-    <select id="selectDoctorByDepartmentId" resultType="com.oracle.pojo.Doctor">
+    <select id="selectDoctorByDepartmentId" resultMap="doctorMap">
         select * from doctors where department_id=#{departmentId}
     </select>
 

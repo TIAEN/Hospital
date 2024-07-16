@@ -1,5 +1,6 @@
 package com.oracle.servlet.patient;
 
+import com.oracle.pojo.BookAppointment;
 import com.oracle.pojo.Department;
 import com.oracle.pojo.Doctor;
 import com.oracle.pojo.Patients;
@@ -11,7 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+
+//确认界面
 @WebServlet("/patient/addAppointmentVerifyServlet")
 public class AddAppointmentVerifyServlet extends HttpServlet {
     @Override
@@ -20,7 +26,7 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
         String pDepartmentSecondId=req.getParameter("departmentSecondId");
         String pPatientId=req.getParameter("patientId");
         String pDoctorId=req.getParameter("doctorId");
-
+        //System.out.println(pDoctorId+")))))))))))))))))))))");
         Integer DepartmentFirstId=null;
         Integer DepartmentSecondId=null;
         Integer PatientId=null;
@@ -39,23 +45,58 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
             DoctorId=Integer.parseInt(pDoctorId);
         }
 
+        //System.out.println(DoctorId+" "+PatientId+" "+DepartmentFirstId+" "+DepartmentSecondId+"//////////////");
+
+
         DepartmentService departmentService=new DepartmentServiceimpl();
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceimpl();
+
 
         Doctor doctor=doctorService.findDoctorById(DoctorId);
         Department departmentFirst=departmentService.findDepartmentById(DepartmentFirstId);
         Department departmentSecond=departmentService.findDepartmentById(DepartmentSecondId);
         Patients patients=patientService.selectPatientById(PatientId);
 
+        System.out.println(doctor+" "+departmentFirst+" "+departmentSecond+" "+patients+"/////////////////////");
         req.setAttribute("departmentFirstName",departmentFirst.getDepartmentName());
         req.setAttribute("departmentSecondName",departmentSecond.getDepartmentName());
-        req.setAttribute("patientFirstName",patients.getPatientName());
-        req.setAttribute("patientSecondName",patients.getPatientName());
+        req.setAttribute("patientName",patients.getPatientName());
+        req.setAttribute("doctorName",doctor.getName());
 
-        req.getRequestDispatcher("/patient/addAppointmentVerify.jsp").forward(req, resp);
+        req.setAttribute("departmentFirstId",DepartmentFirstId);
+        req.setAttribute("departmentSecondId",DepartmentSecondId);
+        req.setAttribute("patientId",PatientId);
+        req.setAttribute("doctorId",DoctorId);
+
+
+
+        Map<String, Integer> timeSlots = getTimeSlots();
+
+
+        BookAppointmentService bookAppointmentService=new BookAppointmentServiceimpl();
+        List<BookAppointment> bookAppointmentList=bookAppointmentService.getBookAppointmentAll();
+        for(BookAppointment bookAppointment:bookAppointmentList){
+            String date=bookAppointment.getAppointmentDate().toString();
+            timeSlots.put(date,bookAppointment.getBookNumber());
+        }
+
+
+        req.setAttribute("timeSlots", timeSlots);
+
+        req.getRequestDispatcher("/public/patient/addAppointmentVerify.jsp").forward(req, resp);
 
     }
 
 
+    private Map<String, Integer> getTimeSlots() {
+        Map<String, Integer> timeSlots = new HashMap<>();
+        for (int hour = 0; hour < 24; hour++) {
+            for (int minute = 0; minute < 60; minute += 15) {
+                String time = String.format("%02d:%02d", hour, minute);
+                timeSlots.put(time, 3); // 初始化每个时间段剩余3人
+            }
+        }
+        return timeSlots;
+    }
 }

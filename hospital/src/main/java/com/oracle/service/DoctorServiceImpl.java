@@ -80,6 +80,10 @@ public class DoctorServiceImpl implements DoctorService{
         SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
         DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
         List<Doctor> doctorList=doctorMapper.selectDoctorByDepartmentId(pId);
+        System.out.println("???????????????????");
+        for(Doctor doctor:doctorList){
+            System.out.println(doctor+" ");
+        }
         sqlSession.close();
         return new PageInfo<Doctor>(doctorList);
     }

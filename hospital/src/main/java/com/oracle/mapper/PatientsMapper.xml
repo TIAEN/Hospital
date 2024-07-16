@@ -16,6 +16,7 @@
 
     <resultMap id="PatientMap" type="com.oracle.pojo.Patients">
         <id column="patient_id" property="patientId"/>
+        <result column="patient_id" property="patientId"/>
         <result column="id_card_number" property="patientIdCardNumber"/>
         <result column="name" property="patientName"/>
         <result column="avatar" property="patientAvatar"/>
@@ -26,7 +27,7 @@
     <select id="selectPatientsByName" resultType="com.oracle.pojo.Patients">
         select * from patients where name=#{patientName}
     </select>
-    <select id="selectPatientsById" resultType="com.oracle.pojo.Patients">
+    <select id="selectPatientsById" resultMap="PatientMap">
         select * from patients where patient_id=#{id}
     </select>
 

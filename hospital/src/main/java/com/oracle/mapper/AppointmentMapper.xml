@@ -17,4 +17,7 @@
     select * from appointments where patient_id={id}
 </select>
 
+    <insert id="insertAppointment" parameterType="com.oracle.pojo.Appointment">
+        insert into appointments values (null,#{patientId},#{doctorId},#{appointmentDate},#{currentStatus})
+    </insert>
 </mapper>

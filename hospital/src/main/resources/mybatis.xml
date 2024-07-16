@@ -60,7 +60,9 @@
 		<mapper resource="com/oracle/mapper/AppointmentMapper.xml" />
 		<mapper resource="com/oracle/mapper/AdminMapper.xml" />
 		<mapper resource="com/oracle/mapper/DoctorMapper.xml" />
+		<mapper resource="com/oracle/mapper/PatientsMapper.xml" />
 		<mapper resource="com/oracle/mapper/ProfessionalTitleMapper.xml" />
+		<mapper resource="com/oracle/mapper/BookAppointmentMapper.xml" />
 		<!--如果这里不是在xml文件中写的，而是在注解中写的，拿DoctorMapper打比方，那么需要写<mapper class="com.oracle.mapper.DoctorMapper"/>-->
 
 

@@ -26,7 +26,7 @@
         <div class="padding border-bottom" >
             <ul class="search" style="padding-left:10px;">
 
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet?pid=${patientId}"> 预约</a> </li>
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet?pid=1"> 预约</a> </li><!--${patientId}-->
                     <li> <form method="get" action="<%=request.getContextPath()%>/patient/appointmentListServlet">
                         <input type="text" class="input" id="userInput" name="userName" value="请输入姓名" placeholder="请输入姓名"><label for="userInput"> </label>
 </form>

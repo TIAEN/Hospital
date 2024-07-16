@@ -8,5 +8,5 @@ public interface AppointmentService {
 
     List<Appointment> appointmentListByPatientId(Integer id);
 
-
+    void insertAppointment(Appointment appointment);
 }

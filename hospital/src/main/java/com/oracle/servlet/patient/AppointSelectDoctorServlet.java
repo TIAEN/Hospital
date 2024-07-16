@@ -22,6 +22,9 @@ public class AppointSelectDoctorServlet extends HttpServlet {
         String pDepartmentFirstId=req.getParameter("departmentFirstId");
         String pDepartmentSecondId=req.getParameter("departmentSecondId");
         String pPatientId=req.getParameter("patientId");
+
+        System.out.println(pDepartmentFirstId+" "+pDepartmentSecondId+" "+pPatientId+"555555555555555555555");
+
         //初始页面默认为1
         Integer pageNum=1;
         //初始条数默认为5
@@ -47,6 +50,8 @@ public class AppointSelectDoctorServlet extends HttpServlet {
         DoctorService doctorService=new DoctorServiceImpl();
         PageInfo<Doctor> pageInfo=doctorService.findDoctorListByDepartmentId(pageNum,pageSize,departmentSecondId);
         req.setAttribute("doctorList",pageInfo.getList());
+        //List<Doctor> doctorList=pageInfo.getList();
+        //System.out.println(doctorList+"ppppppppppppppp");
         req.setAttribute("pageInfo",pageInfo);
         req.setAttribute("departmentFirstId",departmentFirstId);
         req.setAttribute("departmentSecondId",departmentSecondId);

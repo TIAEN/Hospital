@@ -45,7 +45,7 @@
                     <td>${b.introduction}</td>
                     <td>
                         <div class="button-group">
-                            <a class="button border-main" href="<%=request.getContextPath()%>/patient/addAppointmentServlet?departmentFirstId=${departmentFirstId}&&patientId=${patientId}&&departmentSecond=${departmentSecondId}&&doctorId=${b.doctorId}">
+                            <a class="button border-main" href="<%=request.getContextPath()%>/patient/addAppointmentVerifyServlet?departmentFirstId=${departmentFirstId}&patientId=${patientId}&departmentSecondId=${departmentSecondId}&doctorId=${b.doctorId}">
                                 <span class="icon-edit">
                                 </span>提交
                             </a>
