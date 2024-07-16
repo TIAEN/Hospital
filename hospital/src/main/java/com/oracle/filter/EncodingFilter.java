@@ -31,7 +31,7 @@ public class EncodingFilter implements Filter {
         //执行正确的导航
         filterChain.doFilter(servletRequest,servletResponse);   //放行
     }
-
+    //test
     @Override
     public void destroy() {
 
