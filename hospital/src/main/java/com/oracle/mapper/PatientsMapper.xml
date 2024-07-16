@@ -26,6 +26,9 @@
     <select id="selectPatientsByName" resultType="com.oracle.pojo.Patients">
         select * from patients where name=#{patientName}
     </select>
+    <select id="selectPatientsById" resultType="com.oracle.pojo.Patients">
+        select * from patients where patient_id=#{id}
+    </select>
 
 
 </mapper>

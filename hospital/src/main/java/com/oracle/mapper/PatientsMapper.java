@@ -6,4 +6,5 @@ public interface PatientsMapper {
 
     Patients selectPatientsByName(String name);
 
+    Patients selectPatientsById(Integer id);
 }

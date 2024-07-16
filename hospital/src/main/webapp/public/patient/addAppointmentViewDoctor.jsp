@@ -30,22 +30,24 @@
         <table class="table table-hover text-center">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>
-                <th>科室名称</th>
-                <th>科室描述</th>
+                <th>医生姓名</th>
+                <th>费用</th>
+                <th>描述</th>
             </tr>
 
-            <c:forEach items="${departmentList}" varStatus="v" var="b">
+            <c:forEach items="${doctorList}" varStatus="v" var="b">
                 <tr>
                     <td style="text-align:left; padding-left:20px;">
                             ${v.count}</td>
 
-                    <td>${b.departmentName}</td>
-                    <td>${b.departmentDescription}</td>
+                    <td>${b.name}</td>
+                    <td>${b.registrationFee}</td>
+                    <td>${b.introduction}</td>
                     <td>
                         <div class="button-group">
-                            <a class="button border-main" href="<%=request.getContextPath()%>/patient/addAppointmentViewSecondServlet?departmentFirstId=${b.departmentFirstId}&&patientId=${patientId}">
+                            <a class="button border-main" href="<%=request.getContextPath()%>/patient/addAppointmentServlet?departmentFirstId=${departmentFirstId}&&patientId=${patientId}&&departmentSecond=${departmentSecondId}&&doctorId=${b.doctorId}">
                                 <span class="icon-edit">
-                                </span>二级科室
+                                </span>提交
                             </a>
                         </div>
                     </td>
@@ -57,10 +59,10 @@
                 <td colspan="4">
                     <div class="pagelist">
 
-                        <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=1&&departmentSecondId=${departmentSecondId}">首页</a>
+                        <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=1">首页</a>
 
                         <c:if test="${pageInfo.pageNum > 1}">
-                            <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${pageInfo.pageNum - 1}&&departmentSecondId=${departmentSecondId}">上一页</a>
+                            <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${pageInfo.pageNum - 1}">上一页</a>
                         </c:if>
 
 
@@ -86,14 +88,14 @@
                             </c:otherwise>
                         </c:choose>
                         <c:forEach begin="${begin}" end="${end}" var="currentPage">
-                            <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${currentPage}&&departmentSecondId=${departmentSecondId}" class="<c:if test="${pageInfo.pageNum eq currentPage}">current</c:if>">${currentPage}</a>
+                            <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${currentPage}" class="<c:if test="${pageInfo.pageNum eq currentPage}">current</c:if>">${currentPage}</a>
                         </c:forEach>
 
                         <c:if test="${pageInfo.pageNum < pageInfo.pages - 1}">
-                            <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${pageInfo.pageNum + 1}&&departmentSecondId=${departmentSecondId}">下一页</a>
+                            <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${pageInfo.pageNum + 1}">下一页</a>
                         </c:if>
 
-                        <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${pageInfo.pages}&&departmentSecondId=${departmentSecondId}">尾页</a>
+                        <a href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?pageNum=${pageInfo.pages}">尾页</a>
 
 
                     </div></td>

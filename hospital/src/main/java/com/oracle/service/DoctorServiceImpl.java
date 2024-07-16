@@ -83,4 +83,13 @@ public class DoctorServiceImpl implements DoctorService{
         sqlSession.close();
         return new PageInfo<Doctor>(doctorList);
     }
+
+    @Override
+    public Doctor findDoctorById(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        Doctor doctor=doctorMapper.selectDoctorById(id);
+        sqlSession.close();
+        return doctor;
+    }
 }
