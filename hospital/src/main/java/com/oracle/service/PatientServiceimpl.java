@@ -25,5 +25,15 @@ public class PatientServiceimpl implements PatientService {
         return true;
     }
 
+    @Override
+    public Integer getCurrentMaxPatientId() {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        PatientsMapper patientsMapper=sqlSession.getMapper(PatientsMapper.class);
+        String strMaxPatientId=patientsMapper.selectMaxPatientId();
+        Integer iMaxPatientId=Integer.parseInt(strMaxPatientId);
+        sqlSession.close();
+        return iMaxPatientId;
+    }
+
 
 }

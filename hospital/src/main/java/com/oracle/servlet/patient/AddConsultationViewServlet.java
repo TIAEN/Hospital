@@ -18,6 +18,12 @@ public class AddConsultationViewServlet extends HttpServlet {
         Integer currentMaxConsultationId=consultationService.getCurrentMaxConsultationId();
         currentMaxConsultationId+=1;
         req.setAttribute("consultationId",currentMaxConsultationId);
+
+        /*PatientService patientService = new PatientServiceimpl();
+        Integer currentMaxPatientId=patientService.getCurrentMaxPatientId();
+        currentMaxPatientId+=1;
+        req.setAttribute("patientId",currentMaxPatientId);*/
+
         req.getRequestDispatcher("/public/patient/addConsultation.jsp").forward(req,resp);
 
     }

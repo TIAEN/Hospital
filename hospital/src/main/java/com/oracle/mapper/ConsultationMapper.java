@@ -18,5 +18,6 @@ public interface ConsultationMapper {
 
         List<Consultation> selectConsultationAll();
 
-        String selectMaxJobNumber();
+
+        String selectMaxConsultationId();
 }

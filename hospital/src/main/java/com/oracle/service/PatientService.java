@@ -8,5 +8,5 @@ public interface PatientService {
 
     boolean login(Patients patients);
 
-
+    Integer getCurrentMaxPatientId();
 }

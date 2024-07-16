@@ -27,5 +27,9 @@
         select * from patients where name=#{patientName}
     </select>
 
+    <select id="selectMaxPatientId" resultType="java.lang.String">
+        select max(patient_id) from patients
+    </select>
+
 
 </mapper>

@@ -21,6 +21,9 @@ public class AddConsultationServlet extends HttpServlet {
         System.out.println("AddConsultationServlet测试点");
         // 获取请求参数
         Integer consultationId = Integer.parseInt(req.getParameter("consultationId"));
+
+        Integer doctorId = Integer.parseInt(req.getParameter("doctorId"));
+        Integer patientId = Integer.parseInt(req.getParameter("patientId"));
         String strConsultationTime = req.getParameter("consultationTime");
         Integer isHospitalRegistered = Integer.parseInt(req.getParameter("isHospitalRegistered"));
         Integer isHospitalized = Integer.parseInt(req.getParameter("isHospitalized"));
@@ -31,24 +34,25 @@ public class AddConsultationServlet extends HttpServlet {
         try {
             consultationTime = DateUtils.convertToDate(strConsultationTime);
         } catch (ParseException e) {
+            System.err.println("日期解析失败");
             throw new RuntimeException(e);
         }
-        Integer dId=Integer.parseInt(req.getParameter("departmentId"));
 
 
         // 创建Consultation对象并设置属性值
         Consultation consultation = new Consultation();
-        consultation.setPatientId(consultationId);
+        consultation.setConsultationId(consultationId);
+        consultation.setPatientId(patientId);
+        consultation.setDoctorId(doctorId);
         consultation.setConsultationTime(consultationTime);
         consultation.setIsHospitalRegistered(isHospitalRegistered);
         consultation.setIsHospitalized(isHospitalized);
         consultation.setMedicalAdviceCase(medicalAdviceCase);
-        consultation.setDepartmentId(dId);
 
 
         // 调用ConsultationService的addConsultation方法添加就诊记录
         ConsultationService consultationService =new ConsultationServiceImpl();
-        consultationService.insertConsultation(consultation);
+        consultationService.addConsultation(consultation);
 
 
         resp.sendRedirect(req.getContextPath()+"/patient/rootAddConsultationServlet");
