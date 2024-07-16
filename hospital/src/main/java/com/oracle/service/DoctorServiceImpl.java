@@ -21,7 +21,6 @@ public class DoctorServiceImpl implements DoctorService{
             return false;
         }
         Doctor doctorpo=doctorMapper.selectDoctorByJobNumber(doctor.getJobNumber());
-
         String passwordpo=doctorpo.getPassword();
         String password=DigestUtils.md5Hex(doctor.getPassword());
         if(!password.equals(passwordpo)){

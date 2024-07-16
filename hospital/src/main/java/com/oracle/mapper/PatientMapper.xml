@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.mapper.PatientMapper">
+
+    <resultMap id="patientMap" type="com.oracle.pojo.Patient">
+        <id column="patient_id" property="patientId"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="id_card_number" property="idCardNumber"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="avatar" property="avatar"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="balance" property="balance"/>
+    </resultMap>
+
+    <select id="selectPatientAll" resultMap="patientMap">
+        select * from patients
+    </select>
+
+    <select id="selectListBySome" resultMap="patientMap">
+        select * from patients
+        <where>
+            <if test="patient.name != null">
+                and name LIKE CONCAT('%', #{patient.name}, '%')
+            </if>
+
+            <if test="patient.phone != null">
+                and phone LIKE CONCAT('%', #{patient.phone}, '%')
+            </if>
+
+            <if test="patient.idCardNumber != null">
+                and id_card_number LIKE CONCAT('%', #{patient.patientId}, '%')
+            </if>
+
+            <if test="patient.patientId != null">
+                and patient_id LIKE CONCAT('%', #{patient.patientId}, '%')
+            </if>
+        </where>
+        ORDER BY patient_id
+        LIMIT #{pageSize} OFFSET #{pageOffset}
+    </select>
+
+    <select id="selectBySome" resultMap="patientMap">
+        select * from patients
+        <where>
+            <if test="name != null">
+                and name LIKE CONCAT('%', #{name}, '%')
+            </if>
+
+            <if test="phone != null">
+                and phone LIKE CONCAT('%', #{phone}, '%')
+            </if>
+
+            <if test="idCardNumber != null">
+                and id_card_number LIKE CONCAT('%', #{patientId}, '%')
+            </if>
+
+            <if test="patientId != null">
+                and patient_id LIKE CONCAT('%', #{patientId}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectPatientByIdCardNumber" resultMap="patientMap">
+        select * from patients where id_card_number =#{idCardNumber}
+    </select>
+
+    <select id="selectPatientByPatientId" resultMap="patientMap">
+        select * from patients where patient_id=#{patientId}
+    </select>
+
+
+    <update id="updatePatientPasswordByPatientId">
+        update patients set password=#{password} where patient_id=#{patientId}
+    </update>
+
+    <select id="selectCountByIdCardNumber" resultType="java.lang.Integer">
+        select count(patient_id) from patients where id_card_number =#{idCardNumber}
+    </select>
+
+    <insert id="insertIntoPatient">
+        insert into patients(patient_id,id_card_number,password,name) values(null,#{idCardNumber},#{password},#{name})
+    </insert>
+
+
+    <select id="selectPatientsByName" resultType="com.oracle.pojo.Patient">
+        select * from patient where name=#{patientName}
+    </select>
+
+    <select id="selectMaxPatientId" resultType="java.lang.String">
+        select max(patient_id) from patient
+    </select>
+
+
+</mapper>

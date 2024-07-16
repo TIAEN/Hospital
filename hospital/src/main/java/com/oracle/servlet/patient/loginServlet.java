@@ -39,6 +39,6 @@ public class loginServlet extends HttpServlet {
         consultation.setMedicalAdviceCase("123456");
 
 
-        resp.sendRedirect(req.getContextPath()+"/patient_main.jsp");
+        resp.sendRedirect(req.getContextPath()+"/patientMain.jsp");
     }
 }

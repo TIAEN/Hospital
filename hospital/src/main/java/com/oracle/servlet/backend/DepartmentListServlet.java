@@ -7,7 +7,7 @@ package com.oracle.servlet.backend;
 import com.github.pagehelper.PageInfo;
 import com.oracle.pojo.Department;
 import com.oracle.service.DepartmentService;
-import com.oracle.service.DepartmentServiceimpl;
+import com.oracle.service.DepartmentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +37,7 @@ public class DepartmentListServlet extends HttpServlet {
 
 
 
-        DepartmentService departmentService=new DepartmentServiceimpl();
+        DepartmentService departmentService=new DepartmentServiceImpl();
         PageInfo<Department> pageInfo=departmentService.list(pageNum,pageSize);
         req.setAttribute("departmentList",pageInfo.getList());
         req.setAttribute("pageInfo",pageInfo);

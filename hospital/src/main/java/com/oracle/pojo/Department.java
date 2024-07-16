@@ -14,9 +14,9 @@ import java.io.Serializable;
 public class Department implements Serializable {
     private Integer departmentId;
     private String departmentName;
-    private String departmentDescription;
-    private Integer departmentLevel;
     private Integer departmentPid;
+    private Integer departmentLevel;
+    private String departmentDescription;
     public Department() {
     }
 
@@ -26,13 +26,6 @@ public class Department implements Serializable {
         this.departmentPid = departmentPid;
         this.departmentLevel = departmentLevel;
         this.departmentDescription = departmentDescription;
-    }
-    public Integer getDepartmentPid() {
-        return departmentPid;
-    }
-
-    public void setDepartmentPid(Integer departmentPid) {
-        this.departmentPid = departmentPid;
     }
 
     public Integer getDepartmentId() {
@@ -51,13 +44,14 @@ public class Department implements Serializable {
         this.departmentName = departmentName;
     }
 
-    public String getDepartmentDescription() {
-        return departmentDescription;
+    public Integer getDepartmentPid() {
+        return departmentPid;
     }
 
-    public void setDepartmentDescription(String departmentDescription) {
-        this.departmentDescription = departmentDescription;
+    public void setDepartmentPid(Integer departmentPid) {
+        this.departmentPid = departmentPid;
     }
+
 
     public Integer getDepartmentLevel() {
         return departmentLevel;
@@ -67,14 +61,21 @@ public class Department implements Serializable {
         this.departmentLevel = departmentLevel;
     }
 
+    public String getDepartmentDescription() {
+        return departmentDescription;
+    }
+
+    public void setDepartmentDescription(String departmentDescription) {
+        this.departmentDescription = departmentDescription;
+    }
     @Override
     public String toString() {
         return "Department{" +
                 "departmentId=" + departmentId +
                 ", departmentName='" + departmentName + '\'' +
-                ", departmentDescription='" + departmentDescription + '\'' +
-                ", departmentLevel=" + departmentLevel +
                 ", departmentPid=" + departmentPid +
+                ", departmentLevel=" + departmentLevel +
+                ", departmentDescription='" + departmentDescription + '\'' +
                 '}';
     }
 }

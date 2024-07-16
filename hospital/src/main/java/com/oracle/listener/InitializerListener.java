@@ -18,7 +18,7 @@ public class InitializerListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext servletContext=servletContextEvent.getServletContext();      //获取对象实例
 
-        DepartmentService departmentService=new DepartmentServiceimpl();            //调用科室和职称的业务层获取数据
+        DepartmentService departmentService=new DepartmentServiceImpl();            //调用科室和职称的业务层获取数据
         List<Department> rootDepartmentList=departmentService.findRootDepartmentList();
         servletContext.setAttribute("rootDepartmentList",rootDepartmentList);
 
@@ -30,8 +30,6 @@ public class InitializerListener implements ServletContextListener {
         List<Consultation> rootConsultationList = consultationService.findAllConsultation();
         servletContext.setAttribute("rootConsultationList",rootConsultationList);
 
-        System.out.println("测试InitializerListener"+rootConsultationList);
-        System.out.println("测试InitializerListener2"+consultationService.findAllConsultation());
         servletContext.setAttribute("root",servletContext.getContextPath());
         servletContext.setAttribute("js",servletContext.getContextPath()+"/js");
         servletContext.setAttribute("css",servletContext.getContextPath()+"/css");

@@ -2,8 +2,6 @@ package com.oracle.servlet.patient;
 
 import com.github.pagehelper.PageInfo;
 import com.oracle.pojo.Consultation;
-import com.oracle.pojo.Department;
-import com.oracle.pojo.Patients;
 import com.oracle.service.*;
 
 import javax.servlet.ServletException;

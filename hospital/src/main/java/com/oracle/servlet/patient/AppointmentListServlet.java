@@ -1,6 +1,6 @@
 package com.oracle.servlet.patient;
 
-import com.oracle.pojo.Patients;
+import com.oracle.pojo.Patient;
 import com.oracle.service.*;
 
 import javax.servlet.ServletException;
@@ -18,11 +18,11 @@ public class AppointmentListServlet extends HttpServlet {
         String patientName=req.getParameter("patientName");
         Integer id=null;
         AppointmentService appointmentService=new AppointmentServiceimpl();
-        DepartmentService departmentService=new DepartmentServiceimpl();
-        PatientService patientService=new PatientServiceimpl();
+        DepartmentService departmentService=new DepartmentServiceImpl();
+        PatientService patientService=new PatientServiceImpl();
 
-        Patients patients=patientService.selectPatientByName(patientName);
-        Integer patientId=patients.getPatientId();
+        Patient patient =patientService.selectPatientByName(patientName);
+        Integer patientId= patient.getPatientId();
         req.setAttribute("appointmentList",appointmentService.appointmentList(patientId));
 
         req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);

@@ -6,16 +6,11 @@ import com.oracle.pojo.Department;
 import java.util.List;
 
 public interface DepartmentService {
-
-    List<Department> findRootDepartment();
-
-    void addDepartment(Department department);
     //声明方法
     List<Department> findRootDepartmentList();      //返回所有一级科室
 
-    void deleteDepartmentFirst(Integer id);
+    void addDepartment(Department department);      //添加一个科室
 
-    Department findDepartmentById(Integer id);
     Integer countSidById(Integer id);               //通过id来找到这个科室，返回它的子科室的数目
 
     void deleteById(Integer id);                    //通过id来找到这个科室，并且删除它
@@ -24,10 +19,16 @@ public interface DepartmentService {
 
     //分页展示科室数据
     //返回的List是不包含分页的信息的
-
+    List<Department> List(Integer pageNum,Integer pageSize);                        //返回所有科室，起始页数，和每页数量
     //做返回类型的封装，PageInfo<T> 里面有分页后的数据信息和页码信息
     //封装一个分页对象返回，尽量不要把后台的mybatis对象进行返回
     PageInfo<Department> list(Integer pageNum,Integer pageSize);                //对List进行封装
 
     List<Department> findDepartmentByPid(Integer pid);      //返回这个一级科室下的全部二级科室
+
+    void deleteDepartmentFirst(Integer id);
+
+    Department findDepartmentById(Integer id);
+
+    List<Department> findRootDepartment();
 }

@@ -22,7 +22,7 @@
     <div class="logo margin-big-left fadein-top">
         <h1><img src="images/meilinna.jpg" class="radius-circle rotate-hover" height="50" alt="" />交界地精神病院</h1>
     </div>
-    <div class="head-l"><a class="button button-little bg-green" href="<%=request.getContextPath()%>/public/patient/patient_login.jsp" target="_blank"><span class="icon-home"></span> 患者登录</a> &nbsp;&nbsp;<a href="<%=request.getContextPath()%>/login.jsp" class="button button-little bg-blue"><span class="icon-wrench"></span> 后台登录</a> &nbsp;&nbsp </div>
+    <div class="head-l"><a class="button button-little bg-green" href="<%=request.getContextPath()%>/patientLoginServlet" target="_blank"><span class="icon-home"></span> 患者登录</a> &nbsp;&nbsp;<a href="<%=request.getContextPath()%>/login.jsp" class="button button-little bg-blue"><span class="icon-wrench"></span> 后台登录</a> &nbsp;&nbsp </div>
 </div>
 <div class="leftnav">
     <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>

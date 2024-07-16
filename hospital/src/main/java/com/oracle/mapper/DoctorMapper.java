@@ -1,7 +1,6 @@
 package com.oracle.mapper;
 
 import com.oracle.pojo.Admin;
-import com.oracle.pojo.Department;
 import com.oracle.pojo.Doctor;
 import org.apache.ibatis.annotations.Param;
 

@@ -62,7 +62,7 @@
 		<mapper resource="com/oracle/mapper/AdminMapper.xml" />
 		<mapper resource="com/oracle/mapper/DoctorMapper.xml" />
 		<mapper resource="com/oracle/mapper/ProfessionalTitleMapper.xml" />
-		<mapper resource="com/oracle/mapper/PatientsMapper.xml" />
+		<mapper resource="com/oracle/mapper/PatientMapper.xml" />
 		<mapper resource="com/oracle/mapper/ConsultationMapper.xml" />
 
 

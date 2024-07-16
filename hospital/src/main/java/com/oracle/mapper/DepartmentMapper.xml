@@ -5,12 +5,12 @@
 <mapper namespace="com.oracle.mapper.DepartmentMapper">
 
     <resultMap id="departmentMap" type="com.oracle.pojo.Department">
-        <id property="departmentId" column="department_id" />
-        <result property="departmentId" column="department_id" />
-        <result property="departmentName" column="department_name" />
-        <result property="departmentDescription" column="department_description" />
-        <result property="departmentPid" column="department_pid" />
-
+        <id column="department_id" property="departmentId"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="department_name" property="departmentName"/>
+        <result column="department_pid" property="departmentPid"/>
+        <result column="department_level" property="departmentLevel"/>
+        <result column="department_description" property="departmentDescription"/>
     </resultMap>
 
     <select id="selectRootDepartment" resultMap="departmentMap">
@@ -18,15 +18,18 @@
     </select>
 
 
-    <insert id="insertDepartment" parameterType="com.oracle.pojo.Department">
+    <insert id="insertDepartment" >
         insert into departments values (null,#{departmentName},#{departmentPid},#{departmentLevel},#{departmentDescription})
     </insert>
+
     <select id="selectCountSidById" resultType="java.lang.Integer">
         select count(department_id) from departments where department_pid=#{id}
     </select>
+
     <delete id="deleteDepartmentFirst">
         delete from departments where department_id=#{id}
     </delete>
+
     <select id="selectRootDepartmentById" resultType="com.oracle.pojo.Department">
     select * from departments where department_id=#{departmentId}
     </select>
@@ -35,12 +38,15 @@
     <delete id="deleteByDepartmentId">
         delete from departments where department_id=#{departmentId}
     </delete>
+
     <select id="selectDepartment" resultMap="departmentMap">
         select * from departments where department_pid is null
     </select>
+
     <select id="selectDepartmentAll" resultMap="departmentMap">
         select * from departments
     </select>
+
     <select id="selectDepartmentById" resultMap="departmentMap">
         select * from departments where department_id=#{id}
     </select>
