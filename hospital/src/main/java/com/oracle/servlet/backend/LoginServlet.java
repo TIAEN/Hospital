@@ -56,9 +56,11 @@ public class LoginServlet extends HttpServlet {
             sessionIdentify.setTag(0);
             sessionIdentify.setT(admin);
 
-            session.setAttribute("managerInfo",sessionIdentify);
-            session.setAttribute("AdminInfo",admin);
-            resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            //req.setAttribute("username",loginName);
+            session.setAttribute("manager",sessionIdentify);
+            req.setAttribute("AdminInfo",admin);
+            //resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            req.getRequestDispatcher("/main.jsp").forward(req,resp);
         }
         else if(roleId.equals("1")){
             //登录身份是医生
@@ -76,9 +78,13 @@ public class LoginServlet extends HttpServlet {
             sessionIdentify.setTag(1);
             sessionIdentify.setT(doctor);
 
-            session.setAttribute("manager",sessionIdentify);
+            //测试
+            req.setAttribute("jobNumber",loginName);
+
+            //session.setAttribute("manager",sessionIdentify);
             session.setAttribute("DoctorInfo",doctor);
-            resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            //resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            req.getRequestDispatcher("/main.jsp").forward(req,resp);
         }
 
         //判断角色身份

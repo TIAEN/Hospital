@@ -6,17 +6,17 @@
 
     <resultMap id="departmentMap" type="com.oracle.pojo.Department">
         <id column="department_id" property="departmentId"/>
-        <result column="department_id" property="departmentId"/>
+
         <result column="department_name" property="departmentName"/>
-        <result column="department_pid" property="departmentPid"/>
-        <result column="department_level" property="departmentLevel"/>
         <result column="department_description" property="departmentDescription"/>
+        <result column="department_pid" property="departmentPid"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="department_level" property="departmentLevel"/>
     </resultMap>
 
     <select id="selectRootDepartment" resultMap="departmentMap">
         select * from departments where department_level = 1
     </select>
-
 
     <insert id="insertDepartment" >
         insert into departments values (null,#{departmentName},#{departmentPid},#{departmentLevel},#{departmentDescription})

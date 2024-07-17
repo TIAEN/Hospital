@@ -44,6 +44,7 @@ public class AddDoctorServlet extends HttpServlet {
         doctor.setPassword(password);
         doctor.setProfessionalTitleId(pId);
         doctor.setName(name);
+
         doctor.setEntryDate(entryDate);
         DoctorService doctorService=new DoctorServiceImpl();
         doctorService.addDoctor(doctor);

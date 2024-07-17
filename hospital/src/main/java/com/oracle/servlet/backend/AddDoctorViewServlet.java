@@ -1,7 +1,10 @@
 package com.oracle.servlet.backend;
 
+import com.oracle.pojo.ProfessionalTitle;
 import com.oracle.service.DoctorService;
 import com.oracle.service.DoctorServiceImpl;
+import com.oracle.service.ProfessionalTitleService;
+import com.oracle.service.ProfessionalTitleServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet("/backend/addDoctorViewServlet")
@@ -25,6 +29,9 @@ public class AddDoctorViewServlet extends HttpServlet {
         DoctorService doctorService=new DoctorServiceImpl();
         Integer currentMaxJobNumber=doctorService.getCurrentMaxJobNumber();
         currentMaxJobNumber+=1;
+        ProfessionalTitleService professionalTitleService=new ProfessionalTitleServiceImpl();
+        List<ProfessionalTitle> titleAll=professionalTitleService.AllProfessionalTitleList();
+        req.setAttribute("professionalTitleList",titleAll);
         req.setAttribute("jobNumber",currentMaxJobNumber);
         req.getRequestDispatcher("/admin/doctor/add.jsp").forward(req,resp);
     }

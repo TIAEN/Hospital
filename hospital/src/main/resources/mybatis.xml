@@ -64,6 +64,7 @@
 		<mapper resource="com/oracle/mapper/ProfessionalTitleMapper.xml" />
 		<mapper resource="com/oracle/mapper/PatientMapper.xml" />
 		<mapper resource="com/oracle/mapper/ConsultationMapper.xml" />
+		<mapper resource="com/oracle/mapper/HospitalizationMapper.xml"/>
 
 
 

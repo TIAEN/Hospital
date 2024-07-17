@@ -25,4 +25,15 @@ public interface PatientService {
 
     Integer getCurrentMaxPatientId();
 
+    //添加处
+
+    Patient selectPatientByPhone(String phone);
+
+    void setArranged1(Patient patient);
+
+    void setArranged0(Patient patient);
+
+    void pay(String phone,Float pay);
+
+    Patient findPatientByIdCardNumber(String idCardNumber);
 }

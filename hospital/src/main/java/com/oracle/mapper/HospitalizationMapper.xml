@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.oracle.mapper.HospitalizationMapper">
+    <resultMap id="hospitalizationMap" type="com.oracle.pojo.Hospitalization">
+        <id column="hospitalization_id" property="hospitalizationId"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="room_number" property="roomNumber"/>
+        <result column="cost" property="cost"/>
+        <result column="payment_status" property="paymentStatus"/>
+        <result column="is_insured" property="isInsured"/>
+        <result column="hospitalization_status" property="hospitalizationStatus"/>
+        <result column="patient_name" property="patientName"/>
+        <result column="patient_phone" property="patientPhone"/>
+    </resultMap>
+
+
+    <insert id="insertHospitalization" parameterType="com.oracle.pojo.Hospitalization">
+        insert into hospitalization values(null,null,#{roomNumber},#{cost},'unpaid',null,'in_progress',#{patientName},#{patientPhone})
+    </insert>
+
+    <select id="selectHospitalizationAll" resultMap="hospitalizationMap">
+        select * from hospitalization
+    </select>
+
+    <select id="selectHospitalizationByPhone" resultMap="hospitalizationMap">
+        select * from hospitalization where patient_phone=#{phone}
+    </select>
+
+    <update id="pay" parameterType="com.oracle.pojo.Hospitalization">
+    update hospitalization
+    <set>
+            cost =#{cost},
+
+        <if test="isInsured != null and isInsured != ''">
+            is_insured =#{isInsured},
+        </if>
+
+        <if test="paymentStatus != null and paymentStatus != ''">
+            payment_status =#{paymentStatus}
+        </if>
+
+    </set>
+    where patient_phone=#{patientPhone} and hospitalization_status != 'discharged'
+    </update>
+
+    <update id="enter" parameterType="com.oracle.pojo.Hospitalization">
+        update hospitalization set hospitalization_status='admitted'where patient_phone=#{patientPhone}
+    </update>
+
+    <update id="discharge" parameterType="com.oracle.pojo.Hospitalization">
+        update hospitalization set hospitalization_status='discharged'where patient_phone=#{patientPhone}
+    </update>
+
+
+</mapper>

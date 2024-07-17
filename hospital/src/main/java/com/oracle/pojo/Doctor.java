@@ -18,25 +18,58 @@ package com.oracle.pojo;
 +-----------------------+---------------+------+-----+---------+----------------+
 */
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Doctor {
+public class Doctor implements Serializable {
     private Integer doctorId;
+
     private String jobNumber;
+
     private String password;
+
     private String name;
+
     private String avatar;
+
     private String phone;
+
     private String email;
+
     private String introduction;
+
     private BigDecimal registrationFee;
+
     private Date entryDate;
 
-
-
     private Integer departmentId;
+
     private Integer professionalTitleId;
+
+    private String departmentName; // 新增 departmentName 属性
+
+    private String professionalTitleName;   // 新增 professionalTitleName 属性
+
+    public Doctor() {
+    }
+
+    public Doctor(Integer doctorId, String jobNumber, String password, String name, String avatar, String phone, String email, String introduction, BigDecimal registrationFee, Date entryDate, Integer departmentId, Integer professionalTitleId, String departmentName, String professionalTitleName) {
+        this.doctorId = doctorId;
+        this.jobNumber = jobNumber;
+        this.password = password;
+        this.name = name;
+        this.avatar = avatar;
+        this.phone = phone;
+        this.email = email;
+        this.introduction = introduction;
+        this.registrationFee = registrationFee;
+        this.entryDate = entryDate;
+        this.departmentId = departmentId;
+        this.professionalTitleId = professionalTitleId;
+        this.departmentName = departmentName;
+        this.professionalTitleName = professionalTitleName;
+    }
 
     public Integer getDoctorId() {
         return doctorId;
@@ -134,22 +167,20 @@ public class Doctor {
         this.professionalTitleId = professionalTitleId;
     }
 
-    public Doctor() {
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public Doctor(Integer doctorId, String jobNumber, String password, String name, String avatar, String phone, String email, String introduction, BigDecimal registrationFee, Date entryDate, Integer departmentId, Integer professionalTitleId) {
-        this.doctorId = doctorId;
-        this.jobNumber = jobNumber;
-        this.password = password;
-        this.name = name;
-        this.avatar = avatar;
-        this.phone = phone;
-        this.email = email;
-        this.introduction = introduction;
-        this.registrationFee = registrationFee;
-        this.entryDate = entryDate;
-        this.departmentId = departmentId;
-        this.professionalTitleId = professionalTitleId;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public String getProfessionalTitleName() {
+        return professionalTitleName;
+    }
+
+    public void setProfessionalTitleName(String professionalTitleName) {
+        this.professionalTitleName = professionalTitleName;
     }
 
     @Override
@@ -167,6 +198,8 @@ public class Doctor {
                 ", entryDate=" + entryDate +
                 ", departmentId=" + departmentId +
                 ", professionalTitleId=" + professionalTitleId +
+                ", departmentName='" + departmentName + '\'' +
+                ", professionalTitleName='" + professionalTitleName + '\'' +
                 '}';
     }
 }

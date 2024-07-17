@@ -20,6 +20,22 @@
         select * from patients
     </select>
 
+    <select id="selectPatientByPhone" resultType="com.oracle.pojo.Patient">
+        select * FROM patients where phone=#{phone}
+    </select>
+
+    <update id="setArranged1" parameterType="com.oracle.pojo.Patient">
+        update patients set arranged=1 where phone=#{phone}
+    </update>
+
+    <update id="setArranged0" parameterType="com.oracle.pojo.Patient">
+        update patients set arranged=0 where phone=#{phone}
+    </update>
+
+    <update id="pay" parameterType="com.oracle.pojo.Patient">
+        update patients set balance=balance-#{pay} where phone=#{phone}
+    </update>
+
     <select id="selectListBySome" resultMap="patientMap">
         select * from patients
         <where>

@@ -25,11 +25,12 @@ public class Patient implements Serializable {
     private String phone;               //电话
     private String email;               //邮箱
     private BigDecimal balance;         //余额
+    private Integer arranged;
 
     public Patient() {
     }
 
-    public Patient(Integer patientId, String idCardNumber, String password, String name, String avatar, String phone, String email, BigDecimal balance) {
+    public Patient(Integer patientId, String idCardNumber, String password, String name, String avatar, String phone, String email, BigDecimal balance, Integer arranged) {
         this.patientId = patientId;
         this.idCardNumber = idCardNumber;
         this.password = password;
@@ -38,6 +39,7 @@ public class Patient implements Serializable {
         this.phone = phone;
         this.email = email;
         this.balance = balance;
+        this.arranged = arranged;
     }
 
     public Integer getPatientId() {
@@ -104,9 +106,17 @@ public class Patient implements Serializable {
         this.balance = balance;
     }
 
+    public Integer getArranged() {
+        return arranged;
+    }
+
+    public void setArranged(Integer arranged) {
+        this.arranged = arranged;
+    }
+
     @Override
     public String toString() {
-        return "Patients{" +
+        return "Patient{" +
                 "patientId=" + patientId +
                 ", idCardNumber='" + idCardNumber + '\'' +
                 ", password='" + password + '\'' +
@@ -115,6 +125,7 @@ public class Patient implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", balance=" + balance +
+                ", arranged=" + arranged +
                 '}';
     }
 }

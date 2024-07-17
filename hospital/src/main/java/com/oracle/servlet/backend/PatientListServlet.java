@@ -31,6 +31,6 @@ public class PatientListServlet extends HttpServlet {
 
         req.setAttribute("patientList",patientPageInfo.getList());
         req.setAttribute("patientPageInfo",patientPageInfo);
-        req.getRequestDispatcher("/admin/patient/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/doctor/patient/list.jsp").forward(req,resp);
     }
 }

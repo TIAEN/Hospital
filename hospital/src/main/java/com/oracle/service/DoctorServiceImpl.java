@@ -1,5 +1,7 @@
 package com.oracle.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.oracle.mapper.AdminMapper;
 import com.oracle.mapper.DoctorMapper;
 import com.oracle.pojo.Admin;
@@ -8,7 +10,19 @@ import com.oracle.utils.DBUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.List;
+
 public class DoctorServiceImpl implements DoctorService{
+
+    @Override
+    public Integer getCurrentMaxJobNumber() {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        String strMaxJobNumber=doctorMapper.selectMaxJobNumber();
+        Integer iMaxJobNumber=Integer.parseInt(strMaxJobNumber);
+        sqlSession.close();
+        return iMaxJobNumber;
+    }
 
     @Override
     public boolean login(Doctor doctor) {
@@ -43,24 +57,50 @@ public class DoctorServiceImpl implements DoctorService{
     }
 
     @Override
-    public void encryption(Integer id) {
-        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
-        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
-        Doctor doctor=doctorMapper.selectDoctorById(id);
-        String password=DigestUtils.md5Hex(doctor.getPassword());
-        doctorMapper.updateDoctorPassword(password,id);
-        sqlSession.commit();
-        sqlSession.close();
+    public Doctor getDoctorById(Integer doctor_id) {
+        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
+        Doctor doctor=doctorMapper.selectDoctorById(doctor_id);
+        sqlsession.close();
+        return doctor;
     }
 
     @Override
-    public Integer getCurrentMaxJobNumber() {
-        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
-        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
-        String strMaxJobNumber=doctorMapper.selectMaxJobNumber();
-        Integer iMaxJobNumber=Integer.parseInt(strMaxJobNumber);
-        sqlSession.close();
-        return iMaxJobNumber;
+    public void modifyDoctor(Doctor doctor) {
+        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
+        System.out.println(doctor.getJobNumber()+" "+doctor.getPhone()+' '+doctor.getEmail()+' '+doctor.getIntroduction());
+        doctorMapper.updateDoctor(doctor);
+        sqlsession.commit(true);
+        sqlsession.close();
+    }
+
+    @Override
+    public PageInfo<Doctor> doctorSearch(Integer pageNum, Integer pageSize, String name, Integer pid) {
+        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
+        List<Doctor> doctorList=doctorMapper.selectDoctorSearch(name,pid);
+        sqlsession.close();
+        return new PageInfo<>(doctorList);
+    }
+
+    @Override
+    public Doctor getDoctorByJobNumber(String jobNumber) {
+        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
+        Doctor doctor=doctorMapper.selectDoctorByJobNumber(jobNumber);
+        sqlsession.close();
+        return doctor;
+    }
+
+    @Override
+    public PageInfo<Doctor> list(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
+        List<Doctor> doctorList=doctorMapper.selectDoctorAll();
+        sqlsession.close();
+        return new PageInfo<Doctor>(doctorList);
     }
 
     @Override
@@ -68,6 +108,17 @@ public class DoctorServiceImpl implements DoctorService{
         SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
         DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
         doctorMapper.insertIntoDoctor(doctor);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Override
+    public void encryption(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        Doctor doctor=doctorMapper.selectDoctorById(id);
+        String password=DigestUtils.md5Hex(doctor.getPassword());
+        doctorMapper.updateDoctorPassword(password,id);
         sqlSession.commit();
         sqlSession.close();
     }

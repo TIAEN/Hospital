@@ -49,7 +49,10 @@ public class PatientLoginServlet extends HttpServlet {
 
         PatientService patientService=new PatientServiceImpl();
         if(patientService.login(patient)){
-            resp.sendRedirect(req.getContextPath()+"/patientMain.jsp");
+            Patient patientpo=patientService.findPatientByIdCardNumber(patient.getIdCardNumber());
+            req.setAttribute("phone",patientpo.getPhone());
+            //resp.sendRedirect(req.getContextPath()+"/patientMain.jsp");
+            req.getRequestDispatcher("/patientMain.jsp").forward(req,resp);
         }
         else{
             req.setAttribute("loginError","用户名不存在或密码错误");

@@ -39,6 +39,7 @@
     <ul style="display:block">
       <li><a href="<%=request.getContextPath()%>/patient/rootAddConsultationServlet" target="right"><span class="icon-caret-right"></span>就诊信息</a></li>
       <li><a href="<%=request.getContextPath()%>/patient/rootAppointmentServlet" target="right"><span class="icon-caret-right"></span>患者预约</a></li>
+      <li><a href="<%=request.getContextPath()%>/patientPayViewServlet?phone=${phone}" target="right"><span class="icon-caret-right"></span>住院缴费</a></li>
     </ul>
 
 

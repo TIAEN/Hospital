@@ -28,7 +28,8 @@
 </head>
 <body>
 <div class="panel admin-panel">
-    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加内容</strong></div>
+    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>新增医生</strong></div>
+    <li><a href="<%=request.getContextPath()%>/main.jsp" target="right"><strong style="color: darkblue">返回主页</strong></a></li>
     <div class="body-content">
         <form method="post" class="form-x" action="${root}/backend/addDoctorServlet">
             <div class="form-group">

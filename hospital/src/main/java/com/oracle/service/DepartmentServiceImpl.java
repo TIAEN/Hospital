@@ -12,6 +12,35 @@ import java.util.List;
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
+    public void addDepartment(Department department) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+        departmentMapper.insertDepartment(department);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public PageInfo<Department> list(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> departmentList=departmentMapper.selectDepartmentAll();
+        sqlSession.close();
+        return new PageInfo<Department>(departmentList);
+    }
+
+    @Override
+    public void deleteDepartmentFirst(Integer id){
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+        System.out.println("////////////222////////////////////"+id);
+        departmentMapper.deleteDepartmentFirst(id);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
     public List<Department> findRootDepartmentList() {
         //在编写正式项目时 注意连接使用完成后要关闭
         SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
@@ -23,12 +52,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void addDepartment(Department department) {
-        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
-        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
-        departmentMapper.insertDepartment(department);
-        sqlSession.commit(true);
+    public List<Department> findDepartmentByPid(Integer pid) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> departmentList=departmentMapper.selectDepartmentByPid(pid);
         sqlSession.close();
+        return departmentList;
     }
 
     @Override
@@ -71,24 +100,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public PageInfo<Department> list(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
-        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
-        List<Department> departmentList=departmentMapper.selectDepartmentAll();
-        sqlSession.close();
-        return new PageInfo<Department>(departmentList);
-    }
-
-    @Override
-    public List<Department> findDepartmentByPid(Integer pid) {
-        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
-        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
-        List<Department> departmentList=departmentMapper.selectDepartmentByPid(pid);
-        sqlSession.close();
-        return departmentList;
-    }
-    @Override
     public Department findDepartmentById(Integer id) {
         SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
         DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
@@ -106,13 +117,5 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentList;
     }
 
-    @Override
-    public void deleteDepartmentFirst(Integer id){
-        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
-        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
-        System.out.println("////////////222////////////////////"+id);
-        departmentMapper.deleteDepartmentFirst(id);
-        sqlSession.commit();
-        sqlSession.close();
-    }
+
 }

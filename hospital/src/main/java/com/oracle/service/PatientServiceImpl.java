@@ -23,6 +23,51 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient selectPatientByPhone(String phone) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        Patient patient=patientMapper.selectPatientByPhone(phone);
+        sqlSession.close();
+        return patient;
+    }
+
+    @Override
+    public void setArranged1(Patient patient) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        patientMapper.setArranged1(patient);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public void setArranged0(Patient patient) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        patientMapper.setArranged0(patient);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public void pay(String phone,Float pay) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        patientMapper.pay(phone,pay);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public Patient findPatientByIdCardNumber(String idCardNumber) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        Patient patient=patientMapper.selectPatientByIdCardNumber(idCardNumber);
+        sqlSession.close();
+        return patient;
+    }
+
+    @Override
     public List<Patient> findPatientBySome(Patient patient,Integer pageSize,Integer pageOffset) {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
