@@ -33,6 +33,11 @@ public interface PatientMapper {
 
     void insertIntoPatient(Patient patient);
 
+    void updatePatientEmailByPatientId(@Param("email")String email,@Param("patientId")Integer patientId);
+
+    void updatePatientPhoneByPatientId(@Param("phone")String phone,@Param("patientId")Integer patientId);
+
+
     Patient selectPatientsByName(String name);
 
     String selectMaxPatientId();

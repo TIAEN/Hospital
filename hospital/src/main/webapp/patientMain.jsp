@@ -26,6 +26,9 @@
   <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 </head>
 <body style="background-color:#f2f9fd;">
+
+<input type="hidden" name="patientId" value="${patientId}"/>
+
 <div class="header bg-main">
   <div class="logo margin-big-left fadein-top">
     <h1><img src="images/meilinna.jpg" class="radius-circle rotate-hover" height="50" alt="" />预约挂号中心</h1>
@@ -48,6 +51,12 @@
       <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>科室列表</a></li>
       <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>医生列表</a></li>
     </ul>
+
+  <h2><span class="icon-pencil-square-o"></span>信息管理</h2>
+  <ul style="display:block">
+    <li><a href="<%=request.getContextPath()%>/backend/patientDetailsViewServlet?patientId=${patientId}" target="right"><span class="icon-caret-right"></span>个人信息</a></li>
+    <li><a href="<%=request.getContextPath()%>/backend/patientPasswordViewServlet?patientId=${patientId}" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
+  </ul>
 
 </div>
 

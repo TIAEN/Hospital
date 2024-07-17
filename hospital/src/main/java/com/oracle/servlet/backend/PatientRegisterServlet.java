@@ -30,7 +30,7 @@ public class PatientRegisterServlet extends HttpServlet {
         String sessionCode=(String) session.getAttribute("valcode");
         if(requestCode==null||"".equals(requestCode)||!requestCode.equals(sessionCode)){
             req.setAttribute("capError","验证码有误");
-            req.getRequestDispatcher("/patientLogin.jsp").forward(req,resp);
+            req.getRequestDispatcher("/patientRegister.jsp").forward(req,resp);
             return;
         }
         else{
@@ -39,6 +39,12 @@ public class PatientRegisterServlet extends HttpServlet {
 
         if(patientService.findCountByIdCardNumber(idCardNumber)!=0){
             req.setAttribute("registerError","身份证号码已存在，请确保您输入的身份证号正确");
+            req.getRequestDispatcher("/patientRegister.jsp").forward(req,resp);
+            return;
+        }
+
+        if(idCardNumber==null || "".equals(idCardNumber)){
+            req.setAttribute("registerError","请输入身份证号");
             req.getRequestDispatcher("/patientRegister.jsp").forward(req,resp);
             return;
         }

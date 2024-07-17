@@ -58,14 +58,7 @@ public class PatientServiceImpl implements PatientService {
         sqlSession.close();
     }
 
-    @Override
-    public Patient findPatientByIdCardNumber(String idCardNumber) {
-        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
-        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
-        Patient patient=patientMapper.selectPatientByIdCardNumber(idCardNumber);
-        sqlSession.close();
-        return patient;
-    }
+
 
     @Override
     public List<Patient> findPatientBySome(Patient patient,Integer pageSize,Integer pageOffset) {
@@ -120,10 +113,55 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient findPatientByIdCardNumber(String idCardNumber) {
+        SqlSession sqlSession = DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        Patient patient=patientMapper.selectPatientByIdCardNumber(idCardNumber);
+        sqlSession.close();
+        return patient;
+    }
+
+    @Override
     public void addPatient(Patient patient) {
         SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
         PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
         patientMapper.insertIntoPatient(patient);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public Patient findPatientByPatientId(Integer patientId) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
+        Patient patient=patientMapper.selectPatientByPatientId(patientId);
+        sqlSession.close();
+        return patient;
+    }
+
+    @Override
+    public void changePatientEmailByPatientId(String email, Integer patientId) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
+        patientMapper.updatePatientEmailByPatientId(email,patientId);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public void changePatientPhoneByPatientId(String phone, Integer patientId) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
+        patientMapper.updatePatientPhoneByPatientId(phone,patientId);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public void changePatientPasswordByPatientId(String password, Integer patientId) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
+        patientMapper.updatePatientPasswordByPatientId(password,patientId);
         sqlSession.commit(true);
         sqlSession.close();
     }

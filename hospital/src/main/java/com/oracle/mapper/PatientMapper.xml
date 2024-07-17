@@ -93,9 +93,19 @@
         update patients set password=#{password} where patient_id=#{patientId}
     </update>
 
+
+    <update id="updatePatientEmailByPatientId">
+        update patients set email=#{email} where patient_id=#{patientId}
+    </update>
+
+    <update id="updatePatientPhoneByPatientId">
+        update patients set phone=#{phone} where patient_id=#{patientId}
+    </update>
+
     <select id="selectCountByIdCardNumber" resultType="java.lang.Integer">
         select count(patient_id) from patients where id_card_number =#{idCardNumber}
     </select>
+
 
     <insert id="insertIntoPatient">
         insert into patients(patient_id,id_card_number,password,name) values(null,#{idCardNumber},#{password},#{name})

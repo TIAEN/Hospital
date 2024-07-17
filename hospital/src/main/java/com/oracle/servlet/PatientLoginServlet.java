@@ -51,6 +51,7 @@ public class PatientLoginServlet extends HttpServlet {
         if(patientService.login(patient)){
             Patient patientpo=patientService.findPatientByIdCardNumber(patient.getIdCardNumber());
             req.setAttribute("phone",patientpo.getPhone());
+            req.setAttribute("patientId",patientpo.getPatientId());
             //resp.sendRedirect(req.getContextPath()+"/patientMain.jsp");
             req.getRequestDispatcher("/patientMain.jsp").forward(req,resp);
         }

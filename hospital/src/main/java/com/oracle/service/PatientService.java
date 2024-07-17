@@ -19,7 +19,17 @@ public interface PatientService {
 
     Integer findCountByIdCardNumber(String idCardNumber);
 
+    Patient findPatientByIdCardNumber(String idCardNumber);
+
     void addPatient(Patient patient);
+
+    Patient findPatientByPatientId(Integer patientId);
+
+    void changePatientEmailByPatientId(String email,Integer patientId);
+
+    void changePatientPhoneByPatientId(String phone,Integer patientId);
+
+    void changePatientPasswordByPatientId(String password,Integer patientId);
 
     Patient selectPatientByName(String name);
 
@@ -35,5 +45,5 @@ public interface PatientService {
 
     void pay(String phone,Float pay);
 
-    Patient findPatientByIdCardNumber(String idCardNumber);
+
 }
