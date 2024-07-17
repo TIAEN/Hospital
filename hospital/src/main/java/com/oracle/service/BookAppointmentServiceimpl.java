@@ -53,4 +53,13 @@ public class BookAppointmentServiceimpl implements BookAppointmentService {
         sqlSession.commit();
         sqlSession.close();
     }
+
+    @Override
+    public BookAppointment getBookAppointmentByDate(Date date) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
+        BookAppointment bookAppointment=bookAppointmentMapper.selectBookAppointmentByDate(date);
+        sqlSession.close();
+        return bookAppointment;
+    }
 }

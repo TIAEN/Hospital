@@ -15,4 +15,6 @@ public interface BookAppointmentService {
     void updateBookAppointment(BookAppointment bookAppointment);
 
     void updateBookAppointmentAdd(Date appointmentDate);
+
+    BookAppointment getBookAppointmentByDate(Date date);
 }

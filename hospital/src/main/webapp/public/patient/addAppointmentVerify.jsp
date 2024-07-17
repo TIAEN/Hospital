@@ -31,7 +31,7 @@
             } else {
                 var selectedOption = document.querySelector('#appointmentTime option[value="' + timeInput + '"]');
                 if (selectedOption && selectedOption.text.includes('已满')) {
-                    alert('当前时间段已满，请选择其他时间段。');
+                    alert('当前时间段已过，请选择其他时间段。');
                     document.getElementById('appointmentTime').value = '';
                 }
             }
@@ -41,6 +41,34 @@
             document.getElementById('appointmentTime').addEventListener('change', checkTime);
             document.getElementById('appointmentDate').addEventListener('change', checkTime);
         });
+
+        function updateTimeSlot(${timeSlotsFromBackend}) {
+            //alert("1");
+            alert(timeSlotsFromBackend+"111111");
+            const selectedDate = document.getElementById('appointmentDate').value;
+            const timeSelect = document.getElementById('appointmentTime');
+            timeSelect.innerHTML = ''; // 清空之前的选项
+
+            alert(selectedDate+"2222222222");
+            const availableSlots = timeSlotsFromBackend.filter(slot => slot.dateTime.startsWith(selectedDate));
+            alert(selectedDate+"3333");
+            if (availableSlots.length > 0) {
+                availableSlots.forEach(slot => {
+                    const option = document.createElement('option');
+                    option.value = slot.dateTime;
+                    option.textContent = slot.toString(); // 确保 slot 对象有 toString 方法
+                    timeSelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('option');
+                option.disabled = true;
+                option.textContent = '无可用时间段';
+                timeSelect.appendChild(option);
+            }
+        }
+
+        // 页面加载时初始化时间段选项
+        updateTimeSlot();
     </script>
 </head>
 <body>
@@ -106,7 +134,7 @@
                 <div class="label">
                     <label>预约日期：</label>
                 </div>
-                <div class="field">
+                <div class="field" onchange="updateTimeSlot(${timeSlotsFromBackend})" >
                     <input type="date" class="input" id="appointmentDate" name="Date">
                     <div class="tips"></div>
                 </div>
@@ -118,16 +146,6 @@
                 </div>
                 <div class="field">
                     <select id="appointmentTime" class="input" name="Time">
-                        <c:forEach items="${timeSlots}" var="entry">
-                            <c:choose>
-                                <c:when test="${entry.value == 0}">
-                                    <option value="${entry.key}" disabled>${entry.key} - 已满</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${entry.key}">${entry.key} - 剩余${entry.value}人</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
                     </select>
                 </div>
             </div>
