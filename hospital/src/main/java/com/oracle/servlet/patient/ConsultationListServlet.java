@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/patient/consultationListServlet")
 public class ConsultationListServlet extends HttpServlet {
@@ -24,14 +25,20 @@ public class ConsultationListServlet extends HttpServlet {
         //初始条数默认为5
         Integer pageSize=5;
 
+        Integer pid = null;
+        String sPid=req.getParameter("pid");
+        if(sPid!=null && !"0".equals(sPid)){
+            pid=Integer.parseInt(sPid);
+        }
+
         //判断是否能够获取得到page页的信息
         if(strPageNum!=null&&!"".equals(strPageNum)){
             pageNum=Integer.parseInt(strPageNum);
         }
         ConsultationService consultationService=new ConsultationServiceImpl();
-        PageInfo<Consultation> pageInfo=consultationService.list(pageNum,pageSize);
-        req.setAttribute("consultationList",pageInfo.getList());
-        req.setAttribute("pageInfo",pageInfo);
+        List<Consultation> consultationList=consultationService.getConsultationsByPatientId(pid);
+        req.setAttribute("consultationList",consultationList);
+        req.setAttribute("pid",pid);
         req.getRequestDispatcher("/public/patient/root_consultation.jsp").forward(req,resp);
 
     }

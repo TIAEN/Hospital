@@ -40,7 +40,7 @@
 
     <h2><span class="icon-user"></span>就诊管理</h2>
     <ul style="display:block">
-      <li><a href="<%=request.getContextPath()%>/patient/rootAddConsultationServlet" target="right"><span class="icon-caret-right"></span>就诊信息</a></li>
+      <li><a href="<%=request.getContextPath()%>/patient/rootAddConsultationServlet?patientId=${patientId}" target="right"><span class="icon-caret-right"></span>就诊信息</a></li>
       <li><a href="<%=request.getContextPath()%>/patient/rootAppointmentServlet" target="right"><span class="icon-caret-right"></span>患者预约</a></li>
       <li><a href="<%=request.getContextPath()%>/patientPayViewServlet?phone=${phone}" target="right"><span class="icon-caret-right"></span>住院缴费</a></li>
     </ul>
@@ -49,7 +49,7 @@
     <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
     <ul style="display:block">
       <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>科室列表</a></li>
-      <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>医生列表</a></li>
+      <li><a href="<%=request.getContextPath()%>/backend/doctorListServlet" target="right"><span class="icon-caret-right"></span>医生列表</a></li>
     </ul>
 
   <h2><span class="icon-pencil-square-o"></span>信息管理</h2>

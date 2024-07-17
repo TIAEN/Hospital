@@ -11,13 +11,23 @@ public class Consultation {
     private Integer isHospitalized;
     private String medicalAdviceCase;
 
-    private String doctorName;
+    private String doctorName; //新增 doctor属性
+    private String departmentName;   //新增 departmentName属性
+
     private Integer departmentId;
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
 
     public Consultation() {
     }
 
-    public Consultation(Integer consultationId, Integer patientId, Integer doctorId, Date consultationTime, Integer isHospitalRegistered, Integer isHospitalized, String medicalAdviceCase, String doctorName, Integer departmentId) {
+    public Consultation(Integer consultationId, Integer patientId, Integer doctorId, Date consultationTime, Integer isHospitalRegistered, Integer isHospitalized, String medicalAdviceCase, String doctorName, String departmentName) {
         this.consultationId = consultationId;
         this.patientId = patientId;
         this.doctorId = doctorId;
@@ -26,7 +36,7 @@ public class Consultation {
         this.isHospitalized = isHospitalized;
         this.medicalAdviceCase = medicalAdviceCase;
         this.doctorName = doctorName;
-        this.departmentId = departmentId;
+        this.departmentName = departmentName;
     }
 
     public Integer getConsultationId() {
@@ -93,12 +103,12 @@ public class Consultation {
         this.doctorName = doctorName;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     @Override
@@ -112,7 +122,7 @@ public class Consultation {
                 ", isHospitalized=" + isHospitalized +
                 ", medicalAdviceCase='" + medicalAdviceCase + '\'' +
                 ", doctorName='" + doctorName + '\'' +
-                ", departmentId=" + departmentId +
+                ", departmentName='" + departmentName + '\'' +
                 '}';
     }
 }

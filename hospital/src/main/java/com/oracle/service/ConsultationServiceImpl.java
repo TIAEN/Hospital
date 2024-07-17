@@ -62,7 +62,7 @@ public class ConsultationServiceImpl implements ConsultationService{
             ConsultationMapper consultationMapper = sqlSession.getMapper(ConsultationMapper.class);
             List<Consultation> consultationList=consultationMapper.selectConsultationAll();
             sqlSession.close();
-            return new PageInfo<Consultation>(consultationList);
+            return new PageInfo<>(consultationList);
         }
 
         @Override
@@ -85,4 +85,5 @@ public class ConsultationServiceImpl implements ConsultationService{
                 sqlSession.close();
                 return iMaxConsultationId;
             }
+
 }

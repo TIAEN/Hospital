@@ -41,9 +41,33 @@
             ORDER BY consultation_id ASC;
         </select>
 
-
         <select id="selectMaxConsultationId" resultType="java.lang.String">
             select max(consultation_id) from consultation
         </select>
+
+        <!--
+        <select id="selectConsultationSearch" resultType="com.oracle.pojo.Consultation">
+            select
+            d.consultation_id as consultationId,
+            d.patient_id as patientId,
+            d.doctor_id as doctorId,
+            d.consultation_time as consultationTime,
+            d.is_hospital_registered as isHospitalRegistered,
+            d.is_hospitalized as isHospitalized,
+            d.medical_advice_case as medicalAdviceCase,
+            dept.department_name as departmentName,
+            p.name as doctorName
+            from consultation d left join departments dept on(dept.department_id=d.department_id)
+            left join doctors p on(d.doctor_id =p.doctor_id)
+            <where>
+                <if test="did !=null">
+                    and department_id=#{did}
+                </if>
+                <if test="pid !=null">
+                    and doctor_id=#{pid}
+                </if>
+            </where>
+        </select>
+        -->
 
 </mapper>

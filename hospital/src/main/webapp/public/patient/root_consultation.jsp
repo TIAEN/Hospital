@@ -25,14 +25,12 @@
         <div class="panel-head"><strong class="icon-reorder"> 就诊列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
         <div class="padding border-bottom" >
             <ul class="search" style="padding-left:10px;">
-
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addConsultationViewServlet">就诊</a> </li>
                     <li> <form method="get" action="<%=request.getContextPath()%>/patient/consultationListServlet"></form></li>
             </ul>
         </div>
 
         <table class="table table-hover text-center">
-            <tr>
+            <th>
                 <th width="100" style="text-align:left; padding-left:20px;">就诊编号</th>
                 <th>医生姓名</th>
                 <th>就诊科室</th>
@@ -40,21 +38,25 @@
                 <th>是否住院</th>
                 <th>是否住院登记</th>
                 <th width="310">医嘱病例</th>
-            </tr>
+            </th>
 
             <c:forEach items="${rootConsultationList}"  varStatus="v" var="d">
 
-                <tr>
+                <!-- 只显示匹配的 consultationId -->
 
-                    <td>${d.consultationId}</td>
-                    <td>${d.doctorName}</td>
-                    <td>${d.departmentName}</td>
-                    <td>${d.consultationTime}</td>
-                    <td>${d.isHospitalRegistered == 1 ? "是" : "否"}</td>
-                    <td>${d.isHospitalized == 1 ? "是" : "否"}</td>
-                    <td>${d.medicalAdviceCase}</td>
+                    <tr>
+                        <td style="text-align:left; padding-left:20px;">
+                                ${v.count}</td>
+                        <td>${d.consultationId}</td>
+                        <td>${d.doctorName}</td>
+                        <td>${d.departmentName}</td>
+                        <td>${d.consultationTime}</td>
+                        <td>${d.isHospitalRegistered == 1 ? "是" : "否"}</td>
+                        <td>${d.isHospitalized == 1 ? "是" : "否"}</td>
+                        <td>${d.medicalAdviceCase}</td>
+                    </tr>
 
-                </tr>
+
             </c:forEach>
 
             <tr>

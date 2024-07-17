@@ -29,4 +29,5 @@ public interface ConsultationService {
         Integer getCurrentMaxConsultationId();
 
         PageInfo<Consultation> list(Integer pageNum, Integer pageSize);
+
 }

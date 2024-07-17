@@ -1,6 +1,7 @@
 package com.oracle.mapper;
 
 import com.oracle.pojo.Consultation;
+import com.oracle.pojo.Doctor;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public interface ConsultationMapper {
 
         List<Consultation> selectConsultationAll();
 
-
         String selectMaxConsultationId();
+
 }

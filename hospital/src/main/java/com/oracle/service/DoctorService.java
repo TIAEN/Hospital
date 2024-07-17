@@ -22,4 +22,5 @@ public interface DoctorService {
     void encryption(Integer id);    //通过ID对用户的密码进行加密
 
     void addDoctor(Doctor doctor);
+
 }
