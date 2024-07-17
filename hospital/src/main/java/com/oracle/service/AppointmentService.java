@@ -8,5 +8,11 @@ public interface AppointmentService {
 
     List<Appointment> appointmentList(Integer id);
 
-    void insertAppointment(Appointment appointment);
+    void insertintoAppointment(Appointment appointment);
+
+    void cancelAppointment(Integer id);
+
+    Appointment getAppointmentById(Integer id);
+
+    List<Appointment> getAppointmentOrderBy();
 }

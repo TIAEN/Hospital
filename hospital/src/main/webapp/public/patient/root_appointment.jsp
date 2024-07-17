@@ -27,15 +27,11 @@
             <ul class="search" style="padding-left:10px;">
 
                 <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet?pid=1"> 预约</a> </li><!--${patientId}-->
-                    <li> <form method="get" action="<%=request.getContextPath()%>/patient/appointmentListServlet">
-                        <input type="text" class="input" id="userInput" name="userName" value="请输入姓名" placeholder="请输入姓名"><label for="userInput"> </label>
-</form>
 
-                </li>
 
             </ul>
         </div>
-        <table class="table table-hover text-center">
+        <table class="table table-hover text-center" id="appointmentTable">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>
                 <th>患者名称</th>
@@ -45,21 +41,19 @@
                 <th width="310">操作</th>
             </tr>
             <c:forEach items="${appointmentList}" var="d" varStatus="v">
-                <tr id="${d.appointmentId}">
+                    <tr id="${d.appointmentId}">
                     <td style="text-align:left; padding-left:20px;">${v.count}</td>
 
-                    <td>${d.departmentName}</td>
-                    <td>${d.departmentDescription}</td>
-                    <td>
-                        <div class="button-group">
-                            <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.departmentId})">
-                            <span class="icon-trash-o">
-
-                            </span> 删除
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                        <td>${d.patientName}</td>
+                        <td>${d.doctorName}</td>
+                        <td>${d.appointmentDate}</td>
+                        <td>${d.currentStatus}</td>
+                        <td>
+                            <c:if test="${d.currentStatus == 'booked'}">
+                                <button type="button" onclick="cancelAppointment(${d.appointmentId})">取消</button>
+                            </c:if>
+                        </td>
+                    </tr>
             </c:forEach>
         </table>
     </div>
@@ -76,6 +70,34 @@
         }else{
 
         }
+    }
+    function cancelAppointment(appointmentId) {
+        // 这里添加取消预约
+        if(confirm("确认取消该预约吗，该操作不可撤销")){
+            fetch('<%=request.getContextPath()%>/patient/cancelAppointmentServlet', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        'appointmentId': appointmentId
+                    })
+                }
+            )
+                .then(response => response.text())
+                .then(appointmentList => {
+
+                    handleResponse(appointmentList);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('发生错误：', error);
+                })
+        }
+    }
+    function handleResponse(appointmentList){
+
+
     }
 </script>
 </body>

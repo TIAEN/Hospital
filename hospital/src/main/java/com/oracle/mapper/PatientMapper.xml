@@ -84,11 +84,6 @@
         select * from patients where id_card_number =#{idCardNumber}
     </select>
 
-    <select id="selectPatientByPatientId" resultMap="patientMap">
-        select * from patients where patient_id=#{patientId}
-    </select>
-
-
     <update id="updatePatientPasswordByPatientId">
         update patients set password=#{password} where patient_id=#{patientId}
     </update>
@@ -111,13 +106,20 @@
         insert into patients(patient_id,id_card_number,password,name) values(null,#{idCardNumber},#{password},#{name})
     </insert>
 
+    <select id="selectMaxPatientId" resultType="java.lang.String">
+        select max(patient_id) from patient
+    </select>
 
     <select id="selectPatientsByName" resultType="com.oracle.pojo.Patient">
         select * from patient where name=#{patientName}
     </select>
 
-    <select id="selectMaxPatientId" resultType="java.lang.String">
-        select max(patient_id) from patient
+    <select id="selectPatientByPatientId" resultMap="patientMap">
+        select * from patients where patient_id=#{patientId}
+    </select>
+
+    <select id="returnNameById" resultType="java.lang.String">
+        select name from patients where patient_id=#{id}
     </select>
 
 

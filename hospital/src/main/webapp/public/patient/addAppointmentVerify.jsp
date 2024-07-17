@@ -37,7 +37,7 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('appointmentTime').addEventListener('change', checkTime);
             document.getElementById('appointmentDate').addEventListener('change', checkTime);
         });
@@ -119,6 +119,16 @@
                             </c:choose>
                         </c:forEach>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>预约金额：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" value="${fee}" readonly>
+                    <div class="tips"></div>
                 </div>
             </div>
 

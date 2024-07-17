@@ -5,6 +5,7 @@ import com.oracle.pojo.BookAppointment;
 import com.oracle.utils.DBUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Date;
 import java.util.List;
 
 public class BookAppointmentServiceimpl implements BookAppointmentService {
@@ -17,6 +18,41 @@ public class BookAppointmentServiceimpl implements BookAppointmentService {
         return bookAppointmentList;
     }
 
+    @Override
+    public void insertBookAppointment(BookAppointment bookAppointment) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
+        bookAppointmentMapper.insertBookAppointment(bookAppointment);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public boolean isExistBookAppointmentByDate(Date date) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
+        boolean i=bookAppointmentMapper.isExistAppointmentDate(date);
+        sqlSession.close();
+        return i;
+    }
+
+    @Override
+    public void updateBookAppointment(BookAppointment bookAppointment) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
+        bookAppointmentMapper.updateBookAppointment(bookAppointment);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public void updateBookAppointmentAdd(Date appointmentDate) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
+        bookAppointmentMapper.updateBookAppointmentAdd(appointmentDate);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
 
 
 }

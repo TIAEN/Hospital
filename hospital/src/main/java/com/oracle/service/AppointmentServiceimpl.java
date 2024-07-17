@@ -20,11 +20,39 @@ public class AppointmentServiceimpl implements AppointmentService {
     }
 
     @Override
-    public void insertAppointment(Appointment appointment) {
+    public void insertintoAppointment(Appointment appointment) {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
         appointmentMapper.insertAppointment(appointment);
-        sqlSession.commit();
+        sqlSession.commit(true);
         sqlSession.close();
+    }
+
+    @Override
+    public void cancelAppointment(Integer id) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
+        appointmentMapper.cancelAppointment(id);
+        sqlSession.commit(true);
+        sqlSession.close();
+    }
+
+    @Override
+    public Appointment getAppointmentById(Integer id) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
+        Appointment appointment=appointmentMapper.selectAppointmentById(id);
+        //System.out.println("::::;;;;;;;;;;;;;;;;;;;"+id);
+        sqlSession.close();
+        return appointment;
+    }
+
+    @Override
+    public List<Appointment> getAppointmentOrderBy() {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
+        List<Appointment> appointmentList=appointmentMapper.selectAllOrderBy();
+        sqlSession.close();
+        return appointmentList;
     }
 }

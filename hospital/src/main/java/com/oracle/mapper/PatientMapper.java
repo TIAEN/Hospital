@@ -41,4 +41,6 @@ public interface PatientMapper {
     Patient selectPatientsByName(String name);
 
     String selectMaxPatientId();
+
+    String returnNameById(Integer id);
 }

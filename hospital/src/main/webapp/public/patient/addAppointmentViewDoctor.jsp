@@ -23,9 +23,11 @@
 <body>
 <form method="post" action="" id="listform">
     <div class="panel admin-panel">
-        <div class="panel-head"><strong class="icon-reorder"> 科室列表</strong></div>
+        <div class="panel-head"><strong class="icon-reorder"> 选择医生</strong></div>
         <div class="padding border-bottom">
-
+            <ul class="search" style="padding-left:10px;">
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewSecond?ServletdepartmentFirstId=${b.departmentId}&patientId=${patientId}"> 返回</a> </li>
+            </ul>
         </div>
         <table class="table table-hover text-center">
             <tr>
@@ -45,9 +47,9 @@
                     <td>${b.introduction}</td>
                     <td>
                         <div class="button-group">
-                            <a class="button border-main" href="<%=request.getContextPath()%>/patient/addAppointmentVerifyServlet?departmentFirstId=${departmentFirstId}&patientId=${patientId}&departmentSecondId=${departmentSecondId}&doctorId=${b.doctorId}">
+                                <a class="button border-main" href="<%=request.getContextPath()%>/patient/addAppointmentVerifyServlet?departmentFirstId=${departmentFirstId}&patientId=${patientId}&departmentSecondId=${departmentSecondId}&doctorId=${b.doctorId}&fee=${b.registrationFee}">
                                 <span class="icon-edit">
-                                </span>提交
+                                </span>确认
                             </a>
                         </div>
                     </td>

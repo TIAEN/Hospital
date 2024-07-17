@@ -1,6 +1,5 @@
 package com.oracle.mapper;
 
-import com.oracle.pojo.Admin;
 import com.oracle.pojo.Doctor;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +27,6 @@ public interface DoctorMapper {
 
     //添加处 用于查询所有的医生
     List<Doctor> selectDoctorAll();
+
+    String returnNameById(Integer id);
 }

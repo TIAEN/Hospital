@@ -45,5 +45,5 @@ public interface PatientService {
 
     void pay(String phone,Float pay);
 
-
+    String selectPatientNameById(Integer id);
 }

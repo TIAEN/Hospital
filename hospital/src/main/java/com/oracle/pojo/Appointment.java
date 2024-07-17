@@ -78,16 +78,15 @@ public class Appointment implements Serializable {
     }
 
 
-    private status currentStatus;
+    private String currentStatus;
 
-    public void setStatus(status status) {
-        this.currentStatus = status;
-    }
-
-    public status getStatus() {
+    public String getCurrentStatus() {
         return currentStatus;
     }
 
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
 
     @Override
     public String toString() {

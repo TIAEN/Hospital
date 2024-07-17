@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 //确认界面
@@ -26,11 +27,13 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
         String pDepartmentSecondId=req.getParameter("departmentSecondId");
         String pPatientId=req.getParameter("patientId");
         String pDoctorId=req.getParameter("doctorId");
+        String pFee=req.getParameter("fee");
         //System.out.println(pDoctorId+")))))))))))))))))))))");
         Integer DepartmentFirstId=null;
         Integer DepartmentSecondId=null;
         Integer PatientId=null;
         Integer DoctorId=null;
+        BigDecimal Fee=null;
 
         if(pDepartmentFirstId!=null&&!pDepartmentFirstId.equals("")){
             DepartmentFirstId=Integer.parseInt(pDepartmentFirstId);
@@ -43,6 +46,9 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
         }
         if(pDoctorId!=null&&!pDoctorId.equals("")){
             DoctorId=Integer.parseInt(pDoctorId);
+        }
+        if(pFee!=null&&!pFee.equals("")){
+            Fee=BigDecimal.valueOf(Double.parseDouble(pFee));
         }
 
         //System.out.println(DoctorId+" "+PatientId+" "+DepartmentFirstId+" "+DepartmentSecondId+"//////////////");
@@ -68,6 +74,7 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
         req.setAttribute("departmentSecondId",DepartmentSecondId);
         req.setAttribute("patientId",PatientId);
         req.setAttribute("doctorId",DoctorId);
+        req.setAttribute("fee",Fee);
 
 
 
@@ -76,8 +83,19 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
 
         BookAppointmentService bookAppointmentService=new BookAppointmentServiceimpl();
         List<BookAppointment> bookAppointmentList=bookAppointmentService.getBookAppointmentAll();
+        SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm");
+
         for(BookAppointment bookAppointment:bookAppointmentList){
-            String date=bookAppointment.getAppointmentDate().toString();
+            String pdate=bookAppointment.getAppointmentDate().toString();
+            Date sdate=null;
+            String date=null;
+            try {
+                sdate = inputFormat.parse(pdate);;
+                date = outputFormat.format(sdate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             timeSlots.put(date,bookAppointment.getBookNumber());
         }
 

@@ -23,9 +23,12 @@
 <body>
 <form method="post" action="" id="listform">
     <div class="panel admin-panel">
-        <div class="panel-head"><strong class="icon-reorder"> 科室列表</strong></div>
+        <div class="panel-head"><strong class="icon-reorder"> 选择一级科室</strong></div>
         <div class="padding border-bottom">
-
+            <ul class="search" style="padding-left:10px;">
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/rootAppointmentServlet"> 返回</a> </li>
+            </ul>
+        </div>
         </div>
         <table class="table table-hover text-center">
             <tr>

@@ -2,9 +2,7 @@ package com.oracle.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.oracle.mapper.AdminMapper;
 import com.oracle.mapper.DoctorMapper;
-import com.oracle.pojo.Admin;
 import com.oracle.pojo.Doctor;
 import com.oracle.utils.DBUtils;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -54,15 +52,6 @@ public class DoctorServiceImpl implements DoctorService{
         doctor.setRegistrationFee(doctorpo.getRegistrationFee());
         sqlSession.close();
         return true;
-    }
-
-    @Override
-    public Doctor getDoctorById(Integer doctor_id) {
-        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
-        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
-        Doctor doctor=doctorMapper.selectDoctorById(doctor_id);
-        sqlsession.close();
-        return doctor;
     }
 
     @Override
@@ -129,11 +118,28 @@ public class DoctorServiceImpl implements DoctorService{
         SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
         DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
         List<Doctor> doctorList=doctorMapper.selectDoctorByDepartmentId(pId);
-        System.out.println("???????????????????");
         for(Doctor doctor:doctorList){
             System.out.println(doctor+" ");
         }
         sqlSession.close();
         return new PageInfo<Doctor>(doctorList);
+    }
+
+    @Override
+    public Doctor getDoctorById(Integer doctor_id) {
+        SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
+        Doctor doctor=doctorMapper.selectDoctorById(doctor_id);
+        sqlsession.close();
+        return doctor;
+    }
+
+    @Override
+    public String findDoctorNameById(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        String name=doctorMapper.returnNameById(id);
+        sqlSession.close();
+        return name;
     }
 }

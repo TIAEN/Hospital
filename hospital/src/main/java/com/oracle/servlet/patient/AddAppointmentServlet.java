@@ -1,6 +1,7 @@
 package com.oracle.servlet.patient;
 
 import com.oracle.pojo.Appointment;
+import com.oracle.pojo.BookAppointment;
 import com.oracle.service.*;
 
 import javax.servlet.ServletException;
@@ -30,6 +31,7 @@ public class AddAppointmentServlet extends HttpServlet {
         if(pPatientId!=null&&!pPatientId.equals("")){
             PatientId=Integer.parseInt(pPatientId);
         }
+
         if(pDoctorId!=null&&!pDoctorId.equals("")){
             DoctorId=Integer.parseInt(pDoctorId);
         }
@@ -49,16 +51,30 @@ public class AddAppointmentServlet extends HttpServlet {
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceImpl();
         AppointmentService appointmentService=new AppointmentServiceimpl();
+        BookAppointmentService bookAppointmentService=new BookAppointmentServiceimpl();
 
         Appointment appointment=new Appointment();
         appointment.setDoctorId(DoctorId);
+        System.out.println("AddAppointmentServlet测试点"+appointment.getDoctorId());
         appointment.setPatientId(PatientId);
+        System.out.println("AddAppointmentServlet测试点"+appointment.getPatientId());
         appointment.setAppointmentDate(date);
         appointment.setAppointmentId(null);
-        appointment.setStatus(Appointment.status.booked);
+        appointment.setCurrentStatus("booked");
 
-        appointmentService.insertAppointment(appointment);
 
+        BookAppointment bookAppointment=new BookAppointment();
+        bookAppointment.setAppointmentDate(date);
+        bookAppointment.setBookNumber(3);
+
+        if(!bookAppointmentService.isExistBookAppointmentByDate(date)){
+            bookAppointmentService.insertBookAppointment(bookAppointment);
+        }
+
+        bookAppointmentService.updateBookAppointment(bookAppointment);
+
+        appointmentService.insertintoAppointment(appointment);
+        System.out.println("AddAppointmentServlet测试点"+appointment);
         req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
 
     }

@@ -185,5 +185,12 @@ public class PatientServiceImpl implements PatientService {
         return iMaxPatientId;
     }
 
-
+    @Override
+    public String selectPatientNameById(Integer id) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        PatientMapper patientMapper = sqlSession.getMapper(PatientMapper.class);
+        String name=patientMapper.returnNameById(id);
+        sqlSession.close();
+        return name;
+    }
 }
