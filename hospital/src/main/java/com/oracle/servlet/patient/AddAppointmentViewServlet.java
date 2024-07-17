@@ -38,14 +38,14 @@ public class AddAppointmentViewServlet extends HttpServlet {
         DepartmentService departmentService=new DepartmentServiceimpl();
         PageInfo<Department> pageInfo=departmentService.findDepartmentListFirst(pageNum,pageSize);
 
-        System.out.println("////////////////////"+pageInfo);
+        //System.out.println("////////////////////"+pageInfo);
         req.setAttribute("departmentList",pageInfo.getList());
         req.setAttribute("pageInfo",pageInfo);
         //req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req,resp);
-        System.out.println("////////////////////"+pageInfo.getList());
+        //System.out.println("////////////////////"+pageInfo.getList());
 
         String patientId=req.getParameter("pid");
-        System.out.println("////////////////////"+patientId);
+        //System.out.println("////////////////////"+patientId);
         req.setAttribute("patientId", patientId);
         req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req, resp);
     }

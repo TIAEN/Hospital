@@ -54,5 +54,8 @@
     <select id="selectDoctorByDepartmentId" resultMap="doctorMap">
         select * from doctors where department_id=#{departmentId}
     </select>
+    <select id="returnNameById" resultType="java.lang.String">
+        select name from doctors where doctor_id=#{id}
+    </select>
 
 </mapper>

@@ -7,7 +7,14 @@ import java.util.List;
 
 public interface BookAppointmentMapper {
 
-   BookAppointment selectByAppointmentDate(Date appointmentDate);
+   boolean isExistAppointmentDate(Date appointmentDate);
 
    List<BookAppointment> selectAll();
+
+   void insertBookAppointment(BookAppointment bookAppointment);
+
+   void updateBookAppointment(BookAppointment bookAppointment);
+
+   void updateBookAppointmentAdd(Date appointmentDate);
+
 }

@@ -34,7 +34,7 @@
                 <th>标题</th>
                 <th>内容</th>
                 <th>发布时间</th>
-                <th width="310">操作</th>
+                c
             </tr>
             <c:forEach items="${rootAnnouncementList}" var="d" varStatus="v">
                     <tr id="${d.announcementId}">

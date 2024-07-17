@@ -24,4 +24,13 @@ public class PatientServiceimpl implements PatientService {
         sqlSession.close();
         return patients;
     }
+
+    @Override
+    public String selectPatientNameById(Integer id) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        PatientsMapper patientsMapper = sqlSession.getMapper(PatientsMapper.class);
+        String name=patientsMapper.returnNameById(id);
+        sqlSession.close();
+        return name;
+    }
 }

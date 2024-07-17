@@ -96,4 +96,13 @@ public class DoctorServiceImpl implements DoctorService{
         sqlSession.close();
         return doctor;
     }
+
+    @Override
+    public String findDoctorNameById(Integer id) {
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        String name=doctorMapper.returnNameById(id);
+        sqlSession.close();
+        return name;
+    }
 }

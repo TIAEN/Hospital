@@ -35,7 +35,7 @@
 
             </ul>
         </div>
-        <table class="table table-hover text-center">
+        <table class="table table-hover text-center" id="appointmentTable">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>
                 <th>患者名称</th>
@@ -48,16 +48,14 @@
                 <tr id="${d.appointmentId}">
                     <td style="text-align:left; padding-left:20px;">${v.count}</td>
 
-                    <td>${d.departmentName}</td>
-                    <td>${d.departmentDescription}</td>
+                    <td>${d.patientName}</td>
+                    <td>${d.doctorName}</td>
+                    <td>${d.appointmentDate}</td>
+                    <td>${d.currentStatus}</td>
                     <td>
-                        <div class="button-group">
-                            <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.departmentId})">
-                            <span class="icon-trash-o">
-
-                            </span> 删除
-                            </a>
-                        </div>
+                        <c:if test="${d.currentStatus == 'booked'}">
+                            <button type="button" onclick="cancelAppointment(${d.appointmentId})">取消</button>
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>
@@ -76,6 +74,34 @@
         }else{
 
         }
+    }
+    function cancelAppointment(appointmentId) {
+        // 这里添加取消预约
+        if(confirm("确认取消该预约吗，该操作不可撤销")){
+            fetch('<%=request.getContextPath()%>/patient/cancelAppointmentServlet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'appointmentId': appointmentId
+                })
+            }
+            )
+                .then(response => response.text())
+                .then(appointmentList => {
+
+                    handleResponse(appointmentList);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('发生错误：', error);
+                })
+        }
+    }
+    function handleResponse(appointmentList){
+
+
     }
 </script>
 </body>

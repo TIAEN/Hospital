@@ -1,6 +1,7 @@
 package com.oracle.servlet.patient;
 
 import com.oracle.pojo.Appointment;
+import com.oracle.pojo.BookAppointment;
 import com.oracle.service.*;
 
 import javax.servlet.ServletException;
@@ -43,23 +44,35 @@ public class AddAppointmentServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        System.out.println(date+"-----------");
+        //System.out.println(date+"-----------");
 
         DepartmentService departmentService=new DepartmentServiceimpl();
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceimpl();
         AppointmentService appointmentService=new AppointmentServiceimpl();
+        BookAppointmentService bookAppointmentService=new BookAppointmentServiceimpl();
 
         Appointment appointment=new Appointment();
+
         appointment.setDoctorId(DoctorId);
         appointment.setPatientId(PatientId);
         appointment.setAppointmentDate(date);
         appointment.setAppointmentId(null);
-        appointment.setStatus(Appointment.status.booked);
+        appointment.setCurrentStatus("booked");
+
+        BookAppointment bookAppointment=new BookAppointment();
+        bookAppointment.setAppointmentDate(date);
+        bookAppointment.setBookNumber(3);
+
+        if(!bookAppointmentService.isExistBookAppointmentByDate(date)){
+            bookAppointmentService.insertBookAppointment(bookAppointment);
+        }
+
+        bookAppointmentService.updateBookAppointment(bookAppointment);
 
         appointmentService.insertAppointment(appointment);
 
-        req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
+        req.getRequestDispatcher("/patient/rootAppointmentServlet").forward(req, resp);
 
     }
 }

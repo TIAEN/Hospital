@@ -10,12 +10,22 @@
         <result column="bookNumber" property="bookNumber"/>
 
     </resultMap>
-    <select id="selectByAppointmentDate" resultMap="bookAppointmentMap">
-        select * from appointmentbooknumber where appointment_date=#{appointmentDate}
-    </select>
+    <insert id="insertBookAppointment">
+        insert into appointmentbooknumber values (#{appointmentDate},#{bookNumber})
+    </insert>
+
+    <update id="updateBookAppointment">
+        update appointmentbooknumber set bookNumber=bookNumber-1 where appointment_date=#{appointmentDate}
+    </update>
+    <update id="updateBookAppointmentAdd">
+        update appointmentbooknumber set bookNumber=bookNumber+1 where appointment_date=#{appointmentDate}
+    </update>
 
     <select id="selectAll" resultMap="bookAppointmentMap">
         select * from appointmentbooknumber
     </select>
 
+    <select id="isExistAppointmentDate" resultType="java.lang.Boolean">
+        SELECT COUNT(1) FROM appointmentbooknumber WHERE appointment_date = #{appointmentDate};
+    </select>
 </mapper>

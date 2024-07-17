@@ -9,4 +9,10 @@ public interface AppointmentMapper {
     List<Appointment> selectAppointmentByPatientId(Integer id);
 
     void insertAppointment(Appointment appointment);
+
+    void cancelAppointment(Integer id);
+
+    List<Appointment> selectAllOrderBy();
+
+    Appointment selectAppointmentById(Integer id);
 }

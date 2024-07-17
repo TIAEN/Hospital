@@ -22,4 +22,6 @@ public interface DoctorMapper {
     List<Doctor> selectDoctorByDepartmentId(Integer departmentId);//找到一个科室下的医生
     //添加处 用于查询所有的医生
     List<Doctor> selectDoctorAll();
+
+    String returnNameById(Integer id);
 }

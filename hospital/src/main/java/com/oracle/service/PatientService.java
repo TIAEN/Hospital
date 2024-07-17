@@ -8,4 +8,5 @@ public interface PatientService {
 
     Patients selectPatientById(Integer id);
 
+    String selectPatientNameById(Integer id);
 }

@@ -94,6 +94,16 @@
 
             <div class="form-group">
                 <div class="label">
+                    <label>患者姓名：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" value="${patientName}" readonly>
+                    <div class="tips"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
                     <label>预约日期：</label>
                 </div>
                 <div class="field">
@@ -119,6 +129,16 @@
                             </c:choose>
                         </c:forEach>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>预约金额：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" value="${fee}" readonly>
+                    <div class="tips"></div>
                 </div>
             </div>
 
