@@ -117,5 +117,23 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentList;
     }
 
+    @Override
+    public PageInfo<Department> findDepartmentListFirst(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> departmentList=departmentMapper.selectRootDepartment();
+        sqlSession.close();
+        return new PageInfo<Department>(departmentList);
+    }
 
+    @Override
+    public PageInfo<Department> findDepartmentListSecond(int pageNum, int pageSize,int pId) {
+        PageHelper.startPage(pageNum, pageSize);
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DepartmentMapper departmentMapper=sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> departmentList=departmentMapper.selectDepartmentByPid(pId);
+        sqlSession.close();
+        return new PageInfo<Department>(departmentList);
+    }
 }

@@ -15,8 +15,6 @@ import java.util.Date;
 
 public class Appointment implements Serializable {
 
-
-
     private String doctorName;
     private String patientName;
 
@@ -40,7 +38,7 @@ public class Appointment implements Serializable {
     private Integer patientId;
     private Integer doctorId;
     private Date appointmentDate;
-    private enum status{
+    public enum status{
         booked,completed,cancelled;
     }
 

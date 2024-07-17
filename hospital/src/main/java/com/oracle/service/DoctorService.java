@@ -23,4 +23,5 @@ public interface DoctorService {
 
     void addDoctor(Doctor doctor);
 
+    PageInfo<Doctor> findDoctorListByDepartmentId(Integer pageNum, Integer pageSize, Integer pId);//找到一个科室下的医生
 }

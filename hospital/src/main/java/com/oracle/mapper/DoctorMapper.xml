@@ -96,6 +96,8 @@
         values(null,#{jobNumber},#{password},#{name},#{avatar},#{phone},#{email},#{introduction},#{registrationFee},#{entryDate},#{departmentId},#{professionalTitleId})
     </insert>
 
-
+    <select id="selectDoctorByDepartmentId" resultMap="doctorMap">
+        select * from doctors where department_id=#{departmentId}
+    </select>
 
 </mapper>

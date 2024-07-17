@@ -31,4 +31,8 @@ public interface DepartmentService {
     Department findDepartmentById(Integer id);
 
     List<Department> findRootDepartment();
+
+    PageInfo<Department> findDepartmentListFirst(int pageNum, int pageSize);//分页找到所有的一级科室
+
+    PageInfo<Department> findDepartmentListSecond(int pageNum, int pageSize,int pId);
 }

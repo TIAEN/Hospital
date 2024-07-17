@@ -4,6 +4,22 @@
 	
 <mapper namespace="com.oracle.mapper.AppointmentMapper">
 
-    <select id="selectAppointmentByPatientId" resultType="com.oracle.pojo.Appointment"></select>
+    <resultMap id="AppointmentMap" type="com.oracle.pojo.Appointment">
+        <id column="appointment_id" property="appointmentId"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="doctor_id" property="doctorId"/>
+        <result column="appointment_date" property="appointmentDate"/>
+        <result column="status" property="currentStatus"/>
+
+    </resultMap>
+
+
+    <select id="selectAppointmentByPatientId" resultMap="AppointmentMap">
+        select * from appointments where patient_id={id}
+    </select>
+
+    <insert id="insertAppointment" parameterType="com.oracle.pojo.Appointment">
+        insert into appointments values (null,#{patientId},#{doctorId},#{appointmentDate},#{currentStatus})
+    </insert>
 
 </mapper>

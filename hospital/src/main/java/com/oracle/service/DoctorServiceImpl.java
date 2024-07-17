@@ -122,4 +122,18 @@ public class DoctorServiceImpl implements DoctorService{
         sqlSession.commit();
         sqlSession.close();
     }
+
+    @Override
+    public PageInfo<Doctor> findDoctorListByDepartmentId(Integer pageNum, Integer pageSize, Integer pId) {
+        PageHelper.startPage(pageNum, pageSize);
+        SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
+        DoctorMapper doctorMapper=sqlSession.getMapper(DoctorMapper.class);
+        List<Doctor> doctorList=doctorMapper.selectDoctorByDepartmentId(pId);
+        System.out.println("???????????????????");
+        for(Doctor doctor:doctorList){
+            System.out.println(doctor+" ");
+        }
+        sqlSession.close();
+        return new PageInfo<Doctor>(doctorList);
+    }
 }

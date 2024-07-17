@@ -18,4 +18,13 @@ public class AppointmentServiceimpl implements AppointmentService {
         sqlSession.close();
         return appointmentList;
     }
+
+    @Override
+    public void insertAppointment(Appointment appointment) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
+        appointmentMapper.insertAppointment(appointment);
+        sqlSession.commit();
+        sqlSession.close();
+    }
 }
