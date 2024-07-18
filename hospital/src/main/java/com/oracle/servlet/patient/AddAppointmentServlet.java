@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 //后台添加
 @WebServlet("/patient/addAppointmentServlet")
@@ -65,7 +66,7 @@ public class AddAppointmentServlet extends HttpServlet {
 
         BookAppointment bookAppointment=new BookAppointment();
         bookAppointment.setAppointmentDate(date);
-        bookAppointment.setBookNumber(3);
+        bookAppointment.setBookNumber(5);
 
         if(!bookAppointmentService.isExistBookAppointmentByDate(date)){
             bookAppointmentService.insertBookAppointment(bookAppointment);
@@ -74,9 +75,14 @@ public class AddAppointmentServlet extends HttpServlet {
         bookAppointmentService.updateBookAppointment(bookAppointment);
 
         appointmentService.insertintoAppointment(appointment);
+
+
+        List<Appointment> appointmentList=appointmentService.appointmentList(PatientId);
+        System.out.println("222222222222222222222222222222222");
         req.setAttribute("patientId",PatientId);
+        req.setAttribute("appointmentList",appointmentList);
         System.out.println("AddAppointmentServlet测试点"+appointment);
-        req.getRequestDispatcher("/patient/rootAppointmentServlet").forward(req, resp);
+        req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
 
     }
 }

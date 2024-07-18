@@ -59,18 +59,6 @@
     </div>
 </form>
 <script type="text/javascript">
-    function del(id){
-        if(confirm("你确定删除吗")){
-
-            $.get("<%=request.getContextPath()%>/backend/deleteDepartmentServlet",{id:id},function (state){
-                if(state)
-                    $("#"+id).remove();
-            });
-
-        }else{
-
-        }
-    }
     function cancelAppointment(appointmentId) {
         // 这里添加取消预约
         if(confirm("确认取消该预约吗，该操作不可撤销")){
@@ -86,18 +74,12 @@
             )
                 .then(response => response.text())
                 .then(appointmentList => {
-
-                    handleResponse(appointmentList);
                     location.reload();
                 })
                 .catch(error => {
                     console.error('发生错误：', error);
                 })
         }
-    }
-    function handleResponse(appointmentList){
-
-
     }
 </script>
 </body>

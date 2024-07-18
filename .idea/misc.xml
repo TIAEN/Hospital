@@ -9,11 +9,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/baitis/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/baitis/pom.xml" />
         <option value="$PROJECT_DIR$/jspdemo/pom.xml" />
         <option value="$PROJECT_DIR$/mybaitis/pom.xml" />
       </set>

@@ -39,8 +39,12 @@ public class CancelAppointmentServlet extends HttpServlet {
 
 
         bookAppointmentService.updateBookAppointmentAdd(appointmentService.getAppointmentById(id).getAppointmentDate());
+
         appointmentService.cancelAppointment(id);
+
         List<Appointment> appointmentList=appointmentService.appointmentList(patientId);
+
+        System.out.println("11111111111111111111111111111111111111111111111111");
 
         String json = JSONObject.toJSONString(appointmentList);
         resp.setContentType("application/json");

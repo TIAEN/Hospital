@@ -109,12 +109,24 @@ public class AddAppointmentVerifyServlet extends HttpServlet {
 
     private Map<String, Integer> getTimeSlots() {
         Map<String, Integer> timeSlots = new HashMap<>();
-        for (int hour = 0; hour < 24; hour++) {
-            for (int minute = 0; minute < 60; minute += 15) {
+
+        // Generate time slots from 8:00 AM to 11:30 AM
+        for (int hour = 8; hour <= 11; hour++) {
+            for (int minute = 0; minute < 60; minute += 30) {
                 String time = String.format("%02d:%02d", hour, minute);
-                timeSlots.put(time, 3); // 初始化每个时间段剩余3人
+                timeSlots.put(time, 5); // Initialize each time slot with 3 available slots
             }
         }
+
+        // Generate time slots from 2:00 PM to 5:50 PM
+        for (int hour = 14; hour <= 17; hour++) {
+            for (int minute = 0; minute < 60; minute += 30) {
+                String time = String.format("%02d:%02d", hour, minute);
+                timeSlots.put(time, 5); // Initialize each time slot with 3 available slots
+            }
+        }
+
         return timeSlots;
     }
+
 }
