@@ -16,4 +16,6 @@ public interface AppointmentMapper {
     List<Appointment> selectAllOrderBy();
 
     Appointment selectAppointmentById(Integer id);
+
+    List<Appointment> selectAllByDoctorId(Integer id);
 }

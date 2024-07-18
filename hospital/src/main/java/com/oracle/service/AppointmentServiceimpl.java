@@ -6,6 +6,7 @@ import com.oracle.pojo.Appointment;
 import com.oracle.utils.DBUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Collections;
 import java.util.List;
 
 public class AppointmentServiceimpl implements AppointmentService {
@@ -52,6 +53,15 @@ public class AppointmentServiceimpl implements AppointmentService {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
         List<Appointment> appointmentList=appointmentMapper.selectAllOrderBy();
+        sqlSession.close();
+        return appointmentList;
+    }
+
+    @Override
+    public List<Appointment> getAllOrderByDoctorId(Integer id) {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
+        List<Appointment> appointmentList=appointmentMapper.selectAllByDoctorId(id);
         sqlSession.close();
         return appointmentList;
     }
