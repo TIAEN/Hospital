@@ -68,7 +68,7 @@
             <nav class="s-header__nav-wrap">
                 <h3 class="s-header__nav-heading">Navigate to</h3>
                 <ul class="s-header__nav">
-                    <li><a href="index.jsp" title="">目录页</a></li>
+                    <li><a href="<%=request.getContextPath()%>/index.jsp" title="">目录页</a></li>
 
                     <c:if test="${not empty AdminInfo}">
                         <li class="has-children">
