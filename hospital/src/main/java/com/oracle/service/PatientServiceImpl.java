@@ -83,6 +83,10 @@ public class PatientServiceImpl implements PatientService {
     public boolean login(Patient patient) {
         SqlSession sqlSession=DBUtils.createDbUtils().getSQLSession();
         PatientMapper patientMapper=sqlSession.getMapper(PatientMapper.class);
+        Integer count=patientMapper.selectCountByIdCardNumber(patient.getIdCardNumber());
+        if(count==0){
+            return false;
+        }
         Patient patientpo=patientMapper.selectPatientByIdCardNumber(patient.getIdCardNumber());
         String passwordpo=patientpo.getPassword();
         String password=patient.getPassword();
