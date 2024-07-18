@@ -22,17 +22,13 @@
 </head>
 <body>
 <form method="post" action="" id="listform">
-
-
     <div class="panel admin-panel">
         <div class="panel-head"><strong class="icon-reorder"> 选择二级科室</strong></div>
         <div class="padding border-bottom">
             <ul class="search" style="padding-left:10px;">
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet"> 返回</a> </li>
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet?pid=${patientId}"> 返回</a> </li>
             </ul>
         </div>
-
-
         <table class="table table-hover text-center">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>

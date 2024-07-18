@@ -8,7 +8,6 @@
 
     <resultMap id="doctorMap" type="com.oracle.pojo.Doctor">
         <id column="doctor_id" property="doctorId"/>
-
         <result column="doctor_id" property="doctorId"/>
         <result column="job_number" property="jobNumber"/>
         <result column="password" property="password"/>
@@ -23,8 +22,16 @@
         <result column="professional_title_id" property="professionalTitleId"/>
     </resultMap>
 
+    <select id="selectMaxJobNumber" resultType="java.lang.String">
+        select max(job_number) from doctors
+    </select>
+
     <select id="selectDoctorByJobNumber" resultMap="doctorMap">
         select * from doctors where job_number=#{jobNumber}
+    </select>
+
+    <select id="selectDoctorById" resultMap="doctorMap">
+        select * from doctors where doctor_id=#{id}
     </select>
 
     <select id="selectCountByJobNumber" resultType="java.lang.Integer">
@@ -35,12 +42,54 @@
         update doctors set password=#{password} where doctor_id=#{id}
     </update>
 
-    <select id="selectDoctorById" resultMap="doctorMap">
-        select * from doctors where doctor_id=#{id}
+    <update id="updateDoctor" parameterType="com.oracle.pojo.Doctor">
+        update doctors
+        <set>
+            <if test="email != null and email != ''">
+                email =#{email},
+            </if>
+
+            <if test="phone != null and phone != ''">
+                phone =#{phone},
+            </if>
+
+            <if test="avatar != null and avatar != ''">
+                avatar =#{avatar},
+            </if>
+
+            <if test="introduction != null and introduction != ''">
+                introduction =#{introduction}
+            </if>
+
+        </set>
+        where job_number=#{jobNumber}
+    </update>
+
+    <select id="selectDoctorSearch" resultType="com.oracle.pojo.Doctor">
+        select
+        d.doctor_id as doctorId,
+        d.job_number as jobNumber,
+        d.name as name,
+        d.avatar as avatar,
+        d.phone as phone,
+        d.email as email,
+        d.entry_date as entryDate,
+        dept.department_name as departmentName,
+        p.title_name as professionalTitleName
+        from doctors d left join departments dept on(dept.department_id=d.department_id)
+        left join professional_titles p on(d.professional_title_id =p.id)
+        <where>
+            <if test="name !=null and name !=''">
+                name like concat(#{name},'%')
+            </if>
+            <if test="pid !=null">
+                and professional_title_id=#{pid}
+            </if>
+        </where>
     </select>
 
-    <select id="selectMaxJobNumber" resultType="java.lang.String">
-        select max(job_number) from doctors
+    <select id="selectDoctorAll" resultMap="doctorMap">
+        select * from doctors
     </select>
 
     <insert id="insertIntoDoctor">
@@ -48,14 +97,11 @@
         values(null,#{jobNumber},#{password},#{name},#{avatar},#{phone},#{email},#{introduction},#{registrationFee},#{entryDate},#{departmentId},#{professionalTitleId})
     </insert>
 
-    <select id="selectDoctorAll" resultType="com.oracle.pojo.Doctor">
-        select * from doctors
-    </select>
     <select id="selectDoctorByDepartmentId" resultMap="doctorMap">
         select * from doctors where department_id=#{departmentId}
     </select>
+
     <select id="returnNameById" resultType="java.lang.String">
         select name from doctors where doctor_id=#{id}
     </select>
-
 </mapper>

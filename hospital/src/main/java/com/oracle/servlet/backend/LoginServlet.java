@@ -20,9 +20,10 @@ import java.io.IOException;
 @WebServlet("/backend/loginServlet")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String loginName = req.getParameter("username");
         String pwd = req.getParameter("password");
+        //由于增加了“请选择您的登录身份”，是否需要考虑roleId,为空的情况
         String roleId= req.getParameter("roleId");
         String requestCode= req.getParameter("code");
 
@@ -55,9 +56,11 @@ public class LoginServlet extends HttpServlet {
             sessionIdentify.setTag(0);
             sessionIdentify.setT(admin);
 
-            session.setAttribute("managerInfo",sessionIdentify);
-            session.setAttribute("AdminInfo",admin);
-            resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            //req.setAttribute("username",loginName);
+            session.setAttribute("manager",sessionIdentify);
+            req.setAttribute("AdminInfo",admin);
+            //resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            req.getRequestDispatcher("/main.jsp").forward(req,resp);
         }
         else if(roleId.equals("1")){
             //登录身份是医生
@@ -75,9 +78,13 @@ public class LoginServlet extends HttpServlet {
             sessionIdentify.setTag(1);
             sessionIdentify.setT(doctor);
 
-            session.setAttribute("manager",sessionIdentify);
+            //测试
+            req.setAttribute("jobNumber",loginName);
+
+            //session.setAttribute("manager",sessionIdentify);
             session.setAttribute("DoctorInfo",doctor);
-            resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            //resp.sendRedirect(req.getContextPath()+"/main.jsp");
+            req.getRequestDispatcher("/main.jsp").forward(req,resp);
         }
 
         //判断角色身份

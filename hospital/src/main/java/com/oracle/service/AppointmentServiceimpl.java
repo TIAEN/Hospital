@@ -11,7 +11,7 @@ import java.util.List;
 public class AppointmentServiceimpl implements AppointmentService {
 
     @Override
-    public List<Appointment> appointmentListByPatientId(Integer id) {
+    public List<Appointment> appointmentList(Integer id) {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
         List<Appointment> appointmentList=appointmentMapper.selectAppointmentByPatientId(id);
@@ -20,11 +20,11 @@ public class AppointmentServiceimpl implements AppointmentService {
     }
 
     @Override
-    public void insertAppointment(Appointment appointment) {
+    public void insertintoAppointment(Appointment appointment) {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
         appointmentMapper.insertAppointment(appointment);
-        sqlSession.commit();
+        sqlSession.commit(true);
         sqlSession.close();
     }
 
@@ -33,7 +33,7 @@ public class AppointmentServiceimpl implements AppointmentService {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         AppointmentMapper appointmentMapper= sqlSession.getMapper(AppointmentMapper.class);
         appointmentMapper.cancelAppointment(id);
-        sqlSession.commit();
+        sqlSession.commit(true);
         sqlSession.close();
     }
 

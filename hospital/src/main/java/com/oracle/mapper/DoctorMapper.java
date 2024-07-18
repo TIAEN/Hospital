@@ -7,19 +7,24 @@ import java.util.List;
 
 public interface DoctorMapper {
 
+    String selectMaxJobNumber();
+
     Doctor selectDoctorByJobNumber(String jobNumber);
 
     Integer selectCountByJobNumber(String jobNumber);
 
-    void updateDoctorPassword(@Param("password") String password, @Param("id") Integer id);
-
     Doctor selectDoctorById(Integer id);
 
-    String selectMaxJobNumber();
+    void updateDoctor(Doctor doctor);
+
+    List<Doctor> selectDoctorSearch(@Param("name") String name,@Param("pid")Integer pid);
 
     void insertIntoDoctor(Doctor doctor);
 
+    void updateDoctorPassword(@Param("password") String password, @Param("id") Integer id);
+
     List<Doctor> selectDoctorByDepartmentId(Integer departmentId);//找到一个科室下的医生
+
     //添加处 用于查询所有的医生
     List<Doctor> selectDoctorAll();
 

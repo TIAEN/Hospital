@@ -23,7 +23,7 @@ public class BookAppointmentServiceimpl implements BookAppointmentService {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
         bookAppointmentMapper.insertBookAppointment(bookAppointment);
-        sqlSession.commit();
+        sqlSession.commit(true);
         sqlSession.close();
     }
 
@@ -41,7 +41,7 @@ public class BookAppointmentServiceimpl implements BookAppointmentService {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
         bookAppointmentMapper.updateBookAppointment(bookAppointment);
-        sqlSession.commit();
+        sqlSession.commit(true);
         sqlSession.close();
     }
 
@@ -50,16 +50,9 @@ public class BookAppointmentServiceimpl implements BookAppointmentService {
         SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
         BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
         bookAppointmentMapper.updateBookAppointmentAdd(appointmentDate);
-        sqlSession.commit();
+        sqlSession.commit(true);
         sqlSession.close();
     }
 
-    @Override
-    public BookAppointment getBookAppointmentByDate(Date date) {
-        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
-        BookAppointmentMapper bookAppointmentMapper = sqlSession.getMapper(BookAppointmentMapper.class);
-        BookAppointment bookAppointment=bookAppointmentMapper.selectBookAppointmentByDate(date);
-        sqlSession.close();
-        return bookAppointment;
-    }
+
 }

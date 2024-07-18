@@ -31,6 +31,7 @@ public class AddAppointmentServlet extends HttpServlet {
         if(pPatientId!=null&&!pPatientId.equals("")){
             PatientId=Integer.parseInt(pPatientId);
         }
+
         if(pDoctorId!=null&&!pDoctorId.equals("")){
             DoctorId=Integer.parseInt(pDoctorId);
         }
@@ -46,19 +47,21 @@ public class AddAppointmentServlet extends HttpServlet {
 
         //System.out.println(date+"-----------");
 
-        DepartmentService departmentService=new DepartmentServiceimpl();
+        DepartmentService departmentService=new DepartmentServiceImpl();
         DoctorService doctorService=new DoctorServiceImpl();
-        PatientService patientService=new PatientServiceimpl();
+        PatientService patientService=new PatientServiceImpl();
         AppointmentService appointmentService=new AppointmentServiceimpl();
         BookAppointmentService bookAppointmentService=new BookAppointmentServiceimpl();
 
         Appointment appointment=new Appointment();
-
         appointment.setDoctorId(DoctorId);
+        System.out.println("AddAppointmentServlet测试点"+appointment.getDoctorId());
         appointment.setPatientId(PatientId);
+        System.out.println("AddAppointmentServlet测试点"+appointment.getPatientId());
         appointment.setAppointmentDate(date);
         appointment.setAppointmentId(null);
         appointment.setCurrentStatus("booked");
+
 
         BookAppointment bookAppointment=new BookAppointment();
         bookAppointment.setAppointmentDate(date);
@@ -70,9 +73,11 @@ public class AddAppointmentServlet extends HttpServlet {
 
         bookAppointmentService.updateBookAppointment(bookAppointment);
 
-        appointmentService.insertAppointment(appointment);
-
+        appointmentService.insertintoAppointment(appointment);
+        req.setAttribute("patientId",PatientId);
+        System.out.println("AddAppointmentServlet测试点"+appointment);
         req.getRequestDispatcher("/patient/rootAppointmentServlet").forward(req, resp);
 
     }
 }
+

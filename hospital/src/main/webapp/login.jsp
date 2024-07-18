@@ -29,6 +29,7 @@
             </div>
             <form action="<%=request.getContextPath()%>/backend/loginServlet" method="post">
                 <div class="panel loginbox">
+                    <li><a href="<%=request.getContextPath()%>/index.jsp" target="right"></span>返回首页</a></li>
                     <div class="text-center margin-big padding-big-top"><h1>后台管理中心</h1></div>
                     <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                         <div class="form-group">
@@ -51,7 +52,7 @@
 
                         <div class="form-group">
                             <div class="field">
-                                    <select name="roleid" class="input input-big" >
+                                    <select name="roleId" class="input input-big" >
 
                                     <option value="0">管理员</option>
                                     <option value="1">医生</option>

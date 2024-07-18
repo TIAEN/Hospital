@@ -3,7 +3,7 @@ package com.oracle.servlet.patient;
 import com.github.pagehelper.PageInfo;
 import com.oracle.pojo.Department;
 import com.oracle.service.DepartmentService;
-import com.oracle.service.DepartmentServiceimpl;
+import com.oracle.service.DepartmentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +22,8 @@ public class AddAppointmentViewServlet extends HttpServlet {
         //设置一下默认页的数据
 
         String strPageNum=req.getParameter("pageNum");
+        String patientId=req.getParameter("pid");
+
 
         //初始页面默认为1
         Integer pageNum=1;
@@ -35,7 +37,7 @@ public class AddAppointmentViewServlet extends HttpServlet {
 
 
 
-        DepartmentService departmentService=new DepartmentServiceimpl();
+        DepartmentService departmentService=new DepartmentServiceImpl();
         PageInfo<Department> pageInfo=departmentService.findDepartmentListFirst(pageNum,pageSize);
 
         //System.out.println("////////////////////"+pageInfo);
@@ -44,8 +46,8 @@ public class AddAppointmentViewServlet extends HttpServlet {
         //req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req,resp);
         //System.out.println("////////////////////"+pageInfo.getList());
 
-        String patientId=req.getParameter("pid");
-        //System.out.println("////////////////////"+patientId);
+
+        System.out.println("////////////////////"+patientId);
         req.setAttribute("patientId", patientId);
         req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req, resp);
     }

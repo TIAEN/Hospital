@@ -18,7 +18,7 @@ import java.util.Locale;
  */
 public class DateUtils {
     public static Date convertToDateLocal(String datetimeLocal) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime localDateTime = LocalDateTime.parse(datetimeLocal, formatter);
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }

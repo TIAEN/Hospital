@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.oracle.service.AnnouncementService;
 import com.oracle.service.AnnouncementServiceimpl;
 import com.oracle.service.DepartmentService;
-import com.oracle.service.DepartmentServiceimpl;
+import com.oracle.service.DepartmentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +25,7 @@ public class DeleteAnnouncementServlet extends HttpServlet {
         //System.out.println("////////////////////////////////"+id);
         AnnouncementService announcementService = new AnnouncementServiceimpl();
         announcementService.deleteAnnouncement(id);
-        DepartmentService departmentService=new DepartmentServiceimpl();
+        DepartmentService departmentService=new DepartmentServiceImpl();
         departmentService.deleteDepartmentFirst(id);
 
 

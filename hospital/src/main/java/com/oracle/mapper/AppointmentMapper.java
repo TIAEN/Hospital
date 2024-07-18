@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AppointmentMapper {
 
+
     List<Appointment> selectAppointmentByPatientId(Integer id);
 
     void insertAppointment(Appointment appointment);

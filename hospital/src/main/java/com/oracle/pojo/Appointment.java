@@ -15,8 +15,6 @@ import java.util.Date;
 
 public class Appointment implements Serializable {
 
-
-
     private String doctorName;
     private String patientName;
 

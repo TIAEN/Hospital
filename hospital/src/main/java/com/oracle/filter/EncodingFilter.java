@@ -18,7 +18,6 @@ import java.io.IOException;
 //这里需要说明过滤器针对谁生效，这里表示对所有请求
 @WebFilter("/*")
 public class EncodingFilter implements Filter {
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

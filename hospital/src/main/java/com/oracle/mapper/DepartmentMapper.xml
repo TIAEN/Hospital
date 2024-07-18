@@ -6,18 +6,19 @@
 
     <resultMap id="departmentMap" type="com.oracle.pojo.Department">
         <id column="department_id" property="departmentId"/>
-        <result column="department_id" property="departmentId"/>
+
         <result column="department_name" property="departmentName"/>
         <result column="department_description" property="departmentDescription"/>
         <result column="department_pid" property="departmentPid"/>
-
+        <result column="department_id" property="departmentId"/>
+        <result column="department_level" property="departmentLevel"/>
     </resultMap>
 
     <select id="selectRootDepartment" resultMap="departmentMap">
         select * from departments where department_level = 1
     </select>
 
-    <insert id="insertDepartment" parameterType="com.oracle.pojo.Department">
+    <insert id="insertDepartment" >
         insert into departments values (null,#{departmentName},#{departmentPid},#{departmentLevel},#{departmentDescription})
     </insert>
 
@@ -31,7 +32,8 @@
 
     <select id="selectRootDepartmentById" resultType="com.oracle.pojo.Department">
     select * from departments where department_id=#{departmentId}
-</select>
+    </select>
+
 
     <delete id="deleteByDepartmentId">
         delete from departments where department_id=#{departmentId}
@@ -52,7 +54,6 @@
     <select id="selectDepartmentByPid" resultMap="departmentMap">
         select * from departments where department_pid=#{pid}
     </select>
-
     <!--这里也可以用起别名的方式
     select department_id as departmentId,department_name as dapartmentName from ....
     -->
