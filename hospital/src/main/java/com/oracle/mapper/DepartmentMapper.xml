@@ -6,6 +6,7 @@
 
     <resultMap id="departmentMap" type="com.oracle.pojo.Department">
         <id column="department_id" property="departmentId"/>
+
         <result column="department_name" property="departmentName"/>
         <result column="department_description" property="departmentDescription"/>
         <result column="department_pid" property="departmentPid"/>

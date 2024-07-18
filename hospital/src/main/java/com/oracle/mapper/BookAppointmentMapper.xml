@@ -28,8 +28,8 @@
     <select id="isExistAppointmentDate" resultType="java.lang.Boolean">
         SELECT COUNT(1) FROM appointmentbooknumber WHERE appointment_date = #{appointmentDate};
     </select>
-
     <select id="selectBookAppointmentByDate" resultMap="bookAppointmentMap">
         SELECT * FROM appointmentbooknumber WHERE appointment_date = #{appointmentDate};
     </select>
+
 </mapper>

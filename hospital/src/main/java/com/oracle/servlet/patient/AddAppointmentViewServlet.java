@@ -24,6 +24,7 @@ public class AddAppointmentViewServlet extends HttpServlet {
         String strPageNum=req.getParameter("pageNum");
         String patientId=req.getParameter("pid");
 
+
         //初始页面默认为1
         Integer pageNum=1;
         //初始条数默认为5
@@ -44,6 +45,7 @@ public class AddAppointmentViewServlet extends HttpServlet {
         req.setAttribute("pageInfo",pageInfo);
         //req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req,resp);
         //System.out.println("////////////////////"+pageInfo.getList());
+
 
         System.out.println("////////////////////"+patientId);
         req.setAttribute("patientId", patientId);

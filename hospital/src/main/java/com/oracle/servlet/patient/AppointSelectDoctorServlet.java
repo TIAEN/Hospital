@@ -50,8 +50,7 @@ public class AppointSelectDoctorServlet extends HttpServlet {
         DoctorService doctorService=new DoctorServiceImpl();
         PageInfo<Doctor> pageInfo=doctorService.findDoctorListByDepartmentId(pageNum,pageSize,departmentSecondId);
         req.setAttribute("doctorList",pageInfo.getList());
-        //List<Doctor> doctorList=pageInfo.getList();
-        //System.out.println(doctorList+"ppppppppppppppp");
+
         req.setAttribute("pageInfo",pageInfo);
         req.setAttribute("departmentFirstId",departmentFirstId);
         req.setAttribute("departmentSecondId",departmentSecondId);
