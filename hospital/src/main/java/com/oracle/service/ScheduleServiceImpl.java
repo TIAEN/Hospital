@@ -138,4 +138,14 @@ public class ScheduleServiceImpl implements ScheduleService{
         sqlSession.close();
         return maxScheduleId;
     }
+
+
+    @Override
+    public List<Integer> selectDoctorIdList() {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        ScheduleMapper scheduleMapper = sqlSession.getMapper(ScheduleMapper.class);
+        List<Integer> doctorIdList = scheduleMapper.selectDoctorIdList();
+        sqlSession.close();
+        return doctorIdList;
+    }
 }

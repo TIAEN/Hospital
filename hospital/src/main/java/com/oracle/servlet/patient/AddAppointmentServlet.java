@@ -65,7 +65,7 @@ public class AddAppointmentServlet extends HttpServlet {
 
         BookAppointment bookAppointment=new BookAppointment();
         bookAppointment.setAppointmentDate(date);
-        bookAppointment.setBookNumber(3);
+        bookAppointment.setBookNumber(5);
 
         if(!bookAppointmentService.isExistBookAppointmentByDate(date)){
             bookAppointmentService.insertBookAppointment(bookAppointment);

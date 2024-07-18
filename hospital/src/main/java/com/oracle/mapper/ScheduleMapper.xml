@@ -75,4 +75,8 @@
     <select id="selectScheduleIdList" resultType="java.lang.Integer">
         select schedule_id from doctor_schedule
     </select>
+
+    <select id="selectDoctorIdList" resultType="java.lang.Integer">
+        select doctor_id from doctors
+    </select>
 </mapper>

@@ -31,4 +31,6 @@ public interface ScheduleService {
     Integer selectPatientCountByDoctorId(Integer doctorId);
 
     Integer selectMaxScheduleId();
+
+    List<Integer> selectDoctorIdList();
 }
