@@ -50,6 +50,7 @@
       <tr>
         <th width="100" style="text-align:left; padding-left:20px;">序号</th>
         <th>医生姓名</th>
+        <th>医生照片</th>
         <th>工号</th>
         <th>电话</th>
         <th>邮箱</th>
@@ -63,6 +64,7 @@
           <td style="text-align:left; padding-left:20px;">
               ${v.count}</td>
           <td>${d.name}</td>
+          <td><img src="<%=request.getContextPath()%>/images/${d.avatar}" width="" height="150" /></td>
           <td>${d.jobNumber}</td>
           <td>${d.phone == null ? '-' :d.phone}</td>
           <td>${d.email == null ? '-' :d.email}</td>

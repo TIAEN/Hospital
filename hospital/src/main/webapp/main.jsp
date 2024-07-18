@@ -58,8 +58,8 @@
 
         <h2><span class="icon-user"></span>排班管理</h2>
         <ul style="display:block">
-            <li><a href="<%=request.getContextPath()%>/backend/rootDepartmentServlet" target="right"><span class="icon-caret-right"></span>排班列表</a></li>
-            <li><a href="<%=request.getContextPath()%>/backend/departmentListServlet" target="right"><span class="icon-caret-right"></span>排班安排</a></li>
+            <li><a href="<%=request.getContextPath()%>/backend/ScheduleListServlet" target="right"><span class="icon-caret-right"></span>排班列表</a></li>
+            <li><a href="<%=request.getContextPath()%>/backend/rootScheduleServlet" target="right"><span class="icon-caret-right"></span>排班安排</a></li>
         </ul>
 
     </c:if >
