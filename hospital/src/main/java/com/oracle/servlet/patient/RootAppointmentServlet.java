@@ -16,18 +16,17 @@ import java.util.List;
 public class RootAppointmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String patientID = req.getParameter("patientID");
-        String patientID="1";
-        Integer patientId=null;
-        if (patientID != null&&!patientID.equals("")) {
-            patientId = Integer.parseInt(patientID);
-        }
-
         AppointmentService appointmentService = new AppointmentServiceimpl();
+        String strPatientID = req.getParameter("patientId");
+        //String patientID="1";
+        Integer patientId=null;
+        if (strPatientID != null&&!strPatientID.equals("")) {
+            patientId = Integer.parseInt(strPatientID);
+        }
+        req.setAttribute("patientId",patientId);
+
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceImpl();
-
-
         List<Appointment> appointmentList=appointmentService.appointmentList(patientId);
 
         for (Appointment appointment:appointmentList) {
@@ -43,8 +42,8 @@ public class RootAppointmentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String patientID = req.getParameter("patientID");
-        String patientID="1";
+        String patientID = req.getParameter("patientId");
+        //String patientID="1";
         Integer patientId=null;
         if (patientID != null&&!patientID.equals("")) {
             patientId = Integer.parseInt(patientID);

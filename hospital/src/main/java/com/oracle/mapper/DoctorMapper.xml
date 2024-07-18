@@ -70,6 +70,7 @@
         d.doctor_id as doctorId,
         d.job_number as jobNumber,
         d.name as name,
+        d.avatar as avatar,
         d.phone as phone,
         d.email as email,
         d.entry_date as entryDate,

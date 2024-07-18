@@ -55,7 +55,7 @@
                         <img src="http://localhost/upload/${doctor.avatar}">
                     </c:if>
                     <c:if test="${empty doctor.avatar}">
-                        <img src="${images}/amiya.png">
+                        <img src="${images}/meilinna.jpg">
                     </c:if>
                 </div>
             </div>
