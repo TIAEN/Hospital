@@ -66,6 +66,7 @@ public class DoctorServiceImpl implements DoctorService{
 
     @Override
     public PageInfo<Doctor> doctorSearch(Integer pageNum, Integer pageSize, String name, Integer pid) {
+        PageHelper.startPage(pageNum, pageSize);
         SqlSession sqlsession = DBUtils.createDbUtils().getSQLSession();
         DoctorMapper doctorMapper = sqlsession.getMapper(DoctorMapper.class);
         List<Doctor> doctorList=doctorMapper.selectDoctorSearch(name,pid);

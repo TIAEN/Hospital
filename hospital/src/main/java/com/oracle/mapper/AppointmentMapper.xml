@@ -48,6 +48,20 @@
             appointment_date;
     </select>
 
+    <select id="selectAllByDoctorId" resultMap="AppointmentMap">
+        SELECT *
+        FROM appointments
+        where doctor_id=#{id}
+        ORDER BY
+            CASE
+                WHEN status = 'booked' THEN 1
+                WHEN status = 'cancelled' THEN 2
+                WHEN status = 'completed' THEN 3
+                ELSE 4
+                END,
+            appointment_date
+    </select>
+
     <insert id="insertAppointment" parameterType="com.oracle.pojo.Appointment">
         insert into appointments values (null,#{patientId},#{doctorId},#{appointmentDate},#{currentStatus})
     </insert>

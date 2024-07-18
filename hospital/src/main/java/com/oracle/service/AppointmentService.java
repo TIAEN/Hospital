@@ -15,4 +15,6 @@ public interface AppointmentService {
     Appointment getAppointmentById(Integer id);
 
     List<Appointment> getAppointmentOrderBy();
+
+    List<Appointment> getAllOrderByDoctorId(Integer id);
 }

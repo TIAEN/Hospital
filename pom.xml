@@ -9,9 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>baitis</module>
-        <module>mybaitis</module>
-        <module>jspdemo</module>
         <module>hospital</module>
     </modules>
 
@@ -24,7 +21,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.28</version>
+            <version>8.0.11</version>
         </dependency>
     </dependencies>
 </project>

@@ -16,15 +16,15 @@ import java.util.List;
 public class RootAppointmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String patientID = req.getParameter("patientId");
-
+        AppointmentService appointmentService = new AppointmentServiceimpl();
+        String strPatientID = req.getParameter("patientId");
+        //String patientID="1";
         Integer patientId=null;
-        if (patientID != null&&!patientID.equals("")) {
-            patientId = Integer.parseInt(patientID);
+        if (strPatientID != null&&!strPatientID.equals("")) {
+            patientId = Integer.parseInt(strPatientID);
         }
 
         System.out.println("patientID:"+patientId+"////////////////////");
-        AppointmentService appointmentService = new AppointmentServiceimpl();
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceImpl();
 
