@@ -26,7 +26,7 @@
         <div class="padding border-bottom" >
             <ul class="search" style="padding-left:10px;">
 
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet?pid=1"> 预约</a> </li><!--${patientId}-->
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewServlet?pid=${patientId}"> 预约</a> </li>
 
 
             </ul>

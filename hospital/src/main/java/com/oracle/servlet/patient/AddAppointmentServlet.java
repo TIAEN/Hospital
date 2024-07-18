@@ -45,7 +45,7 @@ public class AddAppointmentServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        System.out.println(date+"-----------");
+        //System.out.println(date+"-----------");
 
         DepartmentService departmentService=new DepartmentServiceImpl();
         DoctorService doctorService=new DoctorServiceImpl();
@@ -74,8 +74,9 @@ public class AddAppointmentServlet extends HttpServlet {
         bookAppointmentService.updateBookAppointment(bookAppointment);
 
         appointmentService.insertintoAppointment(appointment);
+        req.setAttribute("patientId",PatientId);
         System.out.println("AddAppointmentServlet测试点"+appointment);
-        req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
+        req.getRequestDispatcher("/patient/rootAppointmentServlet").forward(req, resp);
 
     }
 }

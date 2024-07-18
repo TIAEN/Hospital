@@ -26,7 +26,7 @@
         <div class="panel-head"><strong class="icon-reorder"> 选择医生</strong></div>
         <div class="padding border-bottom">
             <ul class="search" style="padding-left:10px;">
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewSecond?ServletdepartmentFirstId=${b.departmentId}&patientId=${patientId}"> 返回</a> </li>
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/addAppointmentViewSecondServlet?departmentFirstId=${departmentFirstId}&patientId=${patientId}&departmentSecondId=${departmentSecondId}"> 返回</a> </li>
             </ul>
         </div>
         <table class="table table-hover text-center">

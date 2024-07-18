@@ -27,6 +27,8 @@ public class RootAppointmentServlet extends HttpServlet {
 
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceImpl();
+
+
         List<Appointment> appointmentList=appointmentService.appointmentList(patientId);
 
         for (Appointment appointment:appointmentList) {
