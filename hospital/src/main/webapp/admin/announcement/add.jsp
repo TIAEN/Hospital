@@ -39,7 +39,7 @@
                     <label>公告内容：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="announcementContent" value="" />
+                    <textarea type="text" class="input" name="announcementContent" value=""></textarea>
                     <div class="tips"></div>
                 </div>
             </div>

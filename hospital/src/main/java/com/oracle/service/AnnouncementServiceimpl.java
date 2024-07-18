@@ -7,6 +7,7 @@ import com.oracle.pojo.Announcement;
 import com.oracle.utils.DBUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Collections;
 import java.util.List;
 
 public class AnnouncementServiceimpl implements AnnouncementService{
@@ -49,5 +50,14 @@ public class AnnouncementServiceimpl implements AnnouncementService{
         announcementMapper.deleteAnnouncementById(id);
         sqlSession.commit();
         sqlSession.close();
+    }
+
+    @Override
+    public List<Announcement> selectFiveByDate() {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        AnnouncementMapper announcementMapper= sqlSession.getMapper(AnnouncementMapper.class);
+        List<Announcement>announcementList= announcementMapper.selectFiveByDate();
+        sqlSession.close();
+        return announcementList;
     }
 }

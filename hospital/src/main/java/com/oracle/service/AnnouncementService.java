@@ -10,4 +10,6 @@ public interface AnnouncementService {
     void addAnnouncement(Announcement announcement);
     PageInfo<Announcement> list(int pageNum, int pageSize);
     void deleteAnnouncement(int id);
+
+    List<Announcement> selectFiveByDate();
 }

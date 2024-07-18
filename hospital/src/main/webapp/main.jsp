@@ -68,8 +68,7 @@
             <nav class="s-header__nav-wrap">
                 <h3 class="s-header__nav-heading">Navigate to</h3>
                 <ul class="s-header__nav">
-                    <li><a href="index.jsp" title="">目录页</a></li>
-
+                    <li><a href="<%=request.getContextPath()%>/index.jsp" title="">目录页</a ></li>
                     <c:if test="${not empty AdminInfo}">
                         <li class="has-children">
                             <a href="" title="" class="">医生管理</a>
@@ -130,6 +129,7 @@
                             <a href="" title="" class="">个人信息管理</a>
                             <ul class="sub-menu">
                                 <li><a href="<%=request.getContextPath()%>/backend/currentDoctorInfoServlet?jobNumber=${jobNumber}">我的信息</a></li>
+                                <li><a href="<%=request.getContextPath()%>/announcementViewServlet">查看公告</a></li>
                                 <li><a href="<%=request.getContextPath()%>/backend/doctorListServlet">医生信息列表</a></li>
                             </ul>
                         </li>

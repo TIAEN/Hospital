@@ -55,6 +55,7 @@
   <h2><span class="icon-pencil-square-o"></span>信息管理</h2>
   <ul style="display:block">
     <li><a href="<%=request.getContextPath()%>/backend/patientDetailsViewServlet?patientId=${patientId}" target="right"><span class="icon-caret-right"></span>个人信息</a></li>
+    <li><a href="<%=request.getContextPath()%>/announcementViewServlet?patientId=${patientId}" target="right"><span class="icon-caret-right"></span>查看公告</a></li>
     <li><a href="<%=request.getContextPath()%>/backend/patientPasswordViewServlet?patientId=${patientId}" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
   </ul>
 
