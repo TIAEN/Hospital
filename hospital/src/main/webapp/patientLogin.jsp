@@ -62,7 +62,9 @@
 
                     </div>
                     <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
+                    <div style="text-align: center;">
                     <a href="<%=request.getContextPath()%>/patientRegisterServlet">点此注册</a>
+                    <a href="<%=request.getContextPath()%>/index.jsp">返回首页</a>
                 </div>
 
             </form>
