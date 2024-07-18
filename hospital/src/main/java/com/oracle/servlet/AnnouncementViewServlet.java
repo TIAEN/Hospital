@@ -21,7 +21,6 @@ public class AnnouncementViewServlet extends HttpServlet {
 
 
         String patientId=req.getParameter("patientId");
-
         String jobNumber=req.getParameter("jobNumber");
 
         AnnouncementService announcementService=new AnnouncementServiceimpl();
