@@ -22,6 +22,7 @@ public class AddAppointmentViewServlet extends HttpServlet {
         //设置一下默认页的数据
 
         String strPageNum=req.getParameter("pageNum");
+        String patientId=req.getParameter("pid");
 
         //初始页面默认为1
         Integer pageNum=1;
@@ -38,13 +39,12 @@ public class AddAppointmentViewServlet extends HttpServlet {
         DepartmentService departmentService=new DepartmentServiceImpl();
         PageInfo<Department> pageInfo=departmentService.findDepartmentListFirst(pageNum,pageSize);
 
-        System.out.println("////////////////////"+pageInfo);
+        //System.out.println("////////////////////"+pageInfo);
         req.setAttribute("departmentList",pageInfo.getList());
         req.setAttribute("pageInfo",pageInfo);
         //req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req,resp);
-        System.out.println("////////////////////"+pageInfo.getList());
+        //System.out.println("////////////////////"+pageInfo.getList());
 
-        String patientId=req.getParameter("pid");
         System.out.println("////////////////////"+patientId);
         req.setAttribute("patientId", patientId);
         req.getRequestDispatcher("/public/patient/addAppointmentViewFirst.jsp").forward(req, resp);

@@ -16,4 +16,6 @@ public interface BookAppointmentMapper {
    void updateBookAppointment(BookAppointment bookAppointment);
 
    void updateBookAppointmentAdd(Date appointmentDate);
+
+   BookAppointment selectBookAppointmentByDate(Date date);
 }

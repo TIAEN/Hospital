@@ -45,6 +45,11 @@
 </head>
 <body>
 <div class="panel admin-panel">
+    <div class="padding border-bottom">
+        <ul class="search" style="padding-left:10px;">
+            <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/patient/appointSelectDoctorServlet?departmentFirstId=${departmentFirstId}&patientId=${patientId}&departmentSecondId=${departmentSecondId}"> 返回</a> </li>
+        </ul>
+    </div>
     <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 单页信息</strong></div>
     <div class="body-content">
         <form method="post" class="form-x" action="<%=request.getContextPath()%>/patient/addAppointmentServlet?patientId=${patientId}&doctorId=${doctorId}">

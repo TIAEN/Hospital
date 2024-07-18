@@ -24,6 +24,7 @@ public class AddAppointmentViewSecondServlet extends HttpServlet {
         //设置一下默认页的数据
         String strPageNum=req.getParameter("pageNum");
 
+        System.out.println("+++++++++++++++++++++patientId:"+patientId);
         //初始页面默认为1
         Integer pageNum=1;
 
