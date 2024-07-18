@@ -16,13 +16,14 @@ import java.util.List;
 public class RootAppointmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String patientID = req.getParameter("patientID");
-        String patientID="1";
+        String patientID = req.getParameter("patientId");
+
         Integer patientId=null;
         if (patientID != null&&!patientID.equals("")) {
             patientId = Integer.parseInt(patientID);
         }
 
+        System.out.println("patientID:"+patientId+"////////////////////");
         AppointmentService appointmentService = new AppointmentServiceimpl();
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceImpl();
@@ -37,19 +38,19 @@ public class RootAppointmentServlet extends HttpServlet {
         }
 
         req.setAttribute("appointmentList", appointmentList);
-
+        req.setAttribute("patientId", patientId);
         req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String patientID = req.getParameter("patientID");
-        String patientID="1";
+        String patientID = req.getParameter("patientId");
         Integer patientId=null;
         if (patientID != null&&!patientID.equals("")) {
             patientId = Integer.parseInt(patientID);
         }
 
+        System.out.println("patientID:"+patientId+"////////////////////");
         AppointmentService appointmentService = new AppointmentServiceimpl();
         DoctorService doctorService=new DoctorServiceImpl();
         PatientService patientService=new PatientServiceImpl();
@@ -63,6 +64,7 @@ public class RootAppointmentServlet extends HttpServlet {
             System.out.println(appointment);
         }
 
+        req.setAttribute("patientId", patientId);
         req.setAttribute("appointmentList", appointmentList);
         req.getRequestDispatcher("/public/patient/root_appointment.jsp").forward(req, resp);
     }

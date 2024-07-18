@@ -47,10 +47,9 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false" />
+				<property name="url" value="jdbc:mysql://localhost:3306/doctor?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false" />
 				<property name="username" value="root" />
-				<property name="password" value="jiangpeichen7218" />
-				<!-- 记得改自己的数据库和密码啥的 -->
+				<property name="password" value="wwk426096" />
 			</dataSource>
 		</environment>
 	</environments>
