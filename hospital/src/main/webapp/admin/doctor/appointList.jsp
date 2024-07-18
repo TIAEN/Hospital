@@ -24,9 +24,13 @@
 <form method="post" action="" id="listform">
     <div class="panel admin-panel">
         <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
-        <div class="padding border-bottom">
 
+        <div class="padding border-bottom">
+            <ul class="search" style="padding-left:10px;">
+                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/main.jsp"> 返回</a> </li>
+            </ul>
         </div>
+
         <table class="table table-hover text-center" id="appointmentTable">
             <tr>
                 <th width="100" style="text-align:left; padding-left:20px;">序号</th>

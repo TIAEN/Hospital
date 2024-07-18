@@ -8,5 +8,8 @@ public interface AnnouncementMapper {
 
     List<Announcement> selectAnnouncementAll();
     void insertAnnouncement(Announcement announcement);
+
     void deleteAnnouncementById(Integer id);
+
+    List<Announcement> selectFiveByDate();
 }

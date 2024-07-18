@@ -73,9 +73,11 @@ public class AddAppointmentServlet extends HttpServlet {
         }
 
         bookAppointmentService.updateBookAppointment(bookAppointment);
-
+        appointmentService.insertintoAppointment(appointment);
         List<Appointment> appointmentList=appointmentService.appointmentList(PatientId);
-        System.out.println("222222222222222222222222222222222");
+
+
+
         req.setAttribute("patientId",PatientId);
         req.setAttribute("appointmentList",appointmentList);
         System.out.println("AddAppointmentServlet测试点"+appointment);

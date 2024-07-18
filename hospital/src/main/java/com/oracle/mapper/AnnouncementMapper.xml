@@ -18,6 +18,11 @@
     <select id="selectAnnouncementAll" resultMap="announcementMap">
         select * from announcement
     </select>
+
+    <select id="selectFiveByDate" resultMap="announcementMap">
+        SELECT * FROM announcement ORDER BY creation_time ASC LIMIT 5;
+    </select>
+
     <insert id="insertAnnouncement" parameterType="com.oracle.pojo.Announcement">
         insert into announcement values (null,#{announcementTitle},#{announcementContent},#{announcementCreateTime},#{announcementCreator})
     </insert>

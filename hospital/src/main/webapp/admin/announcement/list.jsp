@@ -41,8 +41,13 @@
                     <td style="text-align:left; padding-left:20px;">
                             ${v.count}</td>
                     <td>${b.announcementTitle}</td>
-                    <td>${b.announcementContent}</td>
-                    <td>${b.announcementCreateTime}</td>
+                    <td>
+                        <textarea type="text" class="input" name="announcementContent" readonly rows="10" cols="100">${b.announcementContent}</textarea>
+                    </td>
+                    <td>
+                        ${b.announcementCreateTime}
+
+                    </td>
                     <td>${b.announcementCreator}</td>
 
                 </tr>
