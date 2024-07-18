@@ -49,7 +49,7 @@
 
                         <div class="form-group">
                             <div class="field">
-                                <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
+                                <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" required />
                                 <img src="<%=request.getContextPath()%>/backend/captServlet" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                                 <!--每次在地址后面加上?，保证每次的地址不一样，防止浏览器没有检测到地址变化，不真正地发送请求-->
                             </div>

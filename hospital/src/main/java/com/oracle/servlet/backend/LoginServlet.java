@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
             //req.setAttribute("username",loginName);
             session.setAttribute("manager",sessionIdentify);
             req.setAttribute("AdminInfo",admin);
+            req.setAttribute("DoctorInfo",null);
             //resp.sendRedirect(req.getContextPath()+"/main.jsp");
             req.getRequestDispatcher("/main.jsp").forward(req,resp);
         }
@@ -80,6 +81,7 @@ public class LoginServlet extends HttpServlet {
 
             //测试
             req.setAttribute("jobNumber",loginName);
+            req.setAttribute("AdminInfo",null);
 
             //session.setAttribute("manager",sessionIdentify);
             session.setAttribute("DoctorInfo",doctor);

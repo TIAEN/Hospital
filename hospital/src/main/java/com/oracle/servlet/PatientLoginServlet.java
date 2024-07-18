@@ -28,7 +28,14 @@ public class PatientLoginServlet extends HttpServlet {
         //校验验证码
         HttpSession session=req.getSession();
         String sessionCode=(String) session.getAttribute("valcode");
-        if(requestCode==null||"".equals(requestCode)||!requestCode.equals(sessionCode)){
+
+        if(requestCode==null || "".equals(requestCode)){
+            req.setAttribute("capError",null);
+            req.getRequestDispatcher("/patientLogin.jsp").forward(req,resp);
+            return;
+        }
+
+        if(!requestCode.equals(sessionCode)){
             req.setAttribute("capError","验证码有误");
             req.getRequestDispatcher("/patientLogin.jsp").forward(req,resp);
             return;
