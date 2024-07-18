@@ -104,8 +104,8 @@
                         <li class="has-children">
                             <a href="" title="" class="">栏目管理</a>
                             <ul class="sub-menu">
-                                <li><a href="<%=request.getContextPath()%>/backend/rootAnnouncementServlet">发布公告</a></li>
-                                <li><a href="<%=request.getContextPath()%>/backend/announcementListServlet">内容管理</a></li>
+                                <li><a href="<%=request.getContextPath()%>/backend/rootAnnouncementServlet?jobNumber=${jobNumber}">发布公告</a></li>
+                                <li><a href="<%=request.getContextPath()%>/backend/announcementListServlet?jobNumber=${jobNumber}">内容管理</a></li>
                             </ul>
                         </li>
                     </c:if>
@@ -130,6 +130,7 @@
                             <a href="" title="" class="">个人信息管理</a>
                             <ul class="sub-menu">
                                 <li><a href="<%=request.getContextPath()%>/backend/currentDoctorInfoServlet?jobNumber=${jobNumber}">我的信息</a></li>
+                                <li><a href="<%=request.getContextPath()%>/announcementViewServlet?jobNumber=${jobNumber}">查看公告</a></li>
                                 <li><a href="<%=request.getContextPath()%>/backend/doctorListServlet">医生信息列表</a></li>
                             </ul>
                         </li>

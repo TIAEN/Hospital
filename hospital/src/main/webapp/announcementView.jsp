@@ -27,7 +27,7 @@
         <c:if test="${empty patientId}">
         <div class="padding border-bottom">
             <ul class="search" style="padding-left:10px;">
-                <li> <a class="button border-main icon-plus-square-o" href="<%=request.getContextPath()%>/main.jsp?"> 返回</a> </li>
+                <a class="button border-main icon-plus-square-o" href="#" onclick="window.history.back(); return false;">返回</a>
             </ul>
         </div>
         </c:if>

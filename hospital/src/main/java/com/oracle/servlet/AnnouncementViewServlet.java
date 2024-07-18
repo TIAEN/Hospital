@@ -21,12 +21,15 @@ public class AnnouncementViewServlet extends HttpServlet {
 
 
         String patientId=req.getParameter("patientId");
+        String jobNumber=req.getParameter("jobNumber");
 
         AnnouncementService announcementService=new AnnouncementServiceimpl();
 
         List<Announcement> announcementList=announcementService.selectFiveByDate();
 
         req.setAttribute("patientId",patientId);
+
+        req.setAttribute("jobNumber",jobNumber);
 
         req.setAttribute("announcementList",announcementList);
 
