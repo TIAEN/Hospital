@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: asus
-  Date: 2024/7/16
-  Time: 14:44
+  Date: 2024/7/18
+  Time: 11:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,21 +21,14 @@
 </head>
 <body>
 
-    <table class="table table-hover text-center">
-        <tr>
-            <td>
-                <div class="button-group"> <a class="button border-main" href="<%=request.getContextPath()%>/backend/addScheduleViewServlet"><span class="icon-edit"></span> 添加排班</a>
-                </div>
-            </td>
-
-            <td>
-                <div class="button-group"> <a class="button border-main" href="<%=request.getContextPath()%>/backend/searchScheduleViewServlet"><span class="icon-edit"></span> 搜索排班</a>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-
+<table class="table table-hover text-center">
+    <tr>
+        <td>
+            <div class="button-group"> <a class="button border-main" href="<%=request.getContextPath()%>/searchScheduleViewServlet"><span class="icon-edit"></span> 搜索排班</a>
+            </div>
+        </td>
+    </tr>
+</table>
 
 <script>
 
@@ -65,13 +58,9 @@
                     <c:if test="${s.isAvailable == 0}">
                         <td>否</td>
                     </c:if>
-
                     <td>${s.date}</td>
                     <td>${s.visitCount}</td>
                     <td>${s.remarks}</td>
-                    <td><div class="button-group"> <a class="button border-main" href="<%=request.getContextPath()%>/backend/updateScheduleServlet?scheduleId=${s.scheduleId}"><span class="icon-edit"></span> 修改</a>
-                                                    <a class="button border-red" href="<%=request.getContextPath()%>/backend/deleteScheduleViewServlet?scheduleId=${s.scheduleId}" id="delete"><span class="icon-trash-o"></span> 删除</a>
-                    </div></td>
                 </tr>
             </c:forEach>
             <tr>
@@ -81,20 +70,20 @@
                         当前页数/总页数：${pageInfo.pageNum}/${pageInfo.pages}&nbsp;&nbsp;
 
 
-                        <a href="<%=request.getContextPath()%>/backend/rootScheduleServlet?pageNum=1">首页</a>
+                        <a href="<%=request.getContextPath()%>/scheduleListServlet?pageNum=1">首页</a>
 
 
                         <c:if test="${pageInfo.pageNum > 1}">
-                            <a href="<%=request.getContextPath()%>/backend/rootScheduleServlet?pageNum=${pageInfo.pageNum - 1}">上一页</a>
+                            <a href="<%=request.getContextPath()%>/scheduleListServlet?pageNum=${pageInfo.pageNum - 1}">上一页</a>
                         </c:if>
 
 
                         <c:if test="${pageInfo.pageNum <= pageInfo.pages - 1}">
-                            <a href="<%=request.getContextPath()%>/backend/rootScheduleServlet?pageNum=${pageInfo.pageNum + 1}">下一页</a>
+                            <a href="<%=request.getContextPath()%>/scheduleListServlet?pageNum=${pageInfo.pageNum + 1}">下一页</a>
                         </c:if>
 
 
-                        <a href="<%=request.getContextPath()%>/backend/rootScheduleServlet?pageNum=${pageInfo.pages}">尾页</a>
+                        <a href="<%=request.getContextPath()%>/scheduleListServlet?pageNum=${pageInfo.pages}">尾页</a>
                     </div>
                 </td>
             </tr>
@@ -102,6 +91,4 @@
     </div>
 </form>
 </body>
-
 </html>
-

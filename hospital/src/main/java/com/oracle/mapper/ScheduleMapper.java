@@ -29,4 +29,6 @@ public interface ScheduleMapper {
 
 
     List<Appointment> selectPatientCountByDoctorId(Integer doctorId);
+
+    List<Integer> selectScheduleIdList();
 }

@@ -29,4 +29,6 @@ public interface ScheduleService {
     List<Schedule> selectSomeSchedule(Schedule schedule);
 
     Integer selectPatientCountByDoctorId(Integer doctorId);
+
+    Integer selectMaxScheduleId();
 }

@@ -19,9 +19,10 @@ public class AddScheduleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        Integer scheduleId =Integer.parseInt(req.getParameter("scheduleId"));
+        Integer scheduleId = Integer.parseInt(req.getParameter("scheduleId"));
         Integer doctorId = Integer.parseInt(req.getParameter("doctorId"));
         Integer isAvailable = Integer.parseInt(req.getParameter("isAvailable"));
+
         String strDate = req.getParameter("date");
         Date date = DateUtils.convertToDateLocal(strDate);
         ScheduleService scheduleService = new ScheduleServiceImpl();
@@ -31,10 +32,7 @@ public class AddScheduleServlet extends HttpServlet {
         String yisheng = "医生";
         String remarks = doctorName + yisheng + departmentName;
 
-        if (scheduleService.selectScheduleId(scheduleId)){
-            req.setAttribute("addError","该排班编号已存在");
-            req.getRequestDispatcher("/admin/schedule/addSchedule.jsp").forward(req,resp);
-        }
+
 
         Schedule newSchedule = new Schedule();
         newSchedule.setScheduleId(scheduleId);

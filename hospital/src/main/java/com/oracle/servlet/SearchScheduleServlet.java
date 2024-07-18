@@ -1,6 +1,5 @@
-package com.oracle.servlet.backend;
+package com.oracle.servlet;
 
-import com.github.pagehelper.PageInfo;
 import com.oracle.pojo.Schedule;
 import com.oracle.service.ScheduleService;
 import com.oracle.service.ScheduleServiceImpl;
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet("/backend/searchScheduleServlet")
+@WebServlet("/searchScheduleServlet")
 public class SearchScheduleServlet extends HttpServlet {
 
     @Override
@@ -37,8 +36,9 @@ public class SearchScheduleServlet extends HttpServlet {
         ScheduleService scheduleService = new ScheduleServiceImpl();
         List<Schedule> scheduleList = scheduleService.selectSomeSchedule(schedule);
 
+
         req.setAttribute("searchList",scheduleList);
-        req.getRequestDispatcher("/admin/schedule/searchSchedule.jsp").forward(req,resp);
+        req.getRequestDispatcher("/searchSchedule.jsp").forward(req,resp);
 
     }
 }

@@ -10,17 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-
-@WebServlet("/backend/updateScheduleServlet")
-public class UpdateScheduleServlet extends HttpServlet {
+@WebServlet("/backend/searchScheduleViewServlet")
+public class SearchScheduleViewServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ScheduleService scheduleService = new ScheduleServiceImpl();
-        Integer scheduleId = Integer.parseInt(req.getParameter("scheduleId"));
-        Schedule schedule=scheduleService.selectOneScheduleByScheduleId(scheduleId);
-        req.setAttribute("oneSchedule",scheduleService.selectOneScheduleByScheduleId(scheduleId));
-        req.getRequestDispatcher("/admin/schedule/updateSchedule.jsp").forward(req,resp);
+        ScheduleService scheduleService =new ScheduleServiceImpl();
+        List<Schedule> scheduleList = scheduleService.findScheduleAll();
+        req.setAttribute("scheduleList",scheduleList);
+        req.getRequestDispatcher("/admin/schedule/searchScheduleView.jsp").forward(req,resp);
     }
 }

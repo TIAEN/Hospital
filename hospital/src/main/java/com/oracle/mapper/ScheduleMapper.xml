@@ -71,4 +71,8 @@
     <select id="selectPatientCountByDoctorId" resultMap="scheduleMap">
         select * from appointments where doctor_id=#{doctorId}
     </select>
+
+    <select id="selectScheduleIdList" resultType="java.lang.Integer">
+        select schedule_id from doctor_schedule
+    </select>
 </mapper>

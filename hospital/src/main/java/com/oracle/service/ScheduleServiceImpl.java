@@ -9,6 +9,8 @@ import com.oracle.pojo.Schedule;
 import com.oracle.utils.DBUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ScheduleServiceImpl implements ScheduleService{
@@ -128,4 +130,12 @@ public class ScheduleServiceImpl implements ScheduleService{
         return patientCount;
     }
 
+    @Override
+    public Integer selectMaxScheduleId() {
+        SqlSession sqlSession= DBUtils.createDbUtils().getSQLSession();
+        ScheduleMapper scheduleMapper = sqlSession.getMapper(ScheduleMapper.class);
+        Integer maxScheduleId = Collections.max(scheduleMapper.selectScheduleIdList());
+        sqlSession.close();
+        return maxScheduleId;
+    }
 }

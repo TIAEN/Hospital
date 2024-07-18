@@ -53,13 +53,18 @@
                     <div class="tips"></div>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="label">
                     <label>是否排班：</label>
                 </div>
-                <div class="field">
-                    <input type="text" class="input" name="isAvailable" value="${oneSchedule.isAvailable}" />
-                    <div class="tips"></div>
+                <div>
+                    <label>
+                        <select name="isAvailable" style="width:150px;height:40px;display:inline-block">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </label>
                 </div>
             </div>
 

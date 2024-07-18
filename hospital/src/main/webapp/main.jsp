@@ -113,7 +113,7 @@
                         <li class="has-children">
                             <a href="" title="" class="">排班管理</a>
                             <ul class="sub-menu">
-                                <li><a href="<%=request.getContextPath()%>/backend/ScheduleListServlet">排班列表</a></li>
+                                <li><a href="<%=request.getContextPath()%>/scheduleListServlet">排班列表</a></li>
                                 <li><a href="<%=request.getContextPath()%>/backend/rootScheduleServlet">排班安排</a></li>
                             </ul>
                         </li>

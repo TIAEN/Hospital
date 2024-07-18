@@ -30,17 +30,22 @@
                     <label>排班编号：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="scheduleId" value=""/>
+                    <input type="text" class="input" readonly name="scheduleId" value="${scheduleId}"/>
                     <div class="tips"></div>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="label">
-                    <label>医生编号：</label>
+                    <label>医生信息：</label>
                 </div>
-                <div class="field">
-                    <input type="text" class="input" name="doctorId" value="" />
-                    <div class="tips"></div>
+                <div>
+                    <select name="doctorId" style="width:250px;height:40px;display:inline-block">
+                        <option value="">请选择医生编号--科室编号--备注信息</option>
+                        <c:forEach items="${scheduleList}" var="l" varStatus="m">
+                            <option value="${l.doctorId}"><jsp:text>${l.doctorId}_</jsp:text><jsp:text>${l.departmentId}_</jsp:text><jsp:text>${l.remarks}</jsp:text></option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
 
@@ -48,11 +53,14 @@
                 <div class="label">
                     <label>是否排班：</label>
                 </div>
-                <div class="field">
-                    <input type="text" class="input" name="isAvailable" value="" />
-                    <div class="tips"></div>
+                <div>
+                    <select name="isAvailable" style="width:150px;height:40px;display:inline-block">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
                 </div>
             </div>
+
 
             <div class="form-group">
                 <div class="label">
@@ -74,7 +82,6 @@
             </div>
         </form>
     </div>
-    <span style="color: red">${addError}</span>
 </div>
 
 </body>
