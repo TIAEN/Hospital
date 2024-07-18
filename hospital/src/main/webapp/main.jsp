@@ -75,6 +75,7 @@
     <h2><span class="icon-pencil-square-o"></span>病人管理</h2>
     <ul>
         <li><a href="<%=request.getContextPath()%>/backend/rootAddConsultationServlet" target="right"><span class="icon-caret-right"></span>就诊管理</a></li>
+        <li><a href="<%=request.getContextPath()%>/backend/selectAppointForDoctorServlet?jobNumber=${jobNumber}" target="right"><span class="icon-caret-right"></span>预约管理</a></li>
     </ul>
 
     </c:if >
