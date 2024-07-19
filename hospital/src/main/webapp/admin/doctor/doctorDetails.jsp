@@ -22,7 +22,7 @@
 <body>
 <div class="panel admin-panel">
     <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>我的信息</strong></div>
-    <li><a href="<%=request.getContextPath()%>/main.jsp" target="right"><strong style="color: darkblue">返回主页</strong></a></li>
+    <li><a onclick="window.history.back()" target="right"><strong style="color: darkblue">返回主页</strong></a></li>
     <div class="body-content">
         <form method="post" class="form-x" action="${root}/backend/updateDoctorDetailsServlet" enctype="multipart/form-data">
             <div class="form-group">

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: FLY
@@ -51,7 +52,9 @@
                     <textarea type="text" class="input" name="announcementContent" readonly rows="10" cols="100">${b.announcementContent}</textarea>
                 </div>
                 </td>
-                <td>${b.announcementCreateTime}</td>
+                <td>
+                    <fmt:formatDate value="${b.announcementCreateTime}" pattern="yyyy-MM-dd HH:mm" />
+                </td>
                 <td>
                     ${b.announcementCreator}
                 </td>

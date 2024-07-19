@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,7 +45,9 @@
 
                     <td>${d.patientName}</td>
                     <td>${d.doctorName}</td>
-                    <td>${d.appointmentDate}</td>
+                    <td>
+                        <fmt:formatDate value="${d.appointmentDate}" pattern="yyyy-MM-dd HH:mm" />
+                    </td>
                     <td>${d.currentStatus}</td>
                 </tr>
             </c:forEach>
