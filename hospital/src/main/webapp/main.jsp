@@ -104,7 +104,9 @@
                         <li class="has-children">
                             <a href="" title="" class="">栏目管理</a>
                             <ul class="sub-menu">
-                                <li><a href="<%=request.getContextPath()%>/backend/rootAnnouncementServlet?jobNumber=${jobNumber}">发布公告</a></li>
+                                <li>
+                                    <a href="#" onclick="window.open('<%=request.getContextPath()%>/backend/rootAnnouncementServlet?jobNumber=${jobNumber}','_blank'); return false;">发布公告</a>
+                                </li>
                                 <li><a href="<%=request.getContextPath()%>/backend/announcementListServlet?jobNumber=${jobNumber}">内容管理</a></li>
                             </ul>
                         </li>

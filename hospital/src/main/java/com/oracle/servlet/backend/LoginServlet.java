@@ -24,7 +24,8 @@ public class LoginServlet extends HttpServlet {
         String loginName = req.getParameter("username");
         String pwd = req.getParameter("password");
         //由于增加了“请选择您的登录身份”，是否需要考虑roleId,为空的情况
-        String roleId= req.getParameter("roleId");
+        String roleId=null;
+        roleId= req.getParameter("roleId");
         String requestCode= req.getParameter("code");
 
         //Integer role =Integer.parseInt(roleId);

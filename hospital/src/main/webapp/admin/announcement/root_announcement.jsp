@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,8 +42,10 @@
                         <td style="text-align:left; padding-left:20px;">${v.count}</td>
 
                         <td>${d.announcementTitle}</td>
-                        <td>${d.announcementContent}</td>
-                        <td>${d.announcementCreateTime}</td>
+                        <td> <textarea type="text" class="input" name="announcementContent" readonly rows="10" cols="100">${d.announcementContent}</textarea></td>
+                        <td>
+                            <fmt:formatDate value="${d.announcementCreateTime}" pattern="yyyy-MM-dd HH:mm" />
+                        </td>
                         <td><div class="button-group"> <a class="button border-red" href="javascript:void(0)" onclick="return del(${d.announcementId})"><span class="icon-trash-o"></span> 删除</a> </div></td>
                 </tr>
             </c:forEach>
