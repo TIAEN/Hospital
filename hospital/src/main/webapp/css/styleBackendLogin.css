@@ -205,7 +205,7 @@ body {
     color: #999;
     letter-spacing: 0.5px;
     border: 1px solid #e1e1e1;
-    background: #fff url('path-to-arrow-icon.png') no-repeat right 10px center; /* 添加下拉箭头 */
+    background: #fff url(../images/mikaila.jpg) no-repeat right 10px center; /* 添加下拉箭头 */
     background-size: 20px 20px; /* 调整箭头大小 */
     box-sizing: border-box;
     font-family: 'Noto Sans JP', sans-serif;
